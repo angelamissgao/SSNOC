@@ -1,0 +1,8 @@
+{
+  "name": "ssnoc-sb2",
+  "version": "0.0.1",
+  "description": "fse ssnoc application",
+  "dependencies": {
+    "express": "^4.13.3"
+  }
+}
