@@ -9,8 +9,8 @@
 			
        <button ng-click="logout()" type="submit" class="btn btn-primary">Logout</button>
        <div ng-repeat="member in directory|orderBy:['status','name'] : true">
-        		<p ng-show="isOnline(member.status)" style="color:green;">{{member.name}}</p>
-        		<p ng-show="!isOnline(member.status)" style="color:red;">{{member.name}}</p>
+        		<p ng-show="isOnline(member.status)" style="color:green;" ng-bind="member.name"></p>
+        		<p ng-show="!isOnline(member.status)" style="color:red;" ng-bind="member.name"></p>
    		</div>
 
 		</div>

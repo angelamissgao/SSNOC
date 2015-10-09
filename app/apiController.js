@@ -33,7 +33,6 @@ function addMember (req, res) {
 		if (err) {
 			return res.send(err);
 		}
-
 		res.json(member);
 	});
 }
@@ -48,7 +47,7 @@ function removeMember (id, res) {
     });
 }
 
-function updateStatus (req, res) {
+function updateStatus (req, res, io) {
 
 	console.log('updateStatus id' + req.params.member_id);
 
@@ -65,7 +64,7 @@ function updateStatus (req, res) {
 			if (err) {
 				return res.send(err);
 			}
-
+			io.emit('userStatusChange', member);
 			res.json({ message: 'Status updated: Member ' + req.params.member_id + ' status is ' + req.params.status_id });
 		});
 	});
@@ -163,7 +162,7 @@ module.exports = function(app, io) {
  */
 
 	app.post('/api/ssnoc/update_status/:member_id/:status_id', function(req, res) {
-		updateStatus(req,res);
+		updateStatus(req,res,io);
 	});
 
 /**
