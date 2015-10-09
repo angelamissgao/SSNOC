@@ -72,8 +72,7 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
       });
 
     socket.on('userStatusChange', function(member){
-        $scope.directory.push(member);
-        $scope.$apply();
+        getDirectory();
     });
   
      function getAllMessages(){

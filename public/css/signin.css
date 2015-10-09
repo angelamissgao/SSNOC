@@ -19,9 +19,9 @@ body {
 .form-signin .form-control {
   position: relative;
   height: auto;
-  -webkit-box-sizing: border-box;
+  /*-webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
-          box-sizing: border-box;
+          box-sizing: border-box;*/
   padding: 10px;
   font-size: 16px;
 }
@@ -62,12 +62,13 @@ body {
 
 .chatArea{
   margin: 5px auto;
-  margin-left: 10px;
+  margin-left: 25px;
   height:80%;
   width: 75%;
-  background-color:#F5DEB3;
+  background-color:#BBBBBA;
   overflow: scroll;
   float: left;
+  padding-left: 5px;
 }
 
 .sendMsg {
@@ -76,7 +77,7 @@ margin-left: 10px;
 width: 75%;
 height:7%;
 float: left;
-background-color: #FFC0CB;
+background-color: #f5f5f5;
 }
 
 .welcomeMsg {
@@ -89,3 +90,17 @@ float: top;
 background-color: #A9A9A9;
 }
 
+#directory {
+ padding-right: 80px;
+
+}
+
+#logoutbt {
+  position: relative;
+  bottom: 250px;
+}
+
+#ex3{
+width: 93%;
+
+}
