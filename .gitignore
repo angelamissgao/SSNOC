@@ -1,3 +1,4 @@
 node_modules
 .DS_Store
-ssnocdb
+ssnocdb/messages
+ssnocdb/members
