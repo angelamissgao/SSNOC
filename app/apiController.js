@@ -145,7 +145,7 @@ module.exports = function(app, io) {
 	});
 
 /**
- * @api {post} /api/ssnoc/update_status/:memeber_id/:status_id Update member status
+ * @api {post} /api/ssnoc/update_status/:member_id/:status_id Update member status
  * @apiGroup Member
  *
  * @apiName UpdateStatus
@@ -174,7 +174,7 @@ module.exports = function(app, io) {
  * @apiSuccess {String} JSON with member information.
  *
  * @apiParam {String} user name
-*
+ *
  * @apiParam {String} password
  *
  * @apiSuccessExample Success-Response:
@@ -188,7 +188,7 @@ module.exports = function(app, io) {
 	});
 
 /**
- * @api {delete} /api/ssnoc/update_status/:memeber_id/:status_id Remove member from directory
+ * @api {delete} /api/ssnoc/update_status/:member_id/:status_id Remove member from directory
  * @apiGroup Member
  *
  * @apiName RemoveMember
@@ -207,10 +207,38 @@ module.exports = function(app, io) {
 	});
 
 //Chat
+/**
+ * @api {post} /api/ssnoc/message/:member_id/:message Add message to chat
+ * @apiGroup Messages
+ *
+ * @apiName AddMessage
+ *
+ * @apiSuccess {String} JSON with message information.
+ *
+ * @apiParam {String} member id
+ *
+ * @apiParam {String} message
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {"message":"First message","member_id":3,"status":1,"_id":2,"__v":0,"timestamp":"2015-10-09T08:38:00.456Z"}
+ */
 	app.post('/api/ssnoc/message/:member_id/:message', function(req, res) {
 		addPublicMessage(req, res, io);
 	});
 
+/**
+ * @api {get} /api/ssnoc/directory Get all messages from history
+ * @apiGroup Messages
+ * @apiName GetMessages
+ *
+ * @apiSuccess {String} JSON with messages.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *[{"message":"First message","member_id":3,"status":1,"_id":2,"__v":0,"timestamp":"2015-10-09T08:38:00.456Z"},
+ *{"message":"Second message","member_id":3,"status":1,"_id":3,"__v":0,"timestamp":"2015-10-09T08:38:03.237Z"}]
+ */
 	app.get('/api/ssnoc/messages', function(req, res) {
 		getPublicMessages(res);
 	});
