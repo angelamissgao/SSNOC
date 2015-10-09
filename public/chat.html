@@ -9,15 +9,14 @@
       
 			
       <div class="pull-right" id="directory">
+      	<button ng-click="logout()" type="submit" class="btn btn-primary" style="float:top right;margin-bottom:10px;">Logout</button>
        <div ng-repeat="member in directory|orderBy:['status','name']">
         		<p ng-show="isOnline(member.status)" style="color:green;" ng-bind="member.name"></p>
    		</div>
       <div ng-repeat="member in directory|orderBy:['status','name']">
         <p ng-show="!isOnline(member.status)" style="color:red;" ng-bind="member.name"></p>
       </div>
-       <button ng-click="logout()" type="submit" class="btn btn-primary" id="logoutbt">Logout</button>
-
-		</div>
+       </div>
 				<div class="chatArea">
 					<p ng-repeat="message in messages">
             <b><span ng-bind="directoryDict[message.member_id].name"></span></b>: &nbsp &nbsp
