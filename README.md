@@ -1,2 +1,2 @@
-# SSNOC-SB2
-FSE SSNOC application  - CMU SV
+# Ssnoc-TestLab
+Test Lab 

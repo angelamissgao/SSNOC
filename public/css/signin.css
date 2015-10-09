@@ -1,0 +1,91 @@
+body {
+  font: 13px/20px 'Lucida Grande', Tahoma, Verdana, sans-serif;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+.container {
+  margin: 80px auto;
+  width: 660px;
+  background-color: #C0C0C0;
+}
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading {
+  margin-bottom: 10px;
+}
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.chat-container {
+  margin: 10px auto;
+  height:100%;
+  width: 90%;
+  background-color:  #F5F5F5;
+}
+.directory{
+  height:90%;
+  width: 20%;
+  margin-right: 10px;
+  text-align: center;
+  background-color: #FFE4E1;
+  float: right;
+}
+
+.onlineDirectory{
+  margin-top: 70px;
+  margin: 10px auto;
+  height:40%;
+  width: 80%;
+  background-color:#90EE90;
+  overflow: scroll;
+}
+
+.offlineDirectory{
+  margin: 10px auto;
+  height:40%;
+  width: 80%;
+  background-color:#F08080;
+  overflow: scroll;
+}
+
+.chatArea{
+  margin: 5px auto;
+  margin-left: 10px;
+  height:80%;
+  width: 75%;
+  background-color:#F5DEB3;
+  overflow: scroll;
+  float: left;
+}
+
+.sendMsg {
+margin: 7px auto;
+margin-left: 10px;
+width: 75%;
+height:7%;
+float: left;
+background-color: #FFC0CB;
+}
+
+.welcomeMsg {
+text-align: center;
+margin: 7px auto;
+margin-left: 10px;
+width: 98%;
+height:5%;
+float: top;
+background-color: #A9A9A9;
+}
+

@@ -1,0 +1,21 @@
+<div ng-controller="mainController" class="container">
+			<form class="form-signin">
+		        <h2 class="form-signin-heading">Join SSNoC</h2>
+		        <p><img  src="images/User.png"></img>
+
+					<input ng-model="member.username" type="text" id="name" class="form-control"name="username" placeholder="Username" required autofocus>
+				</p>
+		      
+		        <p><img  src="images/pass.png"></img>
+		        <input ng-model="member.password" type="password" id="inputPassword" class="form-control" placeholder="Password" required></p>
+
+		        <p><input ng-show="!isExistingMember" ng-model="member.confirmPassword" id="hiddenPassword" class="form-control" placeholder=" Confirm Password" type="password"></p>
+
+				<p>
+					<button ng-show="!isExistingMember" ng-click="signup()" type="submit" class="btn btn-success">Sign Up</button>
+					<button ng-click="login()" type="submit" class="btn btn-success">Join</button>
+
+				</p>
+				<p ng-bind="message" style="color:red;"></p>
+		    </form>
+</div> 
