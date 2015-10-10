@@ -10,7 +10,7 @@ var methodOverride = require('method-override');
 
 //test Socketio
 var http = require('http').Server(app);
-var io = require('socket.io')(http);
+var io = require('socket.io').listen(http);
 
 //var Promise = require('promise');
 // var promise = Promise.resolve(3);
