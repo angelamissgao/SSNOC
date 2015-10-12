@@ -16,6 +16,7 @@ app.config(['$routeProvider', function($routeProvider) {
                 controller  : 'chatController'
             })
 
+
             // // route for the contact page
             // .when('/contact', {
             //     templateUrl : 'pages/contact.html',

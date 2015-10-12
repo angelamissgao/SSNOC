@@ -7,19 +7,12 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
     var defer = $q.defer();
     var socket = io.connect();  
 
-    //testing faye
-    // var Client = new Faye.Client('http://localhost:8000/');
-
-    // client.subscribe('/messages', function(message) {
-    //   console.log('Got a message: ' + message.text);
-    // });
 
     getDirectory();
     getAllMessages();
 
     $scope.logout = function()
     {
-      console.log("logout");
       console.log($rootScope.id);
       ssnocService.updateStatus($rootScope.id, 0).
       success(function(response){
@@ -96,5 +89,52 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
           $scope.messages = response;
         });
     }
+
+//Navigation controller
+    $scope.announcements=false;
+    $scope.namelists=false;
+    $scope.chatpublic=true;
+    $scope.inbox=false;
+    $scope.showstatus = false;
+
+    $scope.postAnnoucements= function(){
+       $scope.announcements=true;
+       $scope.namelists=false;
+       $scope.chatpublic=false;
+       $scope.inbox=false;
+       $scope.showstatus = false;
+    }
+
+    $scope.showNamelists = function(){
+      $scope.namelists=true;
+      $scope.announcements=false;
+      $scope.chatpublic=false;
+      $scope.inbox=false;
+      $scope.showstatus = false;
+    }
+
+    $scope.chatPublicly = function (){
+      $scope.chatpublic=true;
+      $scope.announcements=false;
+      $scope.namelists=false;
+      $scope.inbox=false;
+      $scope.showstatus = false;
+    }
+
+    $scope.showInbox = function (){
+      $scope.inbox=true;
+      $scope.announcements=false;
+      $scope.namelists=false;
+      $scope.chatpublic=false;
+      $scope.showstatus = false;
+    }
+
+  $scope.showStatus = function(){
+      $scope.showstatus = true;
+      $scope.inbox=false;
+      $scope.announcements=false;
+      $scope.namelists=false;
+      $scope.chatpublic=false;
+  }    
 
 });

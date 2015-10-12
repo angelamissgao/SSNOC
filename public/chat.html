@@ -1,36 +1,116 @@
+<div ng-controller="chatController" class="chat-container" id="chatpublic">
+        
+        <!--Navigations-->
+        <nav class="navbar navbar-default">
+              <div class = "welcomeMsg">
+               <h2 class="bs-docs-featurette-title">Welcome to Brics SSNOC </h2> 
+              </div>  
+         <ul class=" nav navbar-nav navbar-right settings">
+         <li class="dropdown">
+                 <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Setting
+          <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li><a  ng-click="showStatus()">Change Status</a></li>
+              <li><a  ng-click="logout()" type="submit" >Logout</a></li>
+            </ul>         
+        </ul>
+        </nav>
+        
+        <div class="panel top-controls">
+          <div class="panel-body row">
+             <a class="col-xs-1"  ng-click="chatPublicly()">
+              <img src="images/home.png"></img></a>
 
-		<div ng-controller="chatController" class="chat-container">
-			<div class = "welcomeMsg">
-				<b> Welcome to Brics SSNOC Chat </b>
+             <a class="col-xs-1"  ng-click="showNamelists()">
+              <img src="images/directory.png"></img></a>
 
-			</div>	
-			
-			<div class="row">
-      
-			
-      <div class="pull-right" id="directory">
-      	<button ng-click="logout()" type="submit" class="btn btn-primary" style="float:top right;margin-bottom:10px;">Logout</button>
-       <div ng-repeat="member in directory|orderBy:['status','name']">
-        		<p ng-show="isOnline(member.status)" style="color:green;" ng-bind="member.name"></p>
-   		</div>
-      <div ng-repeat="member in directory|orderBy:['status','name']">
-        <p ng-show="!isOnline(member.status)" style="color:red;" ng-bind="member.name"></p>
-      </div>
-       </div>
-				<div class="chatArea">
-					<p ng-repeat="message in messages">
-            <b><span ng-bind="directoryDict[message.member_id].name"></span></b>: &nbsp &nbsp
-						<span ng-bind="message.message"></span>
-            (<span ng-bind="message.timestamp" class = "posttime"></span>)
-            (<span ng-bind="message.status"></span>)
-					<p>			
-				</div>
-		</div>
+             <a class="col-xs-1" ng-click="showInbox()">
+              <img src="images/message.png"></img></a>
 
-				<div class="sendMsg"> 
-				<input ng-model="chatMessage" class="col-xs-9" id="ex3" type="text" height="15%"placeholder="Type your message.." required autofocus>
-					
-				<button ng-click="sendMessage()" type="submit" class="btn btn-success pull-right">Send</button>
-				</div>
+             <a class="col-xs-1" ng-click="postAnnoucements()">
+              <img src="images/announcement.png"></img></a>   
+           </div>
+        </div>
 
-		</div>
+        <!--Welcome Msg-->
+        <div class="alert alert-info alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <strong>Welcome to Brics SsNoc.</strong> You could send messages or share your status with the members in our communicty. 1-OK, 2-Help, 3-Emergency, 4-Undefined.
+        </div>
+
+           <!-- directory -->
+            <div  id="directory" ng-show='namelists'>
+              <div ng-repeat="member in directory|orderBy:['status','name']">
+              	<p ng-show="isOnline(member.status)" style="color:green;" ng-bind="member.name"></p>
+         		  </div>
+              <div ng-repeat="member in directory|orderBy:['status','name']">
+                <p ng-show="!isOnline(member.status)" style="color:red;" ng-bind="member.name"></p>
+              </div>  
+
+              <div class="list-group">
+                <a href="#" class="list-group-item disabled">
+                  Cras justo odio
+                </a>
+                <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+                <a href="#" class="list-group-item">Morbi leo risus</a>
+                <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+                <a href="#" class="list-group-item">Vestibulum at eros</a>
+  		        </div>
+            </div>
+
+         <!-- public Chatarea -->
+            <div ng-show='chatpublic'>
+      				  <div class="chatArea">
+        					<p ng-repeat="message in messages">
+                    <b><span ng-bind="directoryDict[message.member_id].name"></span></b>: &nbsp &nbsp
+        						<span ng-bind="message.message"></span>
+                    (<span ng-bind="message.timestamp" class = "posttime"></span>)
+                    (<span ng-bind="message.status"></span>)
+        					<p>			
+      				  </div>
+        				<div class="sendMsg"> 
+          				<input ng-model="chatMessage" class="col-xs-9" id="ex3" type="text" height="20%"placeholder="Type your message.." required autofocus>
+          					
+          				<button ng-click="sendMessage()" type="submit" class="btn btn-success pull-right">Send</button>
+        				</div>
+            </div>
+
+       <!-- announcements -->
+          <div ng-show='announcements'> 
+            <p> post announcements</p>
+          </div> 
+
+      <!-- inbox --> 
+          <div ng-show='inbox'> 
+              <div class="list-group">
+                <a href="#" class="list-group-item disabled">
+                  Inbox Messages
+                </a>
+                <a href="#" class="list-group-item">User 1 chat </a>
+                <a href="#" class="list-group-item">User 2 chat </a>
+                <a href="#" class="list-group-item">User 3 chat</a>
+                <a href="#" class="list-group-item">User 4 chat</a>
+             </div>
+          </div> 
+
+      <!-- change status--> 
+      <div ng-show='showstatus' class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Share your status with community</h3>
+        </div>
+        <div class="panel-body">
+             <label class="control-label col-sm-2" class="radiosf"><input type="radio" checked="">  OK</label>
+        </div>
+        <div class="panel-body">
+             <label class="control-label col-sm-2" class="radiosf"><input type="radio" >  Help</label>
+        </div>
+        <div class="panel-body">
+              <label class="control-label col-sm-2" class="radiosf"><input type="radio" >  Emergency</label>
+        </div>
+        <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Go!</button>
+        </span>
+    </div>
+
+
+</div>

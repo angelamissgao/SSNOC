@@ -12,9 +12,6 @@ var methodOverride = require('method-override');
 var http = require('http').Server(app);
 var io = require('socket.io').listen(http);
 
-//var Promise = require('promise');
-// var promise = Promise.resolve(3);
-
 
 // configuration ===============================================================
 mongoose.connect('tingodb://'+__dirname+'/ssnocdb/'); 	// connect to mongoDB database on modulus.io
