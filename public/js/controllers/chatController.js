@@ -71,11 +71,23 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
 
       });
 
-    socket.on('userStatusChange', function(member){
+    socket.on('userStatusChange', function(){
+      console.log("updating directory")
         getDirectory();
     });
-  
-     function getAllMessages(){
+    
+    // socket.on('disconnect', function(){
+    //   //update status send no
+    //   console.log("disconnecting" + $rootScope.id);
+    //   ssnocService.updateStatus($rootScope.id, 0);
+   
+    // });
+
+    $( window ).unload(function() {
+       ssnocService.updateStatus($rootScope.id, 0);
+    });
+     
+    function getAllMessages(){
         console.log("getting messages");
         ssnocService.getPublicMessages()
         .success(function(response)

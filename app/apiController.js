@@ -64,7 +64,7 @@ function updateStatus (req, res, io) {
 			if (err) {
 				return res.send(err);
 			}
-			io.emit('userStatusChange', member);
+			io.emit('userStatusChange');
 			res.json({ message: 'Status updated: Member ' + req.params.member_id + ' status is ' + req.params.status_id });
 		});
 	});
@@ -108,6 +108,13 @@ function getPublicMessages(res){
 
 module.exports = function(app, io) {
 
+
+io.on('connection',function(socket){
+	console.log("user connected");
+	socket.on('disconnect', function(){
+		console.log("user disconnected");
+	});
+});
 // API Calls
 //Members
 /**
