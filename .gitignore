@@ -1,3 +1,5 @@
 .DS_Store
 ssnocdb/messages
 ssnocdb/members
+node_modules/*
+!.tungus
