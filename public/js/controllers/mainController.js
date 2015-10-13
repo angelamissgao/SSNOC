@@ -40,7 +40,6 @@ app.controller("mainController",function($scope, ssnocService, $q,$rootScope){
 		{   
 			if(validateSignInDetails()){
 				createMember();
-				window.alert("Welcome to Brics SsNoc. You could send messages or share your status with the members in our communicty. 1-OK, 2-Help, 3-Emergency, 4-Undefined.");
 				window.location = "/#/chatting";
 			}
 			else{
