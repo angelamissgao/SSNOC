@@ -2,4 +2,4 @@
 ssnocdb/messages
 ssnocdb/members
 node_modules/*
-!.tungus
+!tungus
