@@ -40,21 +40,20 @@
 
            <!-- directory -->
             <div  id="directory" ng-show='namelists'>
-              <div ng-repeat="member in directory|orderBy:['status','name']">
-              	<p ng-show="isOnline(member.status)" style="color:green;" ng-bind="member.name"></p>
-         		  </div>
-              <div ng-repeat="member in directory|orderBy:['status','name']">
-                <p ng-show="!isOnline(member.status)" style="color:red;" ng-bind="member.name"></p>
-              </div>  
+             
 
-              <div class="list-group">
+              <div class="list-group" id="directory" ng-show='namelists'>
+
                 <a href="#" class="list-group-item disabled">
-                  Cras justo odio
+                 Community Member:
                 </a>
-                <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-                <a href="#" class="list-group-item">Morbi leo risus</a>
-                <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-                <a href="#" class="list-group-item">Vestibulum at eros</a>
+             <div ng-repeat="member in directory|orderBy:['status','name']">
+                <p ng-show="isOnline(member.status)" class="list-group-item"style="color:green;" ng-bind="member.name">
+                </p>
+              </div>
+              <div ng-repeat="member in directory|orderBy:['status','name']">
+                <p ng-show="!isOnline(member.status)" class="list-group-item"style="color:red;" ng-bind="member.name"></p>
+              </div>  
   		        </div>
             </div>
 
