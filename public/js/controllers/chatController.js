@@ -49,6 +49,13 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
       }); 
     }
 
+    $scope.newPrivateChat = function(memberId)
+    {
+      $rootScope.receiverId = memberId;
+      window.location="/#/privatechat";
+
+    }
+
     $scope.sendMessage = function(){
       
       console.log("sendMessage");

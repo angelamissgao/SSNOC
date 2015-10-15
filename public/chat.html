@@ -48,7 +48,7 @@
                  Community Member:
                 </a>
              <div ng-repeat="member in directory|orderBy:['status','name']">
-                <p ng-show="isOnline(member.status)" class="list-group-item"style="color:green;" ng-bind="member.name">
+                <p ng-click='newPrivateChat(member._id)' ng-show="isOnline(member.status)" class="list-group-item"style="color:green;" ng-bind="member.name">
                 </p>
               </div>
               <div ng-repeat="member in directory|orderBy:['status','name']">

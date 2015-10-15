@@ -18,11 +18,13 @@ app.factory('ssnocService',function($http) {
 			},
 
 			addPublicMessage : function(message,user_id){
-		  		$http.post('/api/ssnoc/message/' + user_id + '/' + message).success(function(data){
-		 	 	});
+		  		return $http.post('/api/ssnoc/message/' + user_id + '/' + message);
 			},
 			getPublicMessages : function(){
 				return $http.get('/api/ssnoc/messages');
+			},
+			addPrivateMessage : function (message, senderId, receiverId){
+		  		return $http.post('/api/ssnoc/private_message/' + senderId + '/' + receiverId + '/' + message);
 			}
 
 			// delete : function(id) {
