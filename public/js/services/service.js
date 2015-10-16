@@ -25,8 +25,10 @@ app.factory('ssnocService',function($http) {
 			},
 			addPrivateMessage : function (message, senderId, receiverId){
 		  		return $http.post('/api/ssnoc/private_message/' + senderId + '/' + receiverId + '/' + message);
+			},
+			getPrivateMessage : function (senderId, receiverId){
+		  		return $http.get('/api/ssnoc/private_messages/' +senderId +'/' + receiverId);
 			}
-
 			// delete : function(id) {
 			// 	return $http.delete('/api/ssnoc/' + id);
 			// }

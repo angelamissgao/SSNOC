@@ -109,10 +109,12 @@ function getPublicMessages(res){
 };
 
 function getPrivateMessages(req,res){
-	Message.find( {$and: [{$or: [{member_id: req.member_id}, {member_id: req.receiver_id}]},
-		{$or: [{receiver_id: req.member_id}, {receiver_id: req.receiver_id}]}]}
-		,function(err, messages) {
 
+	console.log("get private messages" + req.memeber_id + " " + req.receiver_id);
+	Message.find({
+				$or: [{member_id: req.member_id}, {member_id: req.receiver_id}]
+			}
+		,function(err, messages) {
 			if (err) {
 				return res.send(err)	
 			}
