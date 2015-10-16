@@ -19,7 +19,6 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
 
     getDirectory();
     getAllMessages();
-    getAnnouncements();
 
     $scope.logout = function()
     {
@@ -46,6 +45,18 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
         {
           return false;
         }
+    }
+
+    $scope.isAnnoucement = function(receiverId)
+    {
+      if(receiverId == 1)
+      {
+        return true;
+      }
+      else
+      {
+        return false;
+      }
     }
 
     function getDirectory()
@@ -79,12 +90,17 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
 
     }
 
+
     $scope.postAnnouncement = function(){
       
       console.log("postAnnoucement");
       console.log($rootScope.id);
-      ssnocService.addAnnouncement($scope.chatMessage, $rootScope.id);
+      ssnocService.addAnnouncement($scope.chatMessage, $rootScope.id)
+      .success(function(response){
+          getAnnouncements();
+      });
     }
+
 
     socket.on('message', function(msg){
         $scope.messages.push(msg);
@@ -141,6 +157,7 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
        $scope.namelists=false;
        $scope.chatpublic=false;
        $scope.inbox=false;
+       getAnnouncements();
        // $scope.showstatus = false;
     }
 

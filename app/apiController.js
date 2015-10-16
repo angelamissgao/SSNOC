@@ -126,7 +126,9 @@ function addAnnouncement(req, res, io) {
 }
 
 function getPublicMessages(res){
-    Message.find({receiver_id: public_receiver}, function(err, messages) {
+    Message.find({
+    	$or: [{receiver_id: public_receiver},{receiver_id: announcement_receiver}]
+    }, function(err, messages) {
 
             if (err) {
                 return res.send(err)    
