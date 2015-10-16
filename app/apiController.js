@@ -56,9 +56,9 @@ function updateStatus (req, res, io) {
 				return res.send(err);
 			}
 
-		console.log('updateStatus' + member);
-
 		member.status = req.params.status_id;
+
+		console.log("current status is "+member.status);
 
 		member.save(function(err) {
 			if (err) {
@@ -66,6 +66,7 @@ function updateStatus (req, res, io) {
 			}
 			io.emit('userStatusChange');
 			res.json({ message: 'Status updated: Member ' + req.params.member_id + ' status is ' + req.params.status_id });
+
 		});
 	});
 };
@@ -89,6 +90,7 @@ function addPublicMessage(req, res, io) {
 				}
 				io.emit('message', mymessage);
 				res.json(mymessage);
+				console.log(mymessage);
 			});
 		}
 	});

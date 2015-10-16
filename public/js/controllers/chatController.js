@@ -4,6 +4,14 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
     $scope.loading = true;
     $scope.messages = [];
     $scope.chatMessage = "";
+
+    $scope.statuses = [
+      {name:"OK", id:1},
+      {name:"Help", id:2},
+      {name:"Emergency", id:3}
+    ]
+
+
     var defer = $q.defer();
     var socket = io.connect();  
 
@@ -13,13 +21,18 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
 
     $scope.logout = function()
     {
-      console.log($rootScope.id);
       ssnocService.updateStatus($rootScope.id, 0).
       success(function(response){
           console.log("logout" + response);
           window.location = "/";
       });
     }
+
+    $scope.shareStatus= function(status_id){
+      //1-ok 2-help 3-emergency 0-logout
+      ssnocService.updateStatus($rootScope.id, status_id);
+    }
+
    
     $scope.isOnline = function(status)
     {
@@ -54,6 +67,7 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
       console.log("sendMessage");
       console.log($rootScope.id);
       ssnocService.addPublicMessage($scope.chatMessage, $rootScope.id);
+
     }
 
 
@@ -102,7 +116,7 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
        $scope.namelists=false;
        $scope.chatpublic=false;
        $scope.inbox=false;
-       $scope.showstatus = false;
+       // $scope.showstatus = false;
     }
 
     $scope.showNamelists = function(){
@@ -110,7 +124,7 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
       $scope.announcements=false;
       $scope.chatpublic=false;
       $scope.inbox=false;
-      $scope.showstatus = false;
+      // $scope.showstatus = false;
     }
 
     $scope.chatPublicly = function (){
@@ -118,7 +132,7 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
       $scope.announcements=false;
       $scope.namelists=false;
       $scope.inbox=false;
-      $scope.showstatus = false;
+      // $scope.showstatus = false;
     }
 
     $scope.showInbox = function (){
@@ -126,15 +140,15 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
       $scope.announcements=false;
       $scope.namelists=false;
       $scope.chatpublic=false;
-      $scope.showstatus = false;
+      // $scope.showstatus = false;
     }
 
-  $scope.showStatus = function(){
-      $scope.showstatus = true;
-      $scope.inbox=false;
-      $scope.announcements=false;
-      $scope.namelists=false;
-      $scope.chatpublic=false;
-  }    
+  // $scope.showStatus = function(){
+  //     $scope.showstatus = true;
+  //     $scope.inbox=false;
+  //     $scope.announcements=false;
+  //     $scope.namelists=false;
+  //     $scope.chatpublic=false;
+  // }    
 
 });
