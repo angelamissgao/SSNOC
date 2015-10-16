@@ -2,6 +2,7 @@ var Member = require('./models/memberModel');
 var Message = require('./models/messageModel');
 var path = require('path');
 var public_receiver = 0;
+var announcement_receiver = 1;
 
 
 function getMembers(res){
@@ -96,6 +97,32 @@ function addPublicMessage(req, res, io) {
 
 }
 
+function addAnnouncement(req, res, io) {
+	var member_id = req.params.member_id;
+	var message = req.params.message;
+
+	Member.findById(member_id, function(err, member) {
+		if (err) {
+			return res.send(err);
+		}
+
+		if (member != null && member !== undefined) {
+		
+			mymessage = new Message({message: message, member_id: member_id, receiver_id: announcement_receiver,status: member.status});
+			
+			mymessage.save(function (err, obj) { 
+				if (err) {
+					return res.send(err);
+				}
+				console.log("addAnnouncement: ", mymessage);
+				io.emit('message', mymessage);
+				res.json(mymessage);
+			});
+		}
+	});
+
+}
+
 function getPublicMessages(res){
     Message.find({receiver_id: public_receiver}, function(err, messages) {
 
@@ -104,6 +131,18 @@ function getPublicMessages(res){
             }
 
             console.log("getPublicMessages: " + messages);
+            res.json(messages); 
+        });
+};
+
+function getAnnouncements(res){
+    Message.find({receiver_id: announcement_receiver}, function(err, messages) {
+
+            if (err) {
+                return res.send(err)    
+            }
+
+            console.log("getAnnouncements: " + messages);
             res.json(messages); 
         });
 };
@@ -280,6 +319,26 @@ io.on('connection',function(socket){
 	});
 
 /**
+ * @api {post} /api/ssnoc/announcement/:member_id/:message Post an announcement
+ * @apiGroup Messages
+ *
+ * @apiName PostAnnouncement
+ *
+ * @apiSuccess {String} JSON with message information.
+ *
+ * @apiParam {String} member id
+ *
+ * @apiParam {String} message
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {"message":"First message","member_id":3,"status":1,"_id":2,"__v":0,"timestamp":"2015-10-09T08:38:00.456Z"}
+ */
+	app.post('/api/ssnoc/announcement/:member_id/:message', function(req, res) {
+		addAnnouncement(req, res, io);
+	});
+
+/**
  * @api {post} /api/ssnoc/privateMessage/:member_id/:receiver_id/:message Add private message to chat
  * @apiGroup Messages
  *
@@ -316,6 +375,22 @@ io.on('connection',function(socket){
  */
 	app.get('/api/ssnoc/messages', function(req,res) {
 		getPublicMessages(res);
+	});
+
+/**
+ * @api {get} /api/ssnoc/announcements Get all announcements from history
+ * @apiGroup Messages
+ * @apiName GetAnnouncements
+ *
+ * @apiSuccess {String} JSON with messages.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *[{"message":"First announcement","member_id":3,"status":1,"_id":2,"__v":0,"timestamp":"2015-10-09T08:38:00.456Z"},
+ *{"message":"Second announcement","member_id":3,"status":1,"_id":3,"__v":0,"timestamp":"2015-10-09T08:38:03.237Z"}]
+ */
+	app.get('/api/ssnoc/announcements', function(req,res) {
+		getAnnouncements(res);
 	});
 
 /**
