@@ -16,13 +16,20 @@ app.factory('ssnocService',function($http) {
 			updateStatus : function(member_id,status_id){
 				return $http.post('/api/ssnoc/update_status/'+member_id +"/"+status_id);
 			},
-
 			addPublicMessage : function(message,user_id){
-		  		$http.post('/api/ssnoc/message/' + user_id + '/' + message).success(function(data){
-		 	 	});
+		  		return $http.post('/api/ssnoc/message/' + user_id + '/' + message);
 			},
 			getPublicMessages : function(){
 				return $http.get('/api/ssnoc/messages');
+			},
+			addAnnouncement : function(message,user_id){
+		  		return $http.post('/api/ssnoc/announcement/' + user_id + '/' + message);
+			},
+			getAnnouncements : function(){
+				return $http.get('/api/ssnoc/announcements');
+			},
+			addPrivateMessage : function (message, senderId, receiverId){
+		  		return $http.post('/api/ssnoc/private_message/' + senderId + '/' + receiverId + '/' + message);
 			}
 
 			// delete : function(id) {

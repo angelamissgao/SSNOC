@@ -16,6 +16,10 @@ app.config(['$routeProvider', function($routeProvider) {
                 controller  : 'chatController'
             })
 
+            .when('/privatechat', {
+                templateUrl : 'privatechat.html',
+                controller  : 'privateChatController'
+            })
 
             // // route for the contact page
             // .when('/contact', {
@@ -26,6 +30,7 @@ app.config(['$routeProvider', function($routeProvider) {
 
 app.run(function($rootScope){
 
-$rootScope.id=1;
+    $rootScope.id;    
+    $rootScope.receiverId;
 
 });

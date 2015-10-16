@@ -3,6 +3,7 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
     $scope.directoryDict = {};
     $scope.loading = true;
     $scope.messages = [];
+    $scope.announcements = [];
     $scope.chatMessage = "";
 
     $scope.statuses = [
@@ -18,6 +19,7 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
 
     getDirectory();
     getAllMessages();
+    getAnnouncements();
 
     $scope.logout = function()
     {
@@ -62,6 +64,13 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
       }); 
     }
 
+    $scope.newPrivateChat = function(memberId)
+    {
+      $rootScope.receiverId = memberId;
+      window.location="/#/privatechat";
+
+    }
+
     $scope.sendMessage = function(){
       
       console.log("sendMessage");
@@ -70,6 +79,12 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
 
     }
 
+    $scope.postAnnouncement = function(){
+      
+      console.log("postAnnoucement");
+      console.log($rootScope.id);
+      ssnocService.addAnnouncement($scope.chatMessage, $rootScope.id);
+    }
 
     socket.on('message', function(msg){
         $scope.messages.push(msg);
@@ -101,6 +116,16 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
         {
           console.log(response);
           $scope.messages = response;
+        });
+    }
+
+    function getAnnouncements(){
+        console.log("getting messages");
+        ssnocService.getAnnouncements()
+        .success(function(response)
+        {
+          console.log(response);
+          $scope.announcements = response;
         });
     }
 
