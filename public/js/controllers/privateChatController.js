@@ -6,9 +6,14 @@ app.controller("privateChatController",function($scope, ssnocService, $q,$rootSc
 
 	getPrivateMessage();
 
-   socket.on('message', function(msg){
-     $scope.messages.push(msg);
+   socket.on('privatemessage', function(result){
+    console.log(privatemessage);
+    if(result.member_id = $rootScope.id && result.receiver_id == $rootScope.receiverId)
+    {
+      $scope.messages.push(result.message);
      $scope.$apply();
+    }
+     
    });
 
 	$scope.sendMessage = function(){

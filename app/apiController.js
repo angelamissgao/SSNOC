@@ -154,6 +154,8 @@ function getPrivateMessages(req,res){
 	console.log("get private messages");
 
 	console.log("get private messages" + req.params.member_id + " " + req.params.receiver_id);
+
+
 	Message.find({
 				$and:[
 				{$or: [{member_id: req.params.member_id}, {member_id: req.params.receiver_id}]},
@@ -168,7 +170,7 @@ function getPrivateMessages(req,res){
 		});
 };
 
-function addPrivateMessage(req, res){
+function addPrivateMessage(req, res, io){
 	var member_id = req.params.member_id;
 	var message = req.params.message;
 	var receiver_id = req.params.receiver_id;
@@ -187,8 +189,9 @@ function addPrivateMessage(req, res){
 						if (err) {
 							return res.send(err);
 						}
+						var result = {message: mymessage, member_id: member_id, receiver_id: receiver_id}
 						console.log("private message " + mymessage);
-						io.emit('message', mymessage);
+						io.emit('privatemessage', result);
 						res.json(mymessage);
 					});
 				}
@@ -365,8 +368,8 @@ io.on('connection',function(socket){
  *     HTTP/1.1 200 OK
  *     {"message":"First message","member_id":3,"receiver_id":2,"status":1,"_id":2,"__v":0,"timestamp":"2015-10-09T08:38:00.456Z"}
  */
-	app.post('/api/ssnoc/private_message/:member_id/:receiver_id/:message', function(req, res) {
-		addPrivateMessage(req, res);
+	app.post('/api/ssnoc/private_message/:member_id/:receiver_id/:message', function(req, res, io) {
+		addPrivateMessage(req, res, io);
 	});
 
 
