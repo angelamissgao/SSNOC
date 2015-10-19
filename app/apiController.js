@@ -100,6 +100,7 @@ function addPublicMessage(req, res, io) {
 }
 
 function addAnnouncement(req, res, io) {
+	console.log("api socket announcement " + io.sockets);
 	var member_id = req.params.member_id;
 	var message = req.params.message;
 
@@ -155,7 +156,7 @@ function getPrivateMessages(req,res){
 
 	console.log("get private messages");
 
-	console.log("get private messages" + req.params.member_id + " " + req.params.receiver_id);
+	console.log("get private messages from api" + req.params.member_id + " " + req.params.receiver_id);
 
 
 	Message.find({
@@ -173,6 +174,7 @@ function getPrivateMessages(req,res){
 };
 
 function addPrivateMessage(req, res, io){
+	console.log("api log on socket " + io.sockets);
 	var member_id = req.params.member_id;
 	var message = req.params.message;
 	var receiver_id = req.params.receiver_id;
@@ -191,9 +193,8 @@ function addPrivateMessage(req, res, io){
 						if (err) {
 							return res.send(err);
 						}
-						var result = {message: mymessage, member_id: member_id, receiver_id: receiver_id}
 						console.log("private message " + mymessage);
-						io.emit('privatemessage', result);
+						io.emit('privatemessage', mymessage);
 						res.json(mymessage);
 					});
 				}

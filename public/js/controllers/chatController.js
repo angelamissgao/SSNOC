@@ -14,9 +14,8 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
 
 
     var defer = $q.defer();
-    var socket = io.connect();  
 
-
+    
     getDirectory();
     getAllMessages();
 
@@ -102,14 +101,14 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
     }
 
 
-    socket.on('message', function(msg){
+    $rootScope.socket.on('message', function(msg){
         $scope.messages.push(msg);
         $scope.chatMessage = "";
         $scope.$apply();
 
       });
 
-    socket.on('userStatusChange', function(){
+    $rootScope.socket.on('userStatusChange', function(){
       console.log("updating directory")
         getDirectory();
     });
