@@ -1,7 +1,7 @@
 <div>
     <div class="chatArea">
       <p ng-repeat="message in messages">
-        <b><span ng-bind="directoryDict[message.member_id].name"></span></b>: &nbsp &nbsp
+       <!-- <b><span ng-bind="directoryDict[message.member_id].name"></span></b>: &nbsp &nbsp -->
         <span ng-bind="message.message"></span>
         (<span ng-bind="message.timestamp" class = "posttime"></span>)
         (<span ng-bind="message.status"></span>)

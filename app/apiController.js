@@ -160,9 +160,9 @@ function getPrivateMessages(req,res){
 
 
 	Message.find({
-				$and:[
-				{$or: [{member_id: req.params.member_id}, {member_id: req.params.receiver_id}]},
-				{$or: [{receiver_id: req.params.member_id}, {receiver_id: req.params.receiver_id}]}]
+				$or:[
+				{$and: [{member_id: req.params.member_id}, {receiver_id: req.params.receiver_id}]},
+				{$and: [{receiver_id: req.params.member_id}, {member_id: req.params.receiver_id}]}]
 			}
 		,function(err, messages) {
 			if (err) {
@@ -371,7 +371,7 @@ io.on('connection',function(socket){
  *     HTTP/1.1 200 OK
  *     {"message":"First message","member_id":3,"receiver_id":2,"status":1,"_id":2,"__v":0,"timestamp":"2015-10-09T08:38:00.456Z"}
  */
-	app.post('/api/ssnoc/private_message/:member_id/:receiver_id/:message', function(req, res, io) {
+	app.post('/api/ssnoc/private_message/:member_id/:receiver_id/:message', function(req, res) {
 		addPrivateMessage(req, res, io);
 	});
 
