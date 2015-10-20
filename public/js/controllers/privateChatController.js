@@ -5,6 +5,17 @@ app.controller("privateChatController",function($scope, ssnocService, $q,$rootSc
 
 	getPrivateMessage();
 
+  getLocation();
+
+  function getLocation(){
+    navigator.geolocation.getCurrentPosition(showLocation);
+  }
+
+  function showLocation(position) {
+    console.log("show Location " + position);
+    $rootScope.currentPosition = position;
+  }
+
    $rootScope.socket.on('privatemessage', function(result){
     console.log("private msg from controller" + result);
 
@@ -21,7 +32,7 @@ app.controller("privateChatController",function($scope, ssnocService, $q,$rootSc
 	$scope.sendMessage = function(){
       console.log("sendMessage");
       console.log($rootScope.id);
-      ssnocService.addPrivateMessage($scope.chatMessage, $rootScope.id, $rootScope.receiverId);
+      ssnocService.addPrivateMessage($scope.chatMessage, $rootScope.currentPosition, $rootScope.id, $rootScope.receiverId);
       $scope.chatMessage = "";
     }
 

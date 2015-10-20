@@ -86,7 +86,8 @@ function addPublicMessage(req, res, io) {
 
 		if (member != null && member !== undefined) {
 		
-			mymessage = new Message({message: message, member_id: member_id, status: member.status});
+			mymessage = new Message({message: message, member_id: member_id, status: member.status,
+			 position: {lng: longitude, lat: latitude}});
 			
 			mymessage.save(function (err, obj) { 
 				if (err) {
@@ -137,7 +138,7 @@ function getPublicMessages(res){
                 return res.send(err)    
             }
 
-            // console.log("getPublicMessages: " + messages);
+            console.log("getPublicMessages: " + messages);
             res.json(messages); 
         });
 };
@@ -331,7 +332,7 @@ io.on('connection',function(socket){
  *     HTTP/1.1 200 OK
  *     {"message":"First message","member_id":3,"status":1,"_id":2,"__v":0,"timestamp":"2015-10-09T08:38:00.456Z"}
  */
-	app.post('/api/ssnoc/message/:member_id/:latitude/longitude/:message', function(req, res) {
+	app.post('/api/ssnoc/message/:member_id/:latitude/:longitude/:message', function(req, res) {
 		addPublicMessage(req, res, io);
 	});
 
