@@ -50,6 +50,8 @@ function removeMember (id, res) {
 }
 
 function updateStatus (req, res, io) {
+	var latitude = req.params.latitude;
+	var longitude = req.params.longitude;
 
 	console.log('updateStatus id' + req.params.member_id);
 
@@ -67,7 +69,8 @@ function updateStatus (req, res, io) {
 				return res.send(err);
 			}
 			io.emit('userStatusChange');
-			res.json({ message: 'Status updated: Member ' + req.params.member_id + ' status is ' + req.params.status_id });
+			res.json({ message: 'Status updated: Member ' + req.params.member_id + ' status is ' + req.params.status_id 
+				+ 'and location is ' + latitude + ' ; ' + longitude});
 
 		});
 	});
@@ -106,6 +109,8 @@ function addAnnouncement(req, res, io) {
 	console.log("api socket announcement " + io.sockets);
 	var member_id = req.params.member_id;
 	var message = req.params.message;
+	var latitude = req.params.latitude;
+	var longitude = req.params.longitude;
 
 	Member.findById(member_id, function(err, member) {
 		if (err) {
@@ -114,7 +119,8 @@ function addAnnouncement(req, res, io) {
 
 		if (member != null && member !== undefined) {
 		
-			mymessage = new Message({message: message, member_id: member_id, receiver_id: announcement_receiver,status: member.status});
+			mymessage = new Message({message: message, member_id: member_id, receiver_id: announcement_receiver,status: member.status,
+			 position: {lng: longitude, lat: latitude}});
 			
 			mymessage.save(function (err, obj) { 
 				if (err) {
@@ -181,6 +187,8 @@ function addPrivateMessage(req, res, io){
 	var member_id = req.params.member_id;
 	var message = req.params.message;
 	var receiver_id = req.params.receiver_id;
+	var latitude = req.params.latitude;
+	var longitude = req.params.longitude;
 
 	Member.findById(member_id, function(err, member) {
 		if (err) {
@@ -190,7 +198,8 @@ function addPrivateMessage(req, res, io){
 			Member.findById(receiver_id, function(err,receiver){
 				if (receiver != null && receiver !== undefined) {
 				
-					mymessage = new Message({message: message, member_id: member_id, receiver_id: receiver_id,status: member.status});
+					mymessage = new Message({message: message, member_id: member_id, receiver_id: receiver_id,status: member.status,
+			 				position: {lng: longitude, lat: latitude}});
 					
 					mymessage.save(function (err, obj) { 
 						if (err) {
@@ -270,7 +279,7 @@ io.on('connection',function(socket){
  *     [{"name":"test","password":"1234","status":0,"_id":2,"__v":0}]
  */
 
-	app.post('/api/ssnoc/update_status/:member_id/:status_id', function(req, res) {
+	app.post('/api/ssnoc/update_status/:member_id/:latitude/:longitude/:status_id', function(req, res) {
 		updateStatus(req,res,io);
 	});
 
@@ -352,7 +361,7 @@ io.on('connection',function(socket){
  *     HTTP/1.1 200 OK
  *     {"message":"First message","member_id":3,"status":1,"_id":2,"__v":0,"timestamp":"2015-10-09T08:38:00.456Z"}
  */
-	app.post('/api/ssnoc/announcement/:member_id/:message', function(req, res) {
+	app.post('/api/ssnoc/announcement/:member_id/:latitude/:longitude/:message', function(req, res) {
 		addAnnouncement(req, res, io);
 	});
 
@@ -374,7 +383,7 @@ io.on('connection',function(socket){
  *     HTTP/1.1 200 OK
  *     {"message":"First message","member_id":3,"receiver_id":2,"status":1,"_id":2,"__v":0,"timestamp":"2015-10-09T08:38:00.456Z"}
  */
-	app.post('/api/ssnoc/private_message/:member_id/:receiver_id/:message', function(req, res) {
+	app.post('/api/ssnoc/private_message/:member_id/:latitude/:longitude/:receiver_id/:message', function(req, res) {
 		addPrivateMessage(req, res, io);
 	});
 
