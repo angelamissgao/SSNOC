@@ -15,24 +15,76 @@ app.config(['$routeProvider', function($routeProvider) {
                 templateUrl : 'chat.html',
                 controller  : 'chatController'
             })
+    
+            .when('/directory',{
+                templateUrl: 'directory.html',
+                controller:'chatController'
+            })
+
+            .when('/inbox', {
+                templateUrl : 'inbox.html',
+                controller  : 'chatController'
+            })
+
+            .when('/announcements', {
+                templateUrl : 'announcement.html',
+                controller  : 'chatController'
+            })
 
             .when('/privatechat', {
                 templateUrl : 'privatechat.html',
                 controller  : 'privateChatController'
             })
 
-            // // route for the contact page
-            // .when('/contact', {
-            //     templateUrl : 'pages/contact.html',
-            //     controller  : 'contactController'
-            // });
     }]);
 
-app.run(function($rootScope){
+app.run(function($rootScope, ssnocService){
 
     $rootScope.id;    
     $rootScope.receiverId;
     $rootScope.socket = io.connect(); 
     $rootScope.currentPosition=[];    
+    $rootScope.authenticated = false;
+    $rootScope.statuses = [
+      {name:"OK", id:1},
+      {name:"Help", id:2},
+      {name:"Emergency", id:3}
+    ];
+    
+     $rootScope.shareStatus= function(status_id){
+      //1-ok 2-help 3-emergency 0-logout
+
+      console.log("update status in core" + status_id);
+      ssnocService.updateStatus($rootScope.id, status_id);
+    }
+
+    $rootScope.logout = function()
+    {
+      ssnocService.updateStatus($rootScope.id, 0).
+      success(function(response){
+          console.log("logout" + response);
+          $rootScope.authenticated = false;
+          window.location = "/";
+      });
+    }
+
+    $rootScope.socket.on('disconnect', function(){
+      //update status send no
+      console.log("disconnecting" + $rootScope.id);
+      ssnocService.updateStatus($rootScope.id, 0);
+      $scope.$apply();
+    });
 
 });
+
+app.controller("statusController",function($scope, ssnocService, $q,$rootScope){
+    
+    $scope.shareStatus= function(status_id){
+      //1-ok 2-help 3-emergency 0-logout
+
+      console.log("update status in core" + status_id);
+      ssnocService.updateStatus($rootScope.id, status_id);
+    }
+
+});
+

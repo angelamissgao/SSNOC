@@ -6,18 +6,12 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
     $scope.announcements = [];
     $scope.chatMessage = "";
 
-    $scope.statuses = [
-      {name:"OK", id:1},
-      {name:"Help", id:2},
-      {name:"Emergency", id:3}
-    ]
-
 
     var defer = $q.defer();
 
-    
     getDirectory();
     getAllMessages();
+    getAnnouncements();
     getLocation();
 
     function getLocation(){
@@ -29,21 +23,6 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
       $scope.currentPosition = position;
     }
 
-    $scope.logout = function()
-    {
-      ssnocService.updateStatus($rootScope.id, 0).
-      success(function(response){
-          console.log("logout" + response);
-          window.location = "/";
-      });
-    }
-
-    $scope.shareStatus= function(status_id){
-      //1-ok 2-help 3-emergency 0-logout
-      ssnocService.updateStatus($rootScope.id, status_id);
-    }
-
-   
     $scope.isOnline = function(status)
     {
         if(status != 0)
@@ -68,6 +47,13 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
       }
     }
 
+     $scope.shareStatus= function(status_id){
+      //1-ok 2-help 3-emergency 0-logout
+
+      console.log("update status in core" + status_id);
+      ssnocService.updateStatus($rootScope.id, status_id);
+    }
+
     function getDirectory()
     { 
       $scope.loading = true;
@@ -83,11 +69,9 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
       }); 
     }
 
-    $scope.newPrivateChat = function(memberId)
-    {
+    $scope.newPrivateChat = function(memberId){
       $rootScope.receiverId = memberId;
       window.location="/#/privatechat";
-
     }
 
     $scope.sendMessage = function(){
@@ -96,12 +80,9 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
       console.log("sendMessage");
       console.log($rootScope.id);
       ssnocService.addPublicMessage($scope.chatMessage, $rootScope.currentPosition, $rootScope.id);
-
     }
 
-
     $scope.postAnnouncement = function(){
-      
       console.log("postAnnoucement");
       console.log($rootScope.id);
       ssnocService.addAnnouncement($scope.chatMessage, $rootScope.id)
@@ -122,7 +103,7 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
 
     $rootScope.socket.on('privatemessage', function(result){
        $scope.msgAlert=true; 
-      $scope.$apply();
+       $scope.$apply();
     });
 
     $rootScope.socket.on('userStatusChange', function(){
@@ -130,12 +111,6 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
         getDirectory();
     });
     
-    // socket.on('disconnect', function(){
-    //   //update status send no
-    //   console.log("disconnecting" + $rootScope.id);
-    //   ssnocService.updateStatus($rootScope.id, 0);
-   
-    // });
 
     $( window ).unload(function() {
        ssnocService.updateStatus($rootScope.id, 0);
@@ -158,54 +133,6 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
           console.log(response);
           $scope.announcements = response;
         });
-    }
-
-//Navigation controller
-    $scope.announcements=false;
-    $scope.namelists=false;
-    $scope.chatpublic=true;
-    $scope.inbox=false;
-    $scope.showstatus = false;
-
-    $scope.postAnnoucements= function(){
-       $scope.announcements=true;
-       $scope.namelists=false;
-       $scope.chatpublic=false;
-       $scope.inbox=false;
-       getAnnouncements();
-       // $scope.showstatus = false;
-    }
-
-    $scope.showNamelists = function(){
-      $scope.namelists=true;
-      $scope.announcements=false;
-      $scope.chatpublic=false;
-      $scope.inbox=false;
-      // $scope.showstatus = false;
-    }
-
-    $scope.chatPublicly = function (){
-      $scope.chatpublic=true;
-      $scope.announcements=false;
-      $scope.namelists=false;
-      $scope.inbox=false;
-      // $scope.showstatus = false;
-    }
-
-    $scope.showInbox = function (){
-      $scope.inbox=true;
-      $scope.announcements=false;
-      $scope.namelists=false;
-      $scope.chatpublic=false;
-      // $scope.showstatus = false;
-    }
-
-  // $scope.showStatus = function(){
-  //     $scope.showstatus = true;
-  //     $scope.inbox=false;
-  //     $scope.announcements=false;
-  //     $scope.namelists=false;
-  //     $scope.chatpublic=false;
-  // }    
+    } 
 
 });
