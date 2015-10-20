@@ -15,17 +15,27 @@ app.config(['$routeProvider', function($routeProvider) {
                 templateUrl : 'chat.html',
                 controller  : 'chatController'
             })
+    
+            .when('/directory',{
+                templateUrl: 'directory.html',
+                controller:'chatController'
+            })
+
+            .when('/inbox', {
+                templateUrl : 'inbox.html',
+                controller  : 'chatController'
+            })
+
+            .when('/announcements', {
+                templateUrl : 'announcement.html',
+                controller  : 'chatController'
+            })
 
             .when('/privatechat', {
                 templateUrl : 'privatechat.html',
                 controller  : 'privateChatController'
             })
 
-            // // route for the contact page
-            // .when('/contact', {
-            //     templateUrl : 'pages/contact.html',
-            //     controller  : 'contactController'
-            // });
     }]);
 
 app.run(function($rootScope){

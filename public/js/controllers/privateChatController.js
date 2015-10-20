@@ -11,7 +11,6 @@ app.controller("privateChatController",function($scope, ssnocService, $q,$rootSc
       $scope.messages.push(result.message);
       $scope.$apply();
     }
-     
    });
 
 	$scope.sendMessage = function(){

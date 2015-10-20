@@ -1,7 +1,7 @@
 <div ng-controller="chatController" class="chat-container" id="chatpublic">
         
         <!--Navigations-->
-        <nav class="navbar navbar-default">
+       <!--  <nav class="navbar navbar-default">
               <div class = "welcomeMsg">
                <h2 class="bs-docs-featurette-title">Welcome to Brics SSNOC </h2> 
               </div>  
@@ -34,20 +34,17 @@
              <a class="col-xs-1" ng-click="postAnnoucements()">
               <img src="images/announcement.png"></img></a>   
            </div>
-        </div>
+        </div> -->
 
         <!--Welcome Msg-->
         <div class="alert alert-info alert-dismissible" role="alert">
           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <strong>Welcome to Brics SsNoc.</strong> You could send messages or share your status with the members in our communicty. 1-OK, 2-Help, 3-Emergency, 4-Undefined.
+          <strong>Welcome to Brics SsNoc.</strong> You could send messages or share your status with the members in our community. 1-OK, 2-Help, 3-Emergency, 4-Undefined.
         </div>
-
            <!-- directory -->
-            <div  id="directory" ng-show='namelists'>
+            <!-- <div  id="directory" ng-show='namelists'>
              
-
               <div class="list-group" id="directory" ng-show='namelists'>
-
                 <a href="#" class="list-group-item disabled">
                  Community Member:
                 </a>
@@ -59,13 +56,13 @@
                 <p ng-show="!isOnline(member.status)" class="list-group-item"style="color:red;" ng-bind="member.name"></p>
               </div>  
   		        </div>
-            </div>
+            </div> -->
 
          <!-- public Chatarea -->
-            <div ng-show='chatpublic'>
+           <div class="publicChat">
       				  <div class="chatArea">
         					<p ng-repeat="message in messages"  ng-show="isAnnoucement(message.receiver_id)" class="alert alert-warning">
-                    
+                  
                     <b><span ng-bind="directoryDict[message.member_id].name"></span></b>: &nbsp &nbsp
 
                      <span ng-bind="message.message"></span>
@@ -92,10 +89,9 @@
           					
           				<button ng-click="sendMessage()" type="submit" class="btn btn-success pull-right">Send</button>
         				</div>
-            </div>
-
+          </div>
        <!-- announcements -->
-          <div ng-show='announcements'> 
+         <!--  <div ng-show='announcements'> 
               <div class="chatArea">
                 <p ng-repeat="announcement in announcements" class="alert alert-warning">
                   <span ng-bind="announcement.message"></span>
@@ -107,10 +103,10 @@
                 <input ng-model="chatMessage" class="col-xs-9" id="ex3" type="text" height="20%"placeholder="Type your message.." required autofocus>
                 <button ng-click="postAnnouncement()" type="submit" class="btn btn-success pull-right">Send</button>
               </div>
-          </div> 
+          </div>  -->
 
       <!-- inbox --> 
-          <div ng-show='inbox'> 
+         <!--  <div ng-show='inbox'> 
               <div class="list-group">
                 <a href="#" class="list-group-item disabled">
                   Inbox Messages
@@ -120,10 +116,10 @@
                 <a href="#" class="list-group-item">User 3 chat</a>
                 <a href="#" class="list-group-item">User 4 chat</a>
              </div>
-          </div> 
+          </div> --> 
 
 
-      <!-- change status--> 
+    <!-- change status--> 
      <!--  <div ng-show='showstatus' class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title">Share your status with community</h3>

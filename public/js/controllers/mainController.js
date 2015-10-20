@@ -7,8 +7,6 @@ app.controller("mainController",function($scope, ssnocService, $q,$rootScope){
 		// GET =====================================================================
 		// when landing on the page, get all todos and show them
 		// use the service to get all the todos
-
-
 		$scope.login = function(){
 			$scope.loading = true;
 
@@ -16,7 +14,7 @@ app.controller("mainController",function($scope, ssnocService, $q,$rootScope){
 				if($scope.isExistingMember)
 				{
 					if (validateLoginDetails($scope.validateUser)) {
-									// login successfull and send chat.html
+							// login successfull and send chat.html
 							$scope.member = $scope.validateUser;
 							$scope.member.status = 1;
 							updateStatus().then(function(response){
@@ -76,10 +74,8 @@ app.controller("mainController",function($scope, ssnocService, $q,$rootScope){
 						}
 					);
 
-					return defer.promise;
-			    	
+					return defer.promise;			    	
 		}
-
 
 
 		$scope.logout = function(){
