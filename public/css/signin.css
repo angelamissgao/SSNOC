@@ -103,6 +103,11 @@ width: 93%;
 
 }
 
+.posttime{
+ float:right;
+ font-style: italic;
+}
+
 .settings {
   margin-right: 0px;
 }
