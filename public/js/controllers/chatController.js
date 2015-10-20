@@ -67,7 +67,6 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
         for (var i = 0; i < $scope.directory.length; i ++) {
           var member = $scope.directory[i];
           $scope.directoryDict[member._id] = member;
-          console.log("here is the "+member.name + (member.status)+(member.lastLogin));
         }
         $scope.loading = false;
 
@@ -107,6 +106,13 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
         $scope.$apply();
 
       });
+
+    $scope.msgAlert=false;
+
+    $rootScope.socket.on('privatemessage', function(result){
+       $scope.msgAlert=true; 
+      $scope.$apply();
+    });
 
     $rootScope.socket.on('userStatusChange', function(){
       console.log("updating directory")

@@ -1,17 +1,20 @@
 
 app.controller("privateChatController",function($scope, ssnocService, $q,$rootScope){
 	$scope.messages ={};
+  $scope.msgAlert=false;
 
 	getPrivateMessage();
 
    $rootScope.socket.on('privatemessage', function(result){
     console.log("private msg from controller" + result);
-    if((result.member_id == $rootScope.id && result.receiver_id == $rootScope.receiverId)
-        ||(result.receiver_id == $rootScope.id && result.member_id == $rootScope.receiverId))
-    {
-      $scope.messages.push(result);
-      $scope.$apply();
-    }
+
+      if((result.member_id == $rootScope.id && result.receiver_id == $rootScope.receiverId)
+          ||(result.receiver_id == $rootScope.id && result.member_id == $rootScope.receiverId))
+      {
+        $scope.messages.push(result);
+          $scope.msgAlert=true;
+        $scope.$apply();
+      }
      
    });
 
