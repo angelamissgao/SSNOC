@@ -41,22 +41,7 @@
           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <strong>Welcome to Brics SsNoc.</strong> You could send messages or share your status with the members in our community. 1-OK, 2-Help, 3-Emergency, 4-Undefined.
         </div>
-           <!-- directory -->
-            <!-- <div  id="directory" ng-show='namelists'>
-             
-              <div class="list-group" id="directory" ng-show='namelists'>
-                <a href="#" class="list-group-item disabled">
-                 Community Member:
-                </a>
-             <div ng-repeat="member in directory|orderBy:['status','name']">
-                <p ng-click='newPrivateChat(member._id)' ng-show="isOnline(member.status)" class="list-group-item"style="color:green;" ng-bind="member.name">
-                </p>
-              </div>
-              <div ng-repeat="member in directory|orderBy:['status','name']">
-                <p ng-show="!isOnline(member.status)" class="list-group-item"style="color:red;" ng-bind="member.name"></p>
-              </div>  
-  		        </div>
-            </div> -->
+
 
          <!-- public Chatarea -->
            <div class="publicChat">
@@ -67,7 +52,7 @@
 
                      <span ng-bind="message.message"></span>
                     
-                    (<span ng-bxsind="message.timestamp" class = "posttime"></span>)
+                    (<span ng-bind="message.timestamp" class = "posttime"></span>)
                     (<span ng-bind="message.status"></span>)
                      <span ng-bind="message.receiver_id"></span>
         					<p>	
@@ -78,7 +63,7 @@
 
                      <span ng-bind="message.message"></span>
                     
-                    (<span ng-bxsind="message.timestamp" class = "posttime"></span>)
+                     <span ng-bind="message.timestamp" class = "posttime"></span>
                     (<span ng-bind="message.status"></span>)
                      <span ng-bind="message.receiver_id"></span>
                   <p>   

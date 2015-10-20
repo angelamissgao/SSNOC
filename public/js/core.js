@@ -42,6 +42,7 @@ app.run(function($rootScope){
 
     $rootScope.id;    
     $rootScope.receiverId;
-    $rootScope.socket = io.connect();  
+    $rootScope.socket = io.connect(); 
+    
 
 });

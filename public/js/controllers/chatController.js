@@ -62,7 +62,6 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
       $scope.loading = true;
       ssnocService.getDirectory()
         .success(function(data) {
-
         $scope.directory = data;
         for (var i = 0; i < $scope.directory.length; i ++) {
           var member = $scope.directory[i];
@@ -105,6 +104,13 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
 
       });
 
+    $scope.msgAlert=false;
+
+    $rootScope.socket.on('privatemessage', function(result){
+       $scope.msgAlert=true; 
+      $scope.$apply();
+    });
+
     $rootScope.socket.on('userStatusChange', function(){
       console.log("updating directory")
         getDirectory();
@@ -125,7 +131,6 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
         ssnocService.getPublicMessages()
         .success(function(response)
         {
-          console.log(response);
           $scope.messages = response;
         });
     }

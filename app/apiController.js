@@ -12,7 +12,7 @@ function getMembers(res){
 				return res.send(err)	
 			}
 
-			res.json(members); 
+			res.json(members);
 		});
 };
 
@@ -23,7 +23,7 @@ function getMember(req, res){
 			}
 
 			res.json(members); 
-			console.log(members);
+			// console.log(members);
 		});
 };
 
@@ -92,7 +92,7 @@ function addPublicMessage(req, res, io) {
 				}
 				io.emit('message', mymessage);
 				res.json(mymessage);
-				console.log(mymessage);
+				// console.log(mymessage);
 			});
 		}
 	});
@@ -117,7 +117,7 @@ function addAnnouncement(req, res, io) {
 				if (err) {
 					return res.send(err);
 				}
-				console.log("addAnnouncement: ", mymessage);
+				// console.log("addAnnouncement: ", mymessage);
 				io.emit('message', mymessage);
 				res.json(mymessage);
 			});
@@ -135,7 +135,7 @@ function getPublicMessages(res){
                 return res.send(err)    
             }
 
-            console.log("getPublicMessages: " + messages);
+            // console.log("getPublicMessages: " + messages);
             res.json(messages); 
         });
 };
@@ -147,7 +147,7 @@ function getAnnouncements(res){
                 return res.send(err)    
             }
 
-            console.log("getAnnouncements: " + messages);
+            // console.log("getAnnouncements: " + messages);
             res.json(messages); 
         });
 };
@@ -160,9 +160,9 @@ function getPrivateMessages(req,res){
 
 
 	Message.find({
-				$and:[
-				{$or: [{member_id: req.params.member_id}, {member_id: req.params.receiver_id}]},
-				{$or: [{receiver_id: req.params.member_id}, {receiver_id: req.params.receiver_id}]}]
+				$or:[
+				{$and: [{member_id: req.params.member_id}, {receiver_id: req.params.receiver_id}]},
+				{$and: [{receiver_id: req.params.member_id}, {member_id: req.params.receiver_id}]}]
 			}
 		,function(err, messages) {
 			if (err) {
@@ -371,7 +371,7 @@ io.on('connection',function(socket){
  *     HTTP/1.1 200 OK
  *     {"message":"First message","member_id":3,"receiver_id":2,"status":1,"_id":2,"__v":0,"timestamp":"2015-10-09T08:38:00.456Z"}
  */
-	app.post('/api/ssnoc/private_message/:member_id/:receiver_id/:message', function(req, res, io) {
+	app.post('/api/ssnoc/private_message/:member_id/:receiver_id/:message', function(req, res) {
 		addPrivateMessage(req, res, io);
 	});
 
