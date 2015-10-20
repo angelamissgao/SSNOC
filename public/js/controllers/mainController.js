@@ -8,7 +8,6 @@ app.controller("mainController",function($scope, ssnocService, $q,$rootScope){
 		// when landing on the page, get all todos and show them
 		// use the service to get all the todos
 
-
 		$scope.login = function(){
 			$scope.loading = true;
 

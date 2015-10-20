@@ -6,6 +6,8 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
     $scope.announcements = [];
     $scope.chatMessage = "";
 
+    $scope.currentPosition=[];
+
     $scope.statuses = [
       {name:"OK", id:1},
       {name:"Help", id:2},
@@ -18,6 +20,18 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
     
     getDirectory();
     getAllMessages();
+    getLocation();
+
+    function getLocation(){
+      navigator.geolocation.getCurrentPosition(showLocation);
+    }
+
+    function showLocation(position) {
+      $scope.currentLatitude = position.coords.latitude;
+      $scope.currentLongitude = position.coords.longitude;
+      console.log("show Location " + position);
+      $scope.currentPosition = position;
+    }
 
     $scope.logout = function()
     {
@@ -82,10 +96,11 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
     }
 
     $scope.sendMessage = function(){
-      
+      console.log("Send message location: " + $scope.currentPosition.coords.latitude
+        + " " + $scope.currentPosition.coords.longitude);
       console.log("sendMessage");
       console.log($rootScope.id);
-      ssnocService.addPublicMessage($scope.chatMessage, $rootScope.id);
+      ssnocService.addPublicMessage($scope.chatMessage, $scope.currentPosition, $rootScope.id);
 
     }
 

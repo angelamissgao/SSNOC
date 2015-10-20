@@ -76,6 +76,8 @@ function updateStatus (req, res, io) {
 function addPublicMessage(req, res, io) {
 	var member_id = req.params.member_id;
 	var message = req.params.message;
+	var latitude = req.params.latitude;
+	var longitude = req.params.longitude;
 
 	Member.findById(member_id, function(err, member) {
 		if (err) {
@@ -329,7 +331,7 @@ io.on('connection',function(socket){
  *     HTTP/1.1 200 OK
  *     {"message":"First message","member_id":3,"status":1,"_id":2,"__v":0,"timestamp":"2015-10-09T08:38:00.456Z"}
  */
-	app.post('/api/ssnoc/message/:member_id/:message', function(req, res) {
+	app.post('/api/ssnoc/message/:member_id/:latitude/longitude/:message', function(req, res) {
 		addPublicMessage(req, res, io);
 	});
 
