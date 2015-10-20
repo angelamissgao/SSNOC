@@ -13,15 +13,7 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
     getAllMessages();
     getAnnouncements();
 
-    $scope.logout = function()
-    {
-      ssnocService.updateStatus($rootScope.id, 0).
-      success(function(response){
-          console.log("logout" + response);
-          $rootScope.authenticated = false;
-          window.location = "/";
-      });
-    }
+ 
 
     $scope.isOnline = function(status)
     {
@@ -100,7 +92,7 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
 
     $rootScope.socket.on('privatemessage', function(result){
        $scope.msgAlert=true; 
-      $scope.$apply();
+       $scope.$apply();
     });
 
     $rootScope.socket.on('userStatusChange', function(){
@@ -108,11 +100,6 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
         getDirectory();
     });
     
-    $rootScope.socket.on('disconnect', function(){
-      //update status send no
-      console.log("disconnecting" + $rootScope.id);
-      ssnocService.updateStatus($rootScope.id, 0);
-    });
 
     $( window ).unload(function() {
        ssnocService.updateStatus($rootScope.id, 0);

@@ -57,6 +57,23 @@ app.run(function($rootScope, ssnocService){
       ssnocService.updateStatus($rootScope.id, status_id);
     }
 
+    $rootScope.logout = function()
+    {
+      ssnocService.updateStatus($rootScope.id, 0).
+      success(function(response){
+          console.log("logout" + response);
+          $rootScope.authenticated = false;
+          window.location = "/";
+      });
+    }
+
+    $rootScope.socket.on('disconnect', function(){
+      //update status send no
+      console.log("disconnecting" + $rootScope.id);
+      ssnocService.updateStatus($rootScope.id, 0);
+      $scope.$apply();
+    });
+
 });
 
 app.controller("statusController",function($scope, ssnocService, $q,$rootScope){

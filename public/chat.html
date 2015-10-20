@@ -1,12 +1,15 @@
 <div ng-controller="chatController" class="chat-container" id="chatpublic">
         
-
         <!--Welcome Msg-->
         <div class="alert alert-info alert-dismissible" role="alert">
           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <strong>Welcome to Brics SsNoc.</strong> You could send messages or share your status with the members in our community. 1-OK, 2-Help, 3-Emergency, 4-Undefined.
         </div>
 
+        <div ng-show='msgAlert' class="alert alert-info alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <strong>You Got a New Message!</strong>
+        </div>
 
          <!-- public Chatarea -->
            <div class="publicChat">
