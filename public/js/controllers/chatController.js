@@ -63,11 +63,11 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
       $scope.loading = true;
       ssnocService.getDirectory()
         .success(function(data) {
-
         $scope.directory = data;
         for (var i = 0; i < $scope.directory.length; i ++) {
           var member = $scope.directory[i];
           $scope.directoryDict[member._id] = member;
+          console.log("here is the "+member.name + (member.status)+(member.lastLogin));
         }
         $scope.loading = false;
 
@@ -129,7 +129,6 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
         ssnocService.getPublicMessages()
         .success(function(response)
         {
-          console.log(response);
           $scope.messages = response;
         });
     }

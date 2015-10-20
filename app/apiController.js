@@ -12,7 +12,7 @@ function getMembers(res){
 				return res.send(err)	
 			}
 
-			res.json(members); 
+			res.json(members);
 		});
 };
 
@@ -23,7 +23,7 @@ function getMember(req, res){
 			}
 
 			res.json(members); 
-			console.log(members);
+			// console.log(members);
 		});
 };
 
@@ -92,7 +92,7 @@ function addPublicMessage(req, res, io) {
 				}
 				io.emit('message', mymessage);
 				res.json(mymessage);
-				console.log(mymessage);
+				// console.log(mymessage);
 			});
 		}
 	});
@@ -117,7 +117,7 @@ function addAnnouncement(req, res, io) {
 				if (err) {
 					return res.send(err);
 				}
-				console.log("addAnnouncement: ", mymessage);
+				// console.log("addAnnouncement: ", mymessage);
 				io.emit('message', mymessage);
 				res.json(mymessage);
 			});
@@ -135,7 +135,7 @@ function getPublicMessages(res){
                 return res.send(err)    
             }
 
-            console.log("getPublicMessages: " + messages);
+            // console.log("getPublicMessages: " + messages);
             res.json(messages); 
         });
 };
@@ -147,7 +147,7 @@ function getAnnouncements(res){
                 return res.send(err)    
             }
 
-            console.log("getAnnouncements: " + messages);
+            // console.log("getAnnouncements: " + messages);
             res.json(messages); 
         });
 };
