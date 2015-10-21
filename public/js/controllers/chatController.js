@@ -78,7 +78,7 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
     $scope.postAnnouncement = function(){
       console.log("postAnnoucement");
       console.log($rootScope.id);
-      ssnocService.addAnnouncement($scope.chatMessage, $rootScope.id)
+      ssnocService.addAnnouncement($scope.chatMessage, $rootScope.currentPosition, $rootScope.id)
       .success(function(response){
           getAnnouncements();
       });
