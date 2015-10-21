@@ -63,7 +63,7 @@ app.run(function($rootScope, ssnocService){
     }
 
      $rootScope.shareStatus= function(status_id){
-      //1-ok 2-help 3-emergency 0-logout
+     //1-ok 2-help 3-emergency 0-logout
 
       console.log("update status in core" + status_id);
       ssnocService.updateStatus($rootScope.id, $rootScope.currentPosition, status_id);
@@ -80,7 +80,6 @@ app.run(function($rootScope, ssnocService){
     }
 
     $rootScope.socket.on('disconnect', function(){
-      //update status send no
       console.log("disconnecting" + $rootScope.id);
       ssnocService.updateStatus($rootScope.id, 0);
       $scope.$apply();

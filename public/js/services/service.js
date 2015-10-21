@@ -7,11 +7,9 @@ app.factory('ssnocService',function($http) {
 			},
 			getMember : function(username) {
 				return $http.get('/api/ssnoc/member/'+ username);
-
 			},
 			create : function(member) {
 				return $http.post('/api/ssnoc/member/'+ member.username +"/"+member.password);
-
 			},
 			updateStatus : function(member_id, position, status_id){
 				return $http.post('/api/ssnoc/update_status/'+member_id + '/' + position.coords.latitude + "/"
@@ -37,6 +35,9 @@ app.factory('ssnocService',function($http) {
 			},
 			getPrivateMessage : function (senderId, receiverId){
 		  		return $http.get('/api/ssnoc/private_messages/' +senderId +'/' + receiverId);
+			},
+			getMemberById : function(memberId){
+				return $http.get('api/ssnoc/memberModel/'+ memberId);
 			}
 			// delete : function(id) {
 			// 	return $http.delete('/api/ssnoc/' + id);
