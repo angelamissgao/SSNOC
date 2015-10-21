@@ -51,11 +51,22 @@ app.run(function($rootScope, ssnocService){
       {name:"Emergency", id:3}
     ];
     
+    getLocation();
+
+    function getLocation(){
+      navigator.geolocation.getCurrentPosition(showLocation);
+    }
+
+    function showLocation(position) {
+      console.log("show Location " + position);
+      $rootScope.currentPosition = position;
+    }
+
      $rootScope.shareStatus= function(status_id){
       //1-ok 2-help 3-emergency 0-logout
 
       console.log("update status in core" + status_id);
-      ssnocService.updateStatus($rootScope.id, status_id);
+      ssnocService.updateStatus($rootScope.id, $rootScope.currentPosition, status_id);
     }
 
     $rootScope.logout = function()
@@ -66,13 +77,6 @@ app.run(function($rootScope, ssnocService){
           $rootScope.authenticated = false;
           window.location = "/";
       });
-    }
-
-     $scope.shareStatus= function(status_id){
-      //1-ok 2-help 3-emergency 0-logout
-
-      console.log("update status in core" + status_id);
-      ssnocService.updateStatus($rootScope.id, $rootScope.currentPosition, status_id);
     }
 
     $rootScope.socket.on('disconnect', function(){

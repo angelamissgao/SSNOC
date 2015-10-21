@@ -1,9 +1,17 @@
+Running mongoose version 4.1.8
 
 [0m[0m
-[0m  Array[0m
-[0m    #indexOf()[0m
-[2K[0G    [32m  ✓[0m[90m should return -1 when the value is not present[0m
+connected to tingodb
+[0m  apiController Test[0m
+[2K[0G  [31m  1) getMember test[0m
 
 
-[92m [0m[32m 1 passing[0m[90m (7ms)[0m
+[92m [0m[32m 0 passing[0m[90m (9ms)[0m
+[31m  1 failing[0m
+
+[0m  1) apiController Test getMember test:
+[0m[31m     TypeError: undefined is not a function[0m[90m
+      at Context.<anonymous> (test/apiControllerTest.js:29:17)
+[0m
+
 

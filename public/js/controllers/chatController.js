@@ -20,7 +20,7 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
 
     function showLocation(position) {
       console.log("show Location " + position);
-      $scope.currentPosition = position;
+      $rootScope.currentPosition = position;
     }
 
     $scope.isOnline = function(status)
@@ -47,13 +47,6 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
       }
     }
 
-     $scope.shareStatus= function(status_id){
-      //1-ok 2-help 3-emergency 0-logout
-
-      console.log("update status in core" + status_id);
-      ssnocService.updateStatus($rootScope.id, $rootScope.currentPosition, status_id);
-    }
-
     function getDirectory()
     { 
       $scope.loading = true;
@@ -75,8 +68,8 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
     }
 
     $scope.sendMessage = function(){
-      console.log("Send message location: " + $scope.currentPosition.coords.latitude
-        + " " + $scope.currentPosition.coords.longitude);
+      console.log("Send message location: " + $rootScope.currentPosition.coords.latitude
+        + " " + $rootScope.currentPosition.coords.longitude);
       console.log("sendMessage");
       console.log($rootScope.id);
       ssnocService.addPublicMessage($scope.chatMessage, $rootScope.currentPosition, $rootScope.id);
@@ -113,7 +106,7 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
     
 
     $( window ).unload(function() {
-       ssnocService.updateStatus($rootScope.id, 0);
+       ssnocService.updateStatus($rootScope.id, $rootScope.currentPosition, 0);
     });
      
     function getAllMessages(){
@@ -122,6 +115,11 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
         .success(function(response)
         {
           $scope.messages = response;
+
+          $scope.messages.forEach(function(entry) {
+            console.log("Position:" + entry.position);
+          });
+
         });
     }
 
