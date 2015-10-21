@@ -27,6 +27,18 @@ function getMember(req, res){
 		});
 };
 
+
+function getMemberById(req, res){
+	Member.findOne({_id: req.params.member_id}, function(err, member) {
+			if (err) {
+				return res.send(err)	
+			}
+			console.log('member ' +member);
+			res.json(member); 
+			// console.log(members);
+		});
+};
+
 function addMember (req, res) {
 
 	member = new Member({name: req.params.name, password: req.params.pass, status: 0});
@@ -248,6 +260,10 @@ io.on('connection',function(socket){
 
 	app.get('/api/ssnoc/member/:name', function(req, res) {
 		getMember(req, res);
+	});
+
+	app.get('/api/ssnoc/memberModel/:member_id', function(req, res) {
+		getMemberById(req, res);
 	});
 
 /**
