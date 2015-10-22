@@ -62,8 +62,8 @@ function removeMember (id, res) {
 }
 
 function updateStatus (req, res, io) {
-	var latitude = req.params.latitude;
-	var longitude = req.params.longitude;
+	// var latitude = req.params.latitude;
+	// var longitude = req.params.longitude;
 
 	console.log('updateStatus id' + req.params.member_id);
 
@@ -80,10 +80,11 @@ function updateStatus (req, res, io) {
 			if (err) {
 				return res.send(err);
 			}
-			io.emit('userStatusChange');
-			res.json({ message: 'Status updated: Member ' + req.params.member_id + ' status is ' + req.params.status_id 
-				+ 'and location is ' + latitude + ' ; ' + longitude});
-
+			// io.emit('userStatusChange');
+			
+			// res.json({ message: 'Status updated: Member ' + req.params.member_id + ' status is ' + req.params.status_id 
+			// 	+ 'and location is ' + latitude + ' ; ' + longitude});
+			res.json({ message: 'Status updated: Member ' + req.params.member_id + ' status is ' + req.params.status_id });
 		});
 	});
 };
@@ -295,8 +296,12 @@ io.on('connection',function(socket){
  *     [{"name":"test","password":"1234","status":0,"_id":2,"__v":0}]
  */
 
-	app.post('/api/ssnoc/update_status/:member_id/:latitude/:longitude/:status_id', function(req, res) {
-		updateStatus(req,res,io);
+	// app.post('/api/ssnoc/update_status/:member_id/:latitude/:longitude/:status_id', function(req, res) {
+	// 	updateStatus(req,res,io);
+	// });
+
+	app.post('/api/ssnoc/update_status/:member_id/:status_id', function(req, res) {
+		updateStatus(req,res);
 	});
 
 /**

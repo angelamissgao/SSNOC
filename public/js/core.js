@@ -71,6 +71,7 @@ app.run(function($rootScope, ssnocService){
 
     $rootScope.logout = function()
     {
+      console.log("check...x");
       ssnocService.updateStatus($rootScope.id, 0).
       success(function(response){
           console.log("logout" + response);

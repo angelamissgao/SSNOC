@@ -11,10 +11,14 @@ app.factory('ssnocService',function($http) {
 			create : function(member) {
 				return $http.post('/api/ssnoc/member/'+ member.username +"/"+member.password);
 			},
-			updateStatus : function(member_id, position, status_id){
-				return $http.post('/api/ssnoc/update_status/'+member_id + '/' + position.coords.latitude + "/"
-		  			+ position.coords.longitude +"/"+status_id);
+			// updateStatus : function(member_id, position, status_id){
+			// 	return $http.post('/api/ssnoc/update_status/'+member_id + '/' + position.coords.latitude + "/"
+		 //  			+ position.coords.longitude +"/"+status_id);
+			// },
+			updateStatus : function(member_id,status_id){
+				return $http.post('/api/ssnoc/update_status/'+member_id +"/"+status_id);
 			},
+			
 			addPublicMessage : function(message, position, user_id){
 		  		return $http.post('/api/ssnoc/message/' + user_id + '/' + position.coords.latitude + "/"
 		  			+ position.coords.longitude + "/"+ message);
