@@ -8,7 +8,7 @@ exports.getMembers = function(res){
 	Member.find(function(err, members) {
 
 			if (err) {
-				return res.send(err)	
+				return res.send(err);	
 			}
 
 			res.json(members);
@@ -18,7 +18,7 @@ exports.getMembers = function(res){
 exports.getMember = function(req, res){
 	Member.findOne({name: req.params.name}, function(err, members) {
 			if (err) {
-				return res.send(err)	
+				return res.send(err);	
 			}
 
 			res.json(members); 
@@ -29,7 +29,7 @@ exports.getMember = function(req, res){
 exports.getMemberById = function(req, res){
 	Member.findOne({_id: req.params.member_id}, function(err, member) {
 			if (err) {
-				return res.send(err)	
+				return res.send(err);	
 			}
 
 			res.json(member); 
@@ -145,7 +145,7 @@ exports.getPublicMessages = function(res){
     }, function(err, messages) {
 
             if (err) {
-                return res.send(err)    
+                return res.send(err);    
             }
 
             res.json(messages); 
@@ -156,7 +156,7 @@ exports.getAnnouncements = function(res){
     Message.find({receiver_id: announcement_receiver}, function(err, messages) {
 
             if (err) {
-                return res.send(err)    
+                return res.send(err);    
             }
 
             res.json(messages); 
@@ -172,7 +172,7 @@ exports.getPrivateMessages = function(req,res){
 			}
 		,function(err, messages) {
 			if (err) {
-				return res.send(err)	
+				return res.send(err);	
 			}
 
 			res.json(messages); 
