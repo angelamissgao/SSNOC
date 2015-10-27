@@ -14,7 +14,7 @@ app.factory('ssnocService',function($http) {
 			updateStatus : function(member_id, position, status_id){
 				return $http.post('/api/ssnoc/update_status/'+member_id + '/' + position.lat + "/"
 		  			+ position.lng +"/"+status_id);
-			},
+			},			
 			addPublicMessage : function(message, position, user_id){
 		  		return $http.post('/api/ssnoc/message/' + user_id + '/' + position.lat + "/"
 		  			+ position.lng + "/"+ message);
