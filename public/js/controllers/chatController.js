@@ -12,16 +12,6 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
     getDirectory();
     getAllMessages();
     getAnnouncements();
-    getLocation();
-
-    function getLocation(){
-      navigator.geolocation.getCurrentPosition(showLocation);
-    }
-
-    function showLocation(position) {
-      console.log("show Location " + position);
-      $rootScope.currentPosition = position;
-    }
 
     $scope.isOnline = function(status)
     {
@@ -68,8 +58,8 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
     }
 
     $scope.sendMessage = function(){
-      console.log("Send message location: " + $rootScope.currentPosition.coords.latitude
-        + " " + $rootScope.currentPosition.coords.longitude);
+      console.log("Send message location: " + $rootScope.currentPosition.lat
+        + " " + $rootScope.currentPosition.lng);
       console.log("sendMessage");
       console.log($rootScope.id);
       ssnocService.addPublicMessage($scope.chatMessage, $rootScope.currentPosition, $rootScope.id);

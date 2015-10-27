@@ -43,7 +43,9 @@ app.run(function($rootScope, ssnocService){
     $rootScope.id;    
     $rootScope.receiverId;
     $rootScope.socket = io.connect(); 
-    $rootScope.currentPosition=[];    
+    $rootScope.currentPosition = {lat: 0, lng: 0};
+    $rootScope.currentPosition.lat = 0;    
+    $rootScope.currentPosition.lng = 0;    
     $rootScope.authenticated = false;
     $rootScope.statuses = [
       {name:"OK", id:1},
@@ -58,8 +60,10 @@ app.run(function($rootScope, ssnocService){
     }
 
     function showLocation(position) {
-      console.log("show Location " + position);
-      $rootScope.currentPosition = position;
+      console.log("core::showLocation: %s", $rootScope.currentPosition);
+      if(position!==undefined) {
+        $rootScope.currentPosition = position;
+      }
     }
 
      $rootScope.shareStatus= function(status_id){
@@ -71,7 +75,7 @@ app.run(function($rootScope, ssnocService){
 
     $rootScope.logout = function()
     {
-      ssnocService.updateStatus($rootScope.id, 0).
+      ssnocService.updateStatus($rootScope.id, $rootScope.currentPosition, 0).
       success(function(response){
           console.log("logout" + response);
           $rootScope.authenticated = false;
