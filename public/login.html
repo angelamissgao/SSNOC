@@ -1,23 +1,54 @@
 <!-- s -->
 
-<div ng-controller="mainController" class="container">
+<div ng-controller="mainController" class="container-fluid">
 			<form class="form-signin">
-		        <h3 class="form-signin-heading" style="text-align:center">SignIn</h3>
-		        <p><img  src="images/User.png"></img>
 
-					<input ng-model="member.username" type="text" id="name" class="form-control"name="username" placeholder="Username" required autofocus>
-				</p>
+		      <div class="row login">
+		      	<div class='col-xs-12 col-md-8'>
+		       <h3 class="form-signin-heading">SignIn</h3>
+		      	</div>
+		      </div>
+
+		      <div class="row login">
+		      	<div class='col-xs-1 col-md-8'>
+		      	<img  src="images/User.png"></img>
+		      	</div>
+		      	<div class='col-xs-10 col-md-8'>
+						<input ng-model="member.username" type="text" id="name" class="form-control"name="username" placeholder="Username" required autofocus>
+						</div>
+		      </div>
 		      
-		        <p><img  src="images/pass.png"></img>
-		        <input ng-model="member.password" type="password" id="inputPassword" class="form-control" placeholder="Password" required></p>
+		      <div class="row login">
+		      	<div class='col-xs-1 col-md-8'>
+		        <img  src="images/pass.png"></img>
+		        </div>
+		        <div class='col-xs-10 col-md-8'>
+		        <input ng-model="member.password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+						</div>
+		      </div>
 
-		        <p><input ng-show="!isExistingMember" ng-model="member.confirmPassword" id="hiddenPassword" class="form-control" placeholder=" Confirm Password" type="password"></p>
+		      <div ng-show="!isExistingMember" class="row login">
+		      	<div class='col-xs-1 col-md-8'>
+		        <img  src="images/pass.png"></img>
+		        </div>
+		      	<div class='col-xs-10 col-md-8'>
+		        <input  ng-model="member.confirmPassword" id="hiddenPassword" class="form-control" placeholder=" Confirm Password" type="password">
+		        </div>
+		      </div>
 
-				<p>
+
+					<div class="row login">
+		      	<div class='col-xs-12 col-md-8'>
 					<button ng-show="!isExistingMember" ng-click="signup()" type="submit" class="btn btn-success">Sign Up</button>
 					<button ng-click="login()" type="submit" class="btn btn-success">Join</button>
+ 						</div>
+		      </div>
 
-				</p>
+					<div class="row login">
+		      	<div class='col-xs-12 col-md-8'>
 				<p ng-bind="message" style="color:red;"></p>
-		    </form>
+						</div>
+		      </div>
+		    
+		   </form>
 </div> 
