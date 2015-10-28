@@ -32,6 +32,27 @@ body {
 .form-signin .form-control:focus {
   z-index: 2;
 }
+
+.sidebar-nav .navbar .navbar-collapse {
+    padding: 0;
+    max-height: none;
+  }
+  .sidebar-nav .navbar ul {
+    float: none;
+  }
+  .sidebar-nav .navbar ul:not {
+    display: block;
+  }
+  .sidebar-nav .navbar li {
+    float: none;
+    display: block;
+  }
+  .sidebar-nav .navbar li a {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+  
+
 .chat-container {
   margin: 10px auto;
   height:100%;
@@ -44,6 +65,10 @@ body {
   text-align: center;
   background-color: #FFE4E1;
   float: right;
+}
+
+.navigation{
+  margin-bottom: 10px;
 }
 
 .onlineDirectory{
