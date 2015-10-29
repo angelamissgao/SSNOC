@@ -6,7 +6,7 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
     $scope.announcements = [];
     $scope.chatMessage = "";
     $scope.searchMessage = "";
-    $scope.searchResult = [];
+    // $scope.searchResult = [];
 
 
     var defer = $q.defer();
@@ -79,6 +79,7 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
 
     $rootScope.socket.on('message', function(msg){
         $scope.messages.push(msg);
+        console.log("msg %p",  msg);
         $scope.chatMessage = "";
         $scope.$apply();
 
@@ -107,7 +108,7 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
         .success(function(response)
         {
           $scope.messages = response;
-
+          console.log("msg %p",  response);
           $scope.messages.forEach(function(entry) {
             console.log("Position:" + entry.position);
           });
@@ -126,11 +127,10 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
     } 
 
     $scope.searchMessages = function(){
-        console.log("serach with baobei first........");
       ssnocService.searchPublicMessages($scope.searchMessage)
       .success(function(response){
-        $scope.searchResult = response;
-        console.log("serach with baobei"+$scope.searchResult);
+        // $scope.searchResult = response;
+        $scope.messages = response;
       });
     }
 

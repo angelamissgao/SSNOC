@@ -103,7 +103,7 @@ exports.addPublicMessage = function(req, res, io) {
 				}
 				io.emit('message', mymessage);
 				res.json(mymessage);
-				console.log("baobei"+mymessage);
+				console.log("test location %s", mymessage);
 			});
 		}
 	});

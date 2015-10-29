@@ -18,9 +18,9 @@
         </div>
         <button type="submit" class="btn btn-default" ng-click="searchMessages()">Search</button>
        </form>
-       <div ng-repeat="result in searchResult">
+       <!-- <div ng-repeat="result in searchResult">
         <p ng-bind = "result.message" ></p>
-       </div>
+       </div> -->
 
          <!-- public Chatarea -->
            <div class="publicChat">
@@ -34,7 +34,10 @@
                     (<span ng-bind="message.timestamp" class = "posttime"></span>)
                     (<span ng-bind="message.status"></span>)
                      <span ng-bind="message.receiver_id"></span>
+                     <span ng-bind="message.position.lat"></span>
+                     <span ng-bind="message.position.lng"></span>
         					<p>	
+
 
                   <p ng-repeat="message in messages"  ng-show="!isAnnoucement(message.receiver_id)" class="alert alert-success">
                     
