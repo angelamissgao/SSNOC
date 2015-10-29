@@ -41,6 +41,7 @@ app.factory('ssnocService',function($http) {
 			},
 
 			searchPublicMessages :function (searchMessage){
+				return $http.get('/api/ssnoc/search_public_messages/' + searchMessage);
 
 			}
 			// delete : function(id) {

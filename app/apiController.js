@@ -229,7 +229,7 @@ io.on('connection',function(socket){
 
 
 	app.get('/api/ssnoc/search_public_messages/:search_message',function(req,res){
-		dataController
+		dataController.searchPublicMessages(req, res);
 	});
 
 //Files

@@ -60,9 +60,10 @@ app.run(function($rootScope, ssnocService){
     }
 
     function showLocation(position) {
-      console.log("core::showLocation: %s", $rootScope.currentPosition);
+      console.log("core::showLocation: %s", position);
       if(position!==undefined) {
-        $rootScope.currentPosition = position;
+
+        $rootScope.currentPosition = {lat: position.coords.latitude, lng: position.coords.longitude};
       }
     }
 

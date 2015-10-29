@@ -18,6 +18,9 @@
         </div>
         <button type="submit" class="btn btn-default" ng-click="searchMessages()">Search</button>
        </form>
+       <div ng-repeat="result in searchResult">
+        <p ng-bind = "result.message" ></p>
+       </div>
 
          <!-- public Chatarea -->
            <div class="publicChat">

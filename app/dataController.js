@@ -103,7 +103,7 @@ exports.addPublicMessage = function(req, res, io) {
 				}
 				io.emit('message', mymessage);
 				res.json(mymessage);
-				// console.log(mymessage);
+				console.log("baobei"+mymessage);
 			});
 		}
 	});
@@ -208,7 +208,19 @@ exports.addPrivateMessage = function(req, res, io){
 				}
 			});
 		}
-
 	});
+};
 
-}
+
+exports.searchPublicMessages = function(req,res){
+	var search_message = req.params.search_message;
+	Message.find({message: new RegExp(search_message)}, function(err, messages) {
+
+            if (err) {
+                return res.send(err);    
+            }
+
+            res.json(messages); 
+        });
+};
+
