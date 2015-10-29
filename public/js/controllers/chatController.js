@@ -5,6 +5,7 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
     $scope.messages = [];
     $scope.announcements = [];
     $scope.chatMessage = "";
+    $scope.searchMessage = "";
 
 
     var defer = $q.defer();
@@ -122,5 +123,10 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
           $scope.announcements = response;
         });
     } 
+
+    function searchMessages(){
+
+    ssnocService.searchPublicMessages();
+    }
 
 });

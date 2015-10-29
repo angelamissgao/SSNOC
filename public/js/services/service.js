@@ -38,6 +38,10 @@ app.factory('ssnocService',function($http) {
 			},
 			getMemberById : function(memberId){
 				return $http.get('api/ssnoc/memberModel/'+ memberId);
+			},
+
+			searchPublicMessages :function (searchMessage){
+
 			}
 			// delete : function(id) {
 			// 	return $http.delete('/api/ssnoc/' + id);

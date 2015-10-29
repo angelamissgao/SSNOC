@@ -227,6 +227,11 @@ io.on('connection',function(socket){
 		dataController.getPrivateMessages(req,res);
 	});
 
+
+	app.get('/api/ssnoc/search_public_messages/:search_message',function(req,res){
+		dataController
+	});
+
 //Files
 
 	app.get('/chatting', function(req, res) {
