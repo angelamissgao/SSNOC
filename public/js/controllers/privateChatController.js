@@ -4,23 +4,12 @@ app.controller("privateChatController",function($scope, ssnocService, $q,$rootSc
   $scope.msgAlert=false;
   $scope.member = {};
   $scope.receiver = {};
+  $scope.searchPrivateMessage = "";
 
   getUsers();
 	getPrivateMessages();
 
-  getLocation();
-
-  function getLocation(){
-    navigator.geolocation.getCurrentPosition(showLocation);
-  }
-
-  function showLocation(position) {
-    console.log("show Location " + position);
-    $rootScope.currentPosition = position;
-  }
-
-   $rootScope.socket.on('privatemessage', function(result){
-    console.log("private msg from controller" + result);
+  $rootScope.socket.on('privatemessage', function(result){
 
       if((result.member_id == $rootScope.id && result.receiver_id == $rootScope.receiverId)
           ||(result.receiver_id == $rootScope.id && result.member_id == $rootScope.receiverId))
@@ -32,7 +21,7 @@ app.controller("privateChatController",function($scope, ssnocService, $q,$rootSc
      
    });
 
-   $scope.getName = function(memberId){
+  $scope.getName = function(memberId){
       if(memberId == $scope.member._id)
       {
         return $scope.member.name;
@@ -66,6 +55,15 @@ app.controller("privateChatController",function($scope, ssnocService, $q,$rootSc
       });
 
    }
+
+ $scope.searchPrivateMessages = function(){
+      ssnocService.searchPrivateMessages($scope.searchPrivateMessage,$rootScope.id, $rootScope.receiverId)
+      .success(function(response){
+        // $scope.searchResult = response;
+        $scope.messages = response;
+        console.log(response);
+      });
+    }
 
 
 });

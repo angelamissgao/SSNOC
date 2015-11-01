@@ -42,7 +42,11 @@ app.factory('ssnocService',function($http) {
 
 			searchPublicMessages :function (searchMessage){
 				return $http.get('/api/ssnoc/search_public_messages/' + searchMessage);
+			},
 
+			searchPrivateMessages :function (searchPrivateMessage,senderId, receiverId){
+				return $http.get('/api/ssnoc/search_private_messages/' + searchPrivateMessage + '/' 
+					+ senderId + '/' + receiverId);
 			}
 			// delete : function(id) {
 			// 	return $http.delete('/api/ssnoc/' + id);

@@ -108,7 +108,7 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
         .success(function(response)
         {
           $scope.messages = response;
-          console.log("msg %p",  response);
+          // console.log("msg %p",  response);
           $scope.messages.forEach(function(entry) {
             console.log("Position:" + entry.position);
           });

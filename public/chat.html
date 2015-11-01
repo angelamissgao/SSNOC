@@ -47,7 +47,10 @@
                     
                      <span ng-bind="message.timestamp" class = "posttime"></span>
                     (<span ng-bind="message.status"></span>)
-                     <span ng-bind="message.receiver_id"></span>
+                     <!-- <span ng-bind="message.receiver_id"></span> -->
+                     Position Info: 
+                     [ <span ng-bind="message.position.lat"></span>
+                     <span ng-bind="message.position.lng"></span>]
                   <p>   
 
       				  </div>

@@ -204,6 +204,7 @@ exports.addPrivateMessage = function(req, res, io){
 
 						io.emit('privatemessage', mymessage);
 						res.json(mymessage);
+						console.log(mymessage);
 					});
 				}
 			});
@@ -224,3 +225,22 @@ exports.searchPublicMessages = function(req,res){
         });
 };
 
+exports.searchPrivateMessages = function(req,res){
+	var search_message = req.params.search_message;
+	Message.find( { $and: [{message: new RegExp(search_message)},
+		{$or:[
+				{$and: [{member_id: req.params.member_id}, {receiver_id: req.params.receiver_id}]},
+				{$and: [{receiver_id: req.params.member_id}, {member_id: req.params.receiver_id}]}
+				]}
+					]
+
+					}, function(err, messages) {
+
+            if (err) {
+                return res.send(err);    
+            }
+
+            res.json(messages); 
+            console.log("here"+messages);
+        });	
+};

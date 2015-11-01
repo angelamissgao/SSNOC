@@ -228,8 +228,14 @@ io.on('connection',function(socket){
 	});
 
 
+//Search Function
+
 	app.get('/api/ssnoc/search_public_messages/:search_message',function(req,res){
 		dataController.searchPublicMessages(req, res);
+	});
+
+	app.get('/api/ssnoc/search_private_messages/:search_message/:member_id/:receiver_id',function(req,res){
+		dataController.searchPrivateMessages(req, res);
 	});
 
 //Files

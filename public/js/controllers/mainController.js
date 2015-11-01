@@ -140,8 +140,8 @@ app.controller("mainController",function($scope, ssnocService, $q,$rootScope){
 		function updateStatus(){
 			
 			// console.log("updateStatus() position: %s", $rootScope.currentPosition);
-			// ssnocService.updateStatus($scope.member._id, $rootScope.currentPosition, $scope.member.status)
-			ssnocService.updateStatus($scope.member._id, $scope.member.status)
+			ssnocService.updateStatus($scope.member._id, $rootScope.currentPosition, $scope.member.status)
+			// ssnocService.updateStatus($scope.member._id, $scope.member.status)
 			.then(function(response){
 				console.log("update status " + response.status);
 				$scope.member = response;
