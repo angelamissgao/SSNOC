@@ -246,6 +246,10 @@ io.on('connection',function(socket){
 		dataController.searchMemberNames(req, res);
 	});
 
+	app.get('/api/ssnoc/search_memberstatus/:search_message',function(req,res){
+		dataController.searchMemberStatus(req, res);
+	});
+
 //Files
 
 	app.get('/chatting', function(req, res) {

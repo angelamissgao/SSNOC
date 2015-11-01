@@ -215,14 +215,17 @@ exports.addPrivateMessage = function(req, res, io){
 
 exports.searchPublicMessages = function(req,res){
 	var search_message = req.params.search_message;
-	Message.find({message: new RegExp(search_message)}, function(err, messages) {
+	Message.find( { $and: [ {message: new RegExp(search_message)},
+                          {receiver_id: public_receiver}]
+        
+          }, function(err, messages) {
 
             if (err) {
                 return res.send(err);    
             }
 
             res.json(messages); 
-        });
+        }).limit(10);
 };
 
 exports.searchPrivateMessages = function(req,res){
@@ -271,3 +274,16 @@ exports.searchMemberNames = function(req,res){
             res.json(messages); 
         });
 };
+
+exports.searchMemberStatus = function(req,res){
+  var search_membername = req.params.search_message;
+  Member.find({status: new RegExp(search_memberstatus)}, function(err, messages) {
+
+            if (err) {
+                return res.send(err);    
+            }
+
+            res.json(messages); 
+        });
+};
+

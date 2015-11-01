@@ -53,7 +53,11 @@ app.factory('ssnocService',function($http) {
 			},
 			searchMemberNames :function (searchMemberName){
 				return $http.get('/api/ssnoc/search_membername/' + searchMemberName);
+			},
+			searchsearchMemberStatus :function (searchMemberStatus){
+				return $http.get('/api/ssnoc/searchMemberStatus/' + searchMemberStatus);
 			}
+		
 			// delete : function(id) {
 			// 	return $http.delete('/api/ssnoc/' + id);
 			// }
