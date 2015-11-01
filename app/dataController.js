@@ -244,3 +244,30 @@ exports.searchPrivateMessages = function(req,res){
             console.log("here"+messages);
         });	
 };
+
+exports.searchAnnouncements = function(req,res){
+	var search_message = req.params.search_message;
+	Message.find( { $and: [{message: new RegExp(search_message)},
+												 {receiver_id: announcement_receiver}]
+
+				}, function(err, messages) {
+
+            if (err) {
+                return res.send(err);    
+            }
+
+            res.json(messages); 
+        });
+};
+
+exports.searchMemberNames = function(req,res){
+	var search_membername = req.params.search_message;
+	Member.find({name: new RegExp(search_membername)}, function(err, messages) {
+
+            if (err) {
+                return res.send(err);    
+            }
+
+            res.json(messages); 
+        });
+};

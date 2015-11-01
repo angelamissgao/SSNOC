@@ -238,6 +238,14 @@ io.on('connection',function(socket){
 		dataController.searchPrivateMessages(req, res);
 	});
 
+	app.get('/api/ssnoc/search_announcements/:search_message',function(req,res){
+		dataController.searchAnnouncements(req, res);
+	});
+
+	app.get('/api/ssnoc/search_membername/:search_message',function(req,res){
+		dataController.searchMemberNames(req, res);
+	});
+
 //Files
 
 	app.get('/chatting', function(req, res) {

@@ -134,4 +134,26 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
       });
     }
 
+
+   $scope.searchAnnouncements = function(){
+    ssnocService.searchAnnouncements($scope.searchAnnouncement)
+    .success(function(response){
+      // $scope.searchResult = response;
+      $scope.announcements = response;
+    });
+  }
+
+  $scope.searchMemberNames = function(){
+    ssnocService.searchMemberNames($scope.searchMemberName)
+    .success(function(response){
+      // $scope.searchResult = response;
+      $scope.directory = response;
+        for (var i = 0; i < $scope.directory.length; i ++) {
+          var member = $scope.directory[i];
+          $scope.directoryDict[member._id] = member;
+        }
+    });
+  }
+
+
 });

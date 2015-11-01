@@ -14,27 +14,35 @@
       </div>
   </div> -->
 
+ <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input ng-model="searchMemberName" type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default" ng-click="searchMemberNames()">Search by Name</button>
+</form>
 
 <div  id="directory" class="chatArea">
 
-   <div class="list-group" id="directory">
+  <div class="list-group" id="directory">
 
      <a href="#" class="list-group-item disabled">
       Community Member:
      </a>
-  <div ng-repeat="member in directory|orderBy:['status','name']">
-     <p ng-click='newPrivateChat(member._id)' ng-show="isOnline(member.status)" class="list-group-item"style="color:green;">
-       <span ng-bind="member.name"> </span>
-       &nbsp &nbsp(<b><span ng-bind="member.status"> </span></b>)
-       <span ng-bind="member.lastLogin" class="posttime"> </span>
-     </p>
-   </div>
-   <div ng-repeat="member in directory|orderBy:['status','name']">
-     <p ng-show="!isOnline(member.status)" class="list-group-item"style="color:red;">
-       <span ng-bind="member.name"> </span>
-       (<b><span ng-bind="member.status"> </span></b>)
-       <span ng-bind="member.lastLogin" class="posttime"> </span>
-     </p>
-   </div>  
-       </div>
+      <div ng-repeat="member in directory|orderBy:['status','name']">
+       <p ng-click='newPrivateChat(member._id)' ng-show="isOnline(member.status)" class="list-group-item"style="color:green;">
+         <span ng-bind="member.name"> </span>
+         &nbsp &nbsp(<b><span ng-bind="member.status"> </span></b>)
+         <span ng-bind="member.lastLogin" class="posttime"> </span>
+       </p>
+     </div>
+
+     <div ng-repeat="member in directory|orderBy:['status','name']">
+       <p ng-show="!isOnline(member.status)" class="list-group-item"style="color:red;">
+         <span ng-bind="member.name"> </span>
+         (<b><span ng-bind="member.status"> </span></b>)
+         <span ng-bind="member.lastLogin" class="posttime"> </span>
+       </p>
+     </div>  
+  </div>
+
  </div>
