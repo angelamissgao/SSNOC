@@ -71,8 +71,8 @@ app.run(function($rootScope, ssnocService){
      //1-ok 2-help 3-emergency 0-logout
 
       console.log("update status in core" + status_id);
-      // ssnocService.updateStatus($rootScope.id, $rootScope.currentPosition, status_id);
-      ssnocService.updateStatus($rootScope.id, status_id);
+      ssnocService.updateStatus($rootScope.id, $rootScope.currentPosition, status_id);
+      //ssnocService.updateStatus($rootScope.id, status_id);
     }
 
     $rootScope.logout = function()

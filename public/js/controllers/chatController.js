@@ -7,6 +7,12 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
     $scope.chatMessage = "";
     $scope.searchMessage = "";
     // $scope.searchResult = [];
+    $scope.statusImgMap = {
+      0:"undefined.png",
+      1:"ok.png",
+      2:"help.png",
+      3:"emergency.png",
+    };
 
 
     var defer = $q.defer();

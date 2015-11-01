@@ -26,13 +26,11 @@
            <div class="publicChat">
       				  <div class="chatArea">
         					<p ng-repeat="message in messages"  ng-show="isAnnoucement(message.receiver_id)" class="alert alert-warning">
-                  
-                    <b><span ng-bind="directoryDict[message.member_id].name"></span></b>: &nbsp &nbsp
 
-                     <span ng-bind="message.message"></span>
-                    
-                    (<span ng-bind="message.timestamp" class = "posttime"></span>)
-                    (<span ng-bind="message.status"></span>)
+                    <img src="/images/{{statusImgMap[message.status]}}" />
+                    <b><span ng-bind="directoryDict[message.member_id].name"></span></b>: &nbsp &nbsp
+                     <b><span ng-bind="message.message"></span></b>
+                    <span ng-bind="message.timestamp" class = "posttime"></span>
                      <span ng-bind="message.receiver_id"></span>
                      <span ng-bind="message.position.lat"></span>
                      <span ng-bind="message.position.lng"></span>
@@ -40,13 +38,10 @@
 
 
                   <p ng-repeat="message in messages"  ng-show="!isAnnoucement(message.receiver_id)" class="alert alert-success">
-                    
+                    <img src="/images/{{statusImgMap[message.status]}}" />
                     <b><span ng-bind="directoryDict[message.member_id].name"></span></b>: &nbsp &nbsp
-
-                     <span ng-bind="message.message"></span>
-                    
+                     <b><span ng-bind="message.message"></span></b>       
                      <span ng-bind="message.timestamp" class = "posttime"></span>
-                    (<span ng-bind="message.status"></span>)
                      <!-- <span ng-bind="message.receiver_id"></span> -->
                      Position Info: 
                      [ <span ng-bind="message.position.lat"></span>

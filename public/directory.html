@@ -30,16 +30,17 @@
      </a>
       <div ng-repeat="member in directory|orderBy:['status','name']">
        <p ng-click='newPrivateChat(member._id)' ng-show="isOnline(member.status)" class="list-group-item"style="color:green;">
+          <img src="/images/{{statusImgMap[member.status]}}" />
          <span ng-bind="member.name"> </span>
-         &nbsp &nbsp(<b><span ng-bind="member.status"> </span></b>)
+         &nbsp &nbsp
          <span ng-bind="member.lastLogin" class="posttime"> </span>
        </p>
      </div>
 
      <div ng-repeat="member in directory|orderBy:['status','name']">
        <p ng-show="!isOnline(member.status)" class="list-group-item"style="color:red;">
+          <img src="/images/{{statusImgMap[member.status]}}" />
          <span ng-bind="member.name"> </span>
-         (<b><span ng-bind="member.status"> </span></b>)
          <span ng-bind="member.lastLogin" class="posttime"> </span>
        </p>
      </div>  
