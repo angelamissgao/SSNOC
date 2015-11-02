@@ -54,8 +54,8 @@ app.factory('ssnocService',function($http) {
 			searchMemberNames :function (searchMemberName){
 				return $http.get('/api/ssnoc/search_membername/' + searchMemberName);
 			},
-			searchsearchMemberStatus :function (searchMemberStatus){
-				return $http.get('/api/ssnoc/searchMemberStatus/' + searchMemberStatus);
+			searchMemberStatus :function (searchByStatus){
+				return $http.get('/api/ssnoc/search_memberstatus/' + searchByStatus);
 			}
 		
 			// delete : function(id) {

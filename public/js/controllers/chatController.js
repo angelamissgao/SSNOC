@@ -6,13 +6,20 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
     $scope.announcements = [];
     $scope.chatMessage = "";
     $scope.searchMessage = "";
-    // $scope.searchResult = [];
+
     $scope.statusImgMap = {
       0:"undefined.png",
       1:"ok.png",
       2:"help.png",
       3:"emergency.png",
     };
+
+    // $scope.statusMap = {
+    //   "ok":1,
+    //   "help":2,
+    //   "emergency":3,
+    //   "undefined":0
+    // };
 
 
     var defer = $q.defer();
@@ -162,15 +169,23 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
   }
 
 $scope.searchMemberStatus = function(){
-    ssnocService.searchMemberStatus($scope.searchMemberStatus)
-    .success(function(response){
-      // $scope.searchResult = response;
-      $scope.directory = response;
-        for (var i = 0; i < $scope.directory.length; i ++) {
-          var member = $scope.directory[i];
-          $scope.directoryDict[member._id] = member;
-        }
-    });
-  }
+    // var search_status = $scope.searchByStatus.toLowerCase();
+    // if (search_status in $scope.statusMap)
+    // {
+          ssnocService.searchMemberStatus($scope.searchByStatus)
+        .success(function(response){
+          // $scope.searchResult = response;
+          $scope.directory = response;
+            for (var i = 0; i < $scope.directory.length; i ++) {
+              var member = $scope.directory[i];
+              $scope.directoryDict[member._id] = member;
+            }
+        });
+    //   }
+
+    // } else {
+    //   console.log("no result!");
+    // }
+ }
 
 });
