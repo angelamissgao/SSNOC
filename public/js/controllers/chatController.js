@@ -157,18 +157,32 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
    $scope.searchAnnouncements = function(){
     ssnocService.searchAnnouncements($scope.searchAnnouncement)
     .success(function(response){
-      $scope.announcements = response;
+      if(response.length == 0){
+            $scope.searchAlert = true;
+            $scope.announcements = null;
+        }
+      else{
+            $scope.announcements = response;
+            $scope.searchAlert = false;
+      } 
     });
   }
 
   $scope.searchMemberNames = function(){
     ssnocService.searchMemberNames($scope.searchMemberName)
     .success(function(response){
-      $scope.directory = response;
-        for (var i = 0; i < $scope.directory.length; i ++) {
-          var member = $scope.directory[i];
-          $scope.directoryDict[member._id] = member;
+      if(response.length == 0){
+            $scope.searchAlert = true;
+            $scope.directory = null;
         }
+      else{
+          $scope.searchAlert = false;
+          $scope.directory = response;
+          for (var i = 0; i < $scope.directory.length; i ++) {
+            var member = $scope.directory[i];
+            $scope.directoryDict[member._id] = member;
+          }
+      }
     });
   }
 
@@ -176,13 +190,19 @@ $scope.searchMemberStatus = function(){
     var search_status = $scope.searchByStatus.toLowerCase();
     if (search_status in $scope.statusMap)
     {
-          ssnocService.searchMemberStatus($scope.statusMap[search_status])
+        ssnocService.searchMemberStatus($scope.statusMap[search_status])
         .success(function(response){
-          $scope.directory = response;
-            for (var i = 0; i < $scope.directory.length; i ++) {
-              var member = $scope.directory[i];
-              $scope.directoryDict[member._id] = member;
-            }
+          if(response.length == 0){
+            $scope.searchAlert = true;
+            $scope.directory = null;
+          }
+          else{
+              $scope.directory = response;
+              for (var i = 0; i < $scope.directory.length; i ++) {
+                var member = $scope.directory[i];
+                $scope.directoryDict[member._id] = member;
+              }
+          }
         });
     }
 
