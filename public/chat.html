@@ -1,48 +1,49 @@
 <div ng-controller="chatController" class="chat-container" id="chatpublic">
         
         <!--Welcome Msg-->
-        <div class="alert alert-info alert-dismissible" role="alert">
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <strong>Welcome to Brics SsNoc.</strong> You could send messages or share your status with the members in our community. 1-OK, 2-Help, 3-Emergency, 4-Undefined.
-        </div>
-
-        <div ng-show='msgAlert' class="alert alert-info alert-dismissible" role="alert">
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <strong>You Got a New Message!</strong>
-        </div>
-
-         <!-- public Chatarea -->
-           <div class="publicChat">
-      				  <div class="chatArea">
-        					<p ng-repeat="message in messages"  ng-show="isAnnoucement(message.receiver_id)" class="alert alert-warning">
-                  
-                    <b><span ng-bind="directoryDict[message.member_id].name"></span></b>: &nbsp &nbsp
-
-                     <span ng-bind="message.message"></span>
-                    
-                    (<span ng-bind="message.timestamp" class = "posttime"></span>)
-                    (<span ng-bind="message.status"></span>)
-                     <span ng-bind="message.receiver_id"></span>
-        					<p>	
-
-                  <p ng-repeat="message in messages"  ng-show="!isAnnoucement(message.receiver_id)" class="alert alert-success">
-                    
-                    <b><span ng-bind="directoryDict[message.member_id].name"></span></b>: &nbsp &nbsp
-
-                     <span ng-bind="message.message"></span>
-                    
-                     <span ng-bind="message.timestamp" class = "posttime"></span>
-                    (<span ng-bind="message.status"></span>)
-                     <span ng-bind="message.receiver_id"></span>
-                  <p>   
-
-      				  </div>
-        				<div class="sendMsg"> 
-          				<input ng-model="chatMessage" class="col-xs-9" id="ex3" type="text" height="20%"placeholder="Type your message.." required autofocus>
-          					
-          				<button ng-click="sendMessage()" type="submit" class="btn btn-success pull-right">Send</button>
-        				</div>
+        <div class="row">
+          <div class="alert alert-info alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>Welcome to Brics SsNoc.</strong> You could send messages or share your status with the members in our community. 1-OK, 2-Help, 3-Emergency, 4-Undefined.
           </div>
-       
+
+          <div ng-show='msgAlert' class="alert alert-info alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>You Got a New Message!</strong>
+          </div>
+       </div>
+			  <div class="row">
+          <div class="col-md-12 chatArea">
+					<p ng-repeat="message in messages"  ng-show="isAnnoucement(message.receiver_id)" class="alert alert-warning">
+          
+            <b><span ng-bind="directoryDict[message.member_id].name"></span></b>: &nbsp &nbsp
+
+             <span ng-bind="message.message"></span>
+            
+            (<span ng-bind="message.timestamp" class = "posttime"></span>)
+            (<span ng-bind="message.status"></span>)
+             <span ng-bind="message.receiver_id"></span>
+					<p>	
+
+          <p ng-repeat="message in messages"  ng-show="!isAnnoucement(message.receiver_id)" class="alert alert-success">
+            
+            <b><span ng-bind="directoryDict[message.member_id].name"></span></b>: &nbsp &nbsp
+
+             <span ng-bind="message.message"></span>
+            
+             <span ng-bind="message.timestamp" class = "posttime"></span>
+            (<span ng-bind="message.status"></span>)
+             <span ng-bind="message.receiver_id"></span>
+          <p>   
+          </div>
+			  </div>
+				<div class="row">
+          <div class="col-xs-9 col-md-10">
+    				<input ng-model="chatMessage" class="col-xs-9 chatMessage sendMsg" id="ex3" type="text" height="20%"placeholder="Type your message.." required autofocus>
+    			</div>
+        	<div class="col-xs-3 col-md-2">
+  				  <button ng-click="sendMessage()" type="submit" class="btn btn-success pull-right">Send</button>
+          </div>
+				</div>
 
 </div>
