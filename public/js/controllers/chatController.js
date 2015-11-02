@@ -6,6 +6,7 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
     $scope.announcements = [];
     $scope.chatMessage = "";
     $scope.searchMessage = "";
+    $scope.searchAlert = false;
 
     $scope.statusImgMap = {
       0:"undefined.png",
@@ -141,7 +142,14 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
     $scope.searchMessages = function(){
       ssnocService.searchPublicMessages($scope.searchMessage)
       .success(function(response){
-        $scope.messages = response;
+        if(response.length == 0){
+            $scope.searchAlert = true;
+            $scope.messages = null;
+        }
+        else{
+          $scope.searchAlert = false;
+          $scope.messages = response;
+        }
       });
     }
 

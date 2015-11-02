@@ -5,6 +5,7 @@ app.controller("privateChatController",function($scope, ssnocService, $q,$rootSc
   $scope.member = {};
   $scope.receiver = {};
   $scope.searchPrivateMessage = "";
+  $scope.searchAlert = false;
 
   getUsers();
 	getPrivateMessages();
@@ -59,9 +60,16 @@ app.controller("privateChatController",function($scope, ssnocService, $q,$rootSc
  $scope.searchPrivateMessages = function(){
       ssnocService.searchPrivateMessages($scope.searchPrivateMessage,$rootScope.id, $rootScope.receiverId)
       .success(function(response){
-        // $scope.searchResult = response;
-        $scope.messages = response;
-        console.log(response);
+
+        if(response.length == 0){
+            $scope.searchAlert = true;
+            $scope.messages = null;
+        }
+        else{
+          $scope.searchAlert = false;
+          $scope.messages = response;
+        }
+
       });
     }
 
