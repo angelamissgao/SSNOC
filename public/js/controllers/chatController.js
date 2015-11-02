@@ -14,12 +14,12 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
       3:"emergency.png",
     };
 
-    // $scope.statusMap = {
-    //   "ok":1,
-    //   "help":2,
-    //   "emergency":3,
-    //   "undefined":0
-    // };
+    $scope.statusMap = {
+      "ok":1,
+      "help":2,
+      "emergency":3,
+      "undefined":0
+    };
 
 
     var defer = $q.defer();
@@ -121,7 +121,6 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
         .success(function(response)
         {
           $scope.messages = response;
-          // console.log("msg %p",  response);
           $scope.messages.forEach(function(entry) {
             console.log("Position:" + entry.position);
           });
@@ -142,7 +141,6 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
     $scope.searchMessages = function(){
       ssnocService.searchPublicMessages($scope.searchMessage)
       .success(function(response){
-        // $scope.searchResult = response;
         $scope.messages = response;
       });
     }
@@ -151,7 +149,6 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
    $scope.searchAnnouncements = function(){
     ssnocService.searchAnnouncements($scope.searchAnnouncement)
     .success(function(response){
-      // $scope.searchResult = response;
       $scope.announcements = response;
     });
   }
@@ -159,7 +156,6 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
   $scope.searchMemberNames = function(){
     ssnocService.searchMemberNames($scope.searchMemberName)
     .success(function(response){
-      // $scope.searchResult = response;
       $scope.directory = response;
         for (var i = 0; i < $scope.directory.length; i ++) {
           var member = $scope.directory[i];
@@ -169,23 +165,22 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
   }
 
 $scope.searchMemberStatus = function(){
-    // var search_status = $scope.searchByStatus.toLowerCase();
-    // if (search_status in $scope.statusMap)
-    // {
-          ssnocService.searchMemberStatus($scope.searchByStatus)
+    var search_status = $scope.searchByStatus.toLowerCase();
+    if (search_status in $scope.statusMap)
+    {
+          ssnocService.searchMemberStatus($scope.statusMap[search_status])
         .success(function(response){
-          // $scope.searchResult = response;
           $scope.directory = response;
             for (var i = 0; i < $scope.directory.length; i ++) {
               var member = $scope.directory[i];
               $scope.directoryDict[member._id] = member;
             }
         });
-    //   }
+    }
 
-    // } else {
-    //   console.log("no result!");
-    // }
+    else {
+      console.log("no result!");
+    }
  }
 
 });

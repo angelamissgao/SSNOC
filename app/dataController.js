@@ -276,13 +276,14 @@ exports.searchMemberNames = function(req,res){
 
 exports.searchMemberStatus = function(req,res){
   var search_memberstatus = req.params.search_message;
-  Member.find({status: new RegExp(search_memberstatus)}, function(err, messages) {
+  Member.find({status: search_memberstatus }, function(err, messages) {
 
             if (err) {
                 return res.send(err);    
             }
 
             res.json(messages); 
+
         });
 };
 
