@@ -51,7 +51,8 @@ app.controller("mainController",function($scope, ssnocService, $q,$rootScope){
 						if(response.data !=undefined)
 						{ 	
 							$rootScope.id=response.data._id;
-							
+							$rootScope.name = response.data.name;
+						
 							$scope.validateUser  = response.data;
 							
 							$scope.isExistingMember = true;
@@ -97,6 +98,7 @@ app.controller("mainController",function($scope, ssnocService, $q,$rootScope){
 						$scope.member = data;
 						$scope.member.status = 1; 
 						$rootScope.id=$scope.member._id;
+						$rootScope.name=$scope.member.name;
 						updateStatus(); 
 					});
 		}

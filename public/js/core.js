@@ -41,6 +41,7 @@ app.config(['$routeProvider', function($routeProvider) {
 app.run(function($rootScope, ssnocService){
 
     $rootScope.id;    
+    $rootScope.name;
     $rootScope.receiverId;
     $rootScope.socket = io.connect(); 
     $rootScope.currentPosition = {lat: 0, lng: 0};

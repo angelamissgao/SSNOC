@@ -47,16 +47,19 @@
 
 <div class="container-fluid" >
    <div ng-if="authenticated">     
-     <div class="row" style="background-color:#E5FFFF">
+     <div class="row">
+      <!-- style="background-color:#E5FFFF" -->
       <div class="col-xs-2 col-sm-2 col-md-2" style="margin-top:30px;">
          <a href="" style="margin-left:10px;" id="nav-trigger"><img src="/images/directory.png"></a>
-       <!--  <a href="" style="margin-left:10px;" role="button" data-toggle="collapse" data-target="#menu-nav" aria-expanded="false"> <img src="/images/directory.png"></a> -->
       </div>
       <div class="col-xs-8 col-sm-8 col-md-8"> 
            <h2 class="bs-docs-featurette-title" style="text-align: center;">Brics SSNOC</h2>
       </div>
       <div class="col-xs-2 col-sm-2 col-md-2" style="margin-top:30px;">
-             <div class="dropdown pull-right">
+          <div class="col-md-1" ng-bind="name">
+          </div>
+
+             <div class="col-md-1 dropdown pull-right">
                 <a class="dropdown-toggle" style="margin-right:10px;" type="button" data-toggle="dropdown">
                 <b class="caret"></b></a>
                 <ul class="dropdown-menu">
@@ -72,22 +75,23 @@
 
       <div class="row">
     	     <div ng-if="authenticated">	
-            <div class="col-xs-3 col-sm-2 col-md-1" style="background-color:#FFE5FF"> 
+            <div class="col-xs-3 col-sm-3 col-md-1">
+            <!-- style="background-color:#FFE5FF"  -->
             <nav class="navbar sidebar-navbar-collapse" id="menu-nav" >
             <ul class="nav navbar-nav" >
-            <li><a href="#/chatting">Chatting</a></li>
-            <li><a href="#/directory">Directory</a></li>
+            <li style="width:90px;  word-wrap: break-word;"><a href="#/chatting">Chatting</a></li>
+            <li  style="width:90px;  word-wrap: break-word;"><a href="#/directory">Directory</a></li>
             <!-- <li>
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
             </li> -->
-            <li><a href="#/inbox">Inbox</a></li>
-            <li><a href="#/announcements">Announcement <!-- <span class="badge">1,118</span> --></a></li>
+            <li  style="width:90px;  word-wrap: break-word;"><a href="#/announcements">Announcement <!-- <span class="badge">1,118</span> --></a></li>
           </ul>
           </nav><!--/.nav-collapse -->
           </div>
         </div>
 
-      <div class="col-xs-9 col-sm-10 col-md-11" style="background-color:#E5FFE5">
+      <div id='main' class="col-xs-9 col-sm-10 col-md-11">
+        <!-- style="background-color:#E5FFE5" -->
       	<div ng-view>	
       	</div>
       </div>
@@ -111,10 +115,38 @@
 
       console.log($("#nav-trigger"));
     
-      $("#nav-trigger").click(function(){
+      $(document).on('click',"#nav-trigger", function(){
         console.log("show nav");
-          // var leftMargin = ($("menu-nav").css('margin-left') === '0px') ? '-150px' : '0px';
-          // $("menu-nav").animate({ 'margin-left' : leftMargin }, 500);
+      //     var leftMargin = ($("#menu-nav").css('margin-left') === '0px') ? '-150px' : '0px';
+           
+           $("#menu-nav").css('margin-left');
+           if($("#menu-nav").attr('class') == 'navbar sidebar-navbar-collapse hide')
+           {
+            console.log('show');
+       
+             $("#menu-nav").animate({ 'margin-left' : 0 }, 600);
+              
+              $("#menu-nav").removeClass('hide');
+              $("#menu-nav").addClass('show');
+                  
+              $('#main').removeClass('col-xs-9 col-sm-10 col-md-11');
+              $('#main').removeClass('col-xs-12 col-sm-12 col-md-12');
+              $('#main').addClass('col-xs-9 col-sm-10 col-md-11');
+      
+           }
+           else{
+            console.log('hide');
+          
+             $("#menu-nav").animate({ 'margin-left' : -200 }, 500);
+             
+              $("#menu-nav").removeClass('show');
+              $("#menu-nav").addClass('hide');
+
+              $('#main').removeClass('col-xs-9 col-sm-10 col-md-11');
+              $('#main').removeClass('col-xs-12 col-sm-12 col-md-12');
+              $('#main').addClass('col-xs-12 col-sm-12 col-md-12');
+             
+           }
       });
 
     });
