@@ -257,10 +257,10 @@ io.on('connection',function(socket){
 		res.sendFile(appRoot); // load the single view file (angular will handle the page changes on the front-end)
 	});
 	
-	app.get('*', function(req, res) {
-		appRoot = __dirname + '/../public/index.html';
-		console.log(appRoot);
-		res.sendFile(path.join(appRoot)); // load the single view file (angular will handle the page changes on the front-end)
-	});
+	// app.get('*', function(req, res) {
+	// 	appRoot = __dirname + '/../public/index.html';
+	// 	console.log(appRoot);
+	// 	res.sendFile(path.join(appRoot)); // load the single view file (angular will handle the page changes on the front-end)
+	// });
 
 };
