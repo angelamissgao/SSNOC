@@ -19,12 +19,10 @@
 
 			<script src="libs/angular.min.js"></script>
 			<script src="libs/angular-route.min.js"></script>
+      <script src="http://code.angularjs.org/1.2.19/angular-touch.min.js"></script>
 
-     		<link rel="stylesheet" href="libs/bootstrap.min.css">
+     	<link rel="stylesheet" href="libs/bootstrap.min.css">
 			<link rel="stylesheet" href="libs/font-awesome.min.css">
-
-
-
 <!-- 
       		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -45,57 +43,62 @@
 			<script src="js/controllers/privateChatController.js"></script> 
 
 	</head>
-	<body ng-app="ssnoc">
+<body ng-app="ssnoc">
 
 <div class="container-fluid" >
-      <div class="row"> 
-        <div ng-if="authenticated"> 
-         <nav class="navbar navbar-default">
-           <div class = "welcomeMsg">
-            <h2 class="bs-docs-featurette-title">Welcome to Brics SSNOC</h2>
-           </div>  
-           <ul class=" nav navbar-nav navbar-right settings">
-             <li class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Status
-                <span class="caret"></span></button>
+   <div ng-if="authenticated">     
+     <div class="row">
+      <!-- style="background-color:#E5FFFF" -->
+      <div class="col-xs-2 col-sm-2 col-md-2" style="margin-top:30px;">
+         <a href="" style="margin-left:10px;" id="nav-trigger"><img src="/images/directory.png"></a>
+      </div>
+      <div class="col-xs-8 col-sm-8 col-md-8"> 
+           <h2 class="bs-docs-featurette-title" style="text-align: center;">Brics SSNOC</h2>
+      </div>
+      <div class="col-xs-2 col-sm-2 col-md-2" style="margin-top:30px;">
+          <div class="col-md-1" ng-bind="name">
+          </div>
+
+             <div class="col-md-1 dropdown pull-right">
+                <a class="dropdown-toggle" style="margin-right:10px;" type="button" data-toggle="dropdown">
+                <b class="caret"></b></a>
+
                 <ul class="dropdown-menu">
                   <li ng-repeat="status in statuses">
                     <a ng-bind="status.name" ng-click="shareStatus(status.id)"></a>
                   </li>
                   <li><a ng-click="logout()" type="submit" ><b>Logout</b></a></li>
-                </ul>         
-            </ul>
-            </nav>
-          </div>
+                </ul>
+             </div>
+        </div>
       </div>
 
       <div class="row">
-    	<div ng-if="authenticated">	
-        <div class="col-sm-2">      
-           <div class="navbar-collapse collapse sidebar-navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#chatting">Chatting</a></li>
-            <li><a href="#directory">Directory</a></li>
-            <li><a href="#inbox">Inbox</a></li>
-            <li><a href="#announcements">announcements</a></li>
-            <li class="dropdown">
+    	     <div ng-if="authenticated">	
+            <div class="col-xs-3 col-sm-3 col-md-1">
+            <!-- style="background-color:#FFE5FF"  -->
+            <nav class="navbar sidebar-navbar-collapse" id="menu-nav" >
+            <ul class="nav navbar-nav" >
+            <li style="width:90px;  word-wrap: break-word;"><a href="#/chatting">Chatting</a></li>
+            <li  style="width:90px;  word-wrap: break-word;"><a href="#/directory">Directory</a></li>
+            <!-- <li>
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#chatting">Chatting</a></li>
-                <li><a href="#directory">Directory</a></li>
-                <li class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#announcements">announcements</a></li>
-              </ul>
-            </li>
-            <li><a href="#">Menu Item 4</a></li>
-            <li><a href="#">Reviews <span class="badge">1,118</span></a></li>
+            </li> -->
+            <li  style="width:90px;  word-wrap: break-word;"><a href="#/announcements">Announcement <!-- <span class="badge">1,118</span> --></a></li>
           </ul>
-        </div><!--/.nav-collapse -->
+          </nav><!--/.nav-collapse -->
+          </div>
         </div>
+
+      <div id='main' class="col-xs-9 col-sm-10 col-md-11">
+        <!-- style="background-color:#E5FFE5" -->
+      	<div ng-view>	
+      	</div>
+      </div>
+
     </div>
-	<div ng-view>	
-	</div>
+
+</div>
 
 		<!-- 		// <script src="js/controllers/mainController.js"></script> 
 	<script src="https://cdn.socket.io/socket.io-1.3.7.js"></script>
@@ -104,7 +107,50 @@
 		-->
 	<script src="/socket.io/socket.io.js"></script>
 	<script>
+
 	  var socket = io.connect();
+
+    $(document).ready(function(){
+      console.log("loaded doc");
+
+      console.log($("#nav-trigger"));
+    
+      $(document).on('click',"#nav-trigger", function(){
+        console.log("show nav");
+      //     var leftMargin = ($("#menu-nav").css('margin-left') === '0px') ? '-150px' : '0px';
+           
+           $("#menu-nav").css('margin-left');
+           if($("#menu-nav").attr('class') == 'navbar sidebar-navbar-collapse hide')
+           {
+            console.log('show');
+       
+             $("#menu-nav").animate({ 'margin-left' : 0 }, 600);
+              
+              $("#menu-nav").removeClass('hide');
+              $("#menu-nav").addClass('show');
+                  
+              $('#main').removeClass('col-xs-9 col-sm-10 col-md-11');
+              $('#main').removeClass('col-xs-12 col-sm-12 col-md-12');
+              $('#main').addClass('col-xs-9 col-sm-10 col-md-11');
+      
+           }
+           else{
+            console.log('hide');
+          
+             $("#menu-nav").animate({ 'margin-left' : -200 }, 500);
+             
+              $("#menu-nav").removeClass('show');
+              $("#menu-nav").addClass('hide');
+
+              $('#main').removeClass('col-xs-9 col-sm-10 col-md-11');
+              $('#main').removeClass('col-xs-12 col-sm-12 col-md-12');
+              $('#main').addClass('col-xs-12 col-sm-12 col-md-12');
+             
+           }
+      });
+
+    });
+
 	</script>
  
 	</body>
