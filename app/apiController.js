@@ -227,6 +227,117 @@ io.on('connection',function(socket){
 		dataController.getPrivateMessages(req,res);
 	});
 
+
+//Search Function
+/**
+ * @api {get} /api/ssnoc/messages Get all messages from history
+ * @apiGroup Search
+ * @apiName SearchPublicMessages
+ *
+ * @apiSuccess {String} JSON with messages.
+ * 
+ * @apiParam {String} member id
+ *
+ * @apiParam {String} receiver id
+ *
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *[{"message":"First message","member_id":3,"status":1,"_id":2,"__v":0,"timestamp":"2015-10-09T08:38:00.456Z"},
+ *{"message":"Second message","member_id":3,"status":1,"_id":3,"__v":0,"timestamp":"2015-10-09T08:38:03.237Z"}]
+ */
+
+	app.get('/api/ssnoc/search_public_messages/:search_message',function(req,res){
+		dataController.searchPublicMessages(req, res);
+	});
+
+/**
+ * @api {get} /api/ssnoc/messages Get all messages from history
+ * @apiGroup Search
+ * @apiName SearchPrivateMessages
+ *
+ * @apiSuccess {String} JSON with messages.
+ * 
+ * @apiParam {String} member id
+ *
+ * @apiParam {String} receiver id
+ *
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *[{"message":"First message","member_id":3,"status":1,"_id":2,"__v":0,"timestamp":"2015-10-09T08:38:00.456Z"},
+ *{"message":"Second message","member_id":3,"status":1,"_id":3,"__v":0,"timestamp":"2015-10-09T08:38:03.237Z"}]
+ */
+
+	app.get('/api/ssnoc/search_private_messages/:search_message/:member_id/:receiver_id',function(req,res){
+		dataController.searchPrivateMessages(req, res);
+	});
+
+/**
+ * @api {get} /api/ssnoc/messages Get all messages from history
+ * @apiGroup Search
+ * @apiName SearhAnnouncements
+ *
+ * @apiSuccess {String} JSON with messages.
+ * 
+ * @apiParam {String} member id
+ *
+ * @apiParam {String} receiver id
+ *
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *[{"message":"First message","member_id":3,"status":1,"_id":2,"__v":0,"timestamp":"2015-10-09T08:38:00.456Z"},
+ *{"message":"Second message","member_id":3,"status":1,"_id":3,"__v":0,"timestamp":"2015-10-09T08:38:03.237Z"}]
+ */
+
+	app.get('/api/ssnoc/search_announcements/:search_message',function(req,res){
+		dataController.searchAnnouncements(req, res);
+	});
+
+/**
+ * @api {get} /api/ssnoc/messages Get all messages from history
+ * @apiGroup Search
+ * @apiName SearchMemberNames
+ *
+ * @apiSuccess {String} JSON with messages.
+ * 
+ * @apiParam {String} member id
+ *
+ * @apiParam {String} receiver id
+ *
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *[{"message":"First message","member_id":3,"status":1,"_id":2,"__v":0,"timestamp":"2015-10-09T08:38:00.456Z"},
+ *{"message":"Second message","member_id":3,"status":1,"_id":3,"__v":0,"timestamp":"2015-10-09T08:38:03.237Z"}]
+ */
+
+	app.get('/api/ssnoc/search_membername/:search_message',function(req,res){
+		dataController.searchMemberNames(req, res);
+	});
+
+/**
+ * @api {get} /api/ssnoc/messages Get all messages from history
+ * @apiGroup Search
+ * @apiName SearchMemberStatus
+ *
+ * @apiSuccess {String} JSON with messages.
+ * 
+ * @apiParam {String} member id
+ *
+ * @apiParam {String} receiver id
+ *
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *[{"message":"First message","member_id":3,"status":1,"_id":2,"__v":0,"timestamp":"2015-10-09T08:38:00.456Z"},
+ *{"message":"Second message","member_id":3,"status":1,"_id":3,"__v":0,"timestamp":"2015-10-09T08:38:03.237Z"}]
+ */
+	app.get('/api/ssnoc/search_memberstatus/:search_message',function(req,res){
+		dataController.searchMemberStatus(req, res);
+	});
+
 //Files
 
 	app.get('/chatting', function(req, res) {

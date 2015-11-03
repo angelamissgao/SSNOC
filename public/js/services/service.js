@@ -38,7 +38,26 @@ app.factory('ssnocService',function($http) {
 			},
 			getMemberById : function(memberId){
 				return $http.get('api/ssnoc/memberModel/'+ memberId);
+			},
+
+			searchPublicMessages :function (searchMessage){
+				return $http.get('/api/ssnoc/search_public_messages/' + searchMessage);
+			},
+
+			searchPrivateMessages :function (searchPrivateMessage,senderId, receiverId){
+				return $http.get('/api/ssnoc/search_private_messages/' + searchPrivateMessage + '/' 
+					+ senderId + '/' + receiverId);
+			},
+			searchAnnouncements :function (searchAnnouncement){
+				return $http.get('/api/ssnoc/search_announcements/' + searchAnnouncement);
+			},
+			searchMemberNames :function (searchMemberName){
+				return $http.get('/api/ssnoc/search_membername/' + searchMemberName);
+			},
+			searchMemberStatus :function (searchByStatus){
+				return $http.get('/api/ssnoc/search_memberstatus/' + searchByStatus);
 			}
+		
 			// delete : function(id) {
 			// 	return $http.delete('/api/ssnoc/' + id);
 			// }

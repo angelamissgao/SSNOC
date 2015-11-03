@@ -4,14 +4,30 @@
           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <strong>You Got a New Message!</strong>
 </div>
+
+<div ng-show='searchAlert' class="alert alert alert-success alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <strong>No matching results!</strong>
+</div>
+
+<!-- serach function -->
+        <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input ng-model="searchPrivateMessage" type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default" ng-click="searchPrivateMessages()">Search</button>
+       </form>
+
+
     <h4 ng-bind="receiver.name"></h4>
     <div class="chatArea">
-      <p ng-repeat="message in messages">
+      <p ng-repeat="message in messages" ng-show="isSearchMsgShown(message._id, messages)" >
        <b><span ng-bind="getName(message.member_id)"></span></b>
         <span ng-bind="message.message"></span>
         <span ng-bind="message.timestamp" class = "posttime"></span>
         (<span ng-bind="message.status"></span>)
       <p>     
+      <button type="button" class="btn btn-default" ng-show="isShowMoreButtonShown(messages)" ng-click="showMore()">Show More</button>
     </div>
     <div class="sendMsg"> 
       <input ng-model="chatMessage" class="col-xs-9" id="ex3" type="text" height="20%"placeholder="Type your message.." required autofocus>

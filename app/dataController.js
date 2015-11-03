@@ -103,7 +103,7 @@ exports.addPublicMessage = function(req, res, io) {
 				}
 				io.emit('message', mymessage);
 				res.json(mymessage);
-				// console.log(mymessage);
+				console.log("test location %s", mymessage);
 			});
 		}
 	});
@@ -204,11 +204,86 @@ exports.addPrivateMessage = function(req, res, io){
 
 						io.emit('privatemessage', mymessage);
 						res.json(mymessage);
+						console.log(mymessage);
 					});
 				}
 			});
 		}
-
 	});
+};
 
-}
+
+exports.searchPublicMessages = function(req,res){
+	var search_message = req.params.search_message;
+	Message.find( { $and: [ {message: new RegExp(search_message)},
+                          {receiver_id: public_receiver}]
+        
+          }, function(err, messages) {
+
+            if (err) {
+                return res.send(err);    
+            }
+
+            res.json(messages); 
+        }).sort( { timestamp: -1 } );
+};
+
+exports.searchPrivateMessages = function(req,res){
+	var search_message = req.params.search_message;
+	Message.find( { $and: [{message: new RegExp(search_message)},
+		{$or:[
+				{$and: [{member_id: req.params.member_id}, {receiver_id: req.params.receiver_id}]},
+				{$and: [{receiver_id: req.params.member_id}, {member_id: req.params.receiver_id}]}
+				]}
+					]
+
+					}, function(err, messages) {
+
+            if (err) {
+                return res.send(err);    
+            }
+
+            res.json(messages); 
+        }).sort( { timestamp: -1 } );	
+};
+
+exports.searchAnnouncements = function(req,res){
+	var search_message = req.params.search_message;
+	Message.find( { $and: [{message: new RegExp(search_message)},
+												 {receiver_id: announcement_receiver}]
+
+				}, function(err, messages) {
+
+            if (err) {
+                return res.send(err);    
+            }
+
+            res.json(messages); 
+        }).sort( { timestamp: -1 } );
+};
+
+exports.searchMemberNames = function(req,res){
+	var search_membername = req.params.search_message;
+	Member.find({name: new RegExp(search_membername)}, function(err, messages) {
+
+            if (err) {
+                return res.send(err);    
+            }
+
+            res.json(messages); 
+        });
+};
+
+exports.searchMemberStatus = function(req,res){
+  var search_memberstatus = req.params.search_message;
+  Member.find({status: search_memberstatus }, function(err, messages) {
+
+            if (err) {
+                return res.send(err);    
+            }
+
+            res.json(messages); 
+
+        });
+};
+

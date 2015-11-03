@@ -43,6 +43,7 @@
 			<script src="js/controllers/privateChatController.js"></script> 
 
 	</head>
+
 <body ng-app="ssnoc">
 
 <div class="container-fluid" >
@@ -62,16 +63,17 @@
              <div class="col-md-1 dropdown pull-right">
                 <a class="dropdown-toggle" style="margin-right:10px;" type="button" data-toggle="dropdown">
                 <b class="caret"></b></a>
+
                 <ul class="dropdown-menu">
                   <li ng-repeat="status in statuses">
                     <a ng-bind="status.name" ng-click="shareStatus(status.id)"></a>
                   </li>
                   <li><a ng-click="logout()" type="submit" ><b>Logout</b></a></li>
-                </ul>  
-               </div>
-        </div>
+                </ul>
+             </div>
         </div>
       </div>
+    </div>
 
       <div class="row">
     	     <div ng-if="authenticated">	
@@ -105,7 +107,7 @@
 		 -->
 		<!-- 
 		-->
-	<script src="http://localhost:2222/socket.io/socket.io.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
 	<script>
 
 	  var socket = io.connect();

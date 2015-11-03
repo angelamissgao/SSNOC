@@ -53,6 +53,8 @@ app.run(function($rootScope, ssnocService){
       {name:"Help", id:2},
       {name:"Emergency", id:3}
     ];
+    $rootScope.currentMsgPage = 0;
+    var pageSize = 10;
     
     getLocation();
 
@@ -61,9 +63,10 @@ app.run(function($rootScope, ssnocService){
     }
 
     function showLocation(position) {
-      console.log("core::showLocation: %s", $rootScope.currentPosition);
+      console.log("core::showLocation: %s", position);
       if(position!==undefined) {
-        $rootScope.currentPosition = position;
+
+        $rootScope.currentPosition = {lat: position.coords.latitude, lng: position.coords.longitude};
       }
     }
 
@@ -71,8 +74,8 @@ app.run(function($rootScope, ssnocService){
      //1-ok 2-help 3-emergency 0-logout
 
       console.log("update status in core" + status_id);
-      // ssnocService.updateStatus($rootScope.id, $rootScope.currentPosition, status_id);
-      ssnocService.updateStatus($rootScope.id, status_id);
+      ssnocService.updateStatus($rootScope.id, $rootScope.currentPosition, status_id);
+      //ssnocService.updateStatus($rootScope.id, status_id);
     }
 
     $rootScope.logout = function()
@@ -90,6 +93,34 @@ app.run(function($rootScope, ssnocService){
       ssnocService.updateStatus($rootScope.id, 0);
       $scope.$apply();
     });
+
+    $rootScope.isSearchMsgShown = function(messageId, messages)
+      {
+        for (var i = 0; i < messages.length; i ++) {
+          if (messages[i]._id == messageId) {
+            if (i < ($rootScope.currentMsgPage+1) * pageSize) {
+              return true;
+            }
+            else {
+              return false;
+            }
+          }
+        }
+        return false;
+      }
+
+    $rootScope.isShowMoreButtonShown = function(messages) {
+      if (($rootScope.currentMsgPage+1) * pageSize >= messages.length) {
+        return false;
+      }
+      else {
+        return true;
+      }
+    }
+
+    $rootScope.showMore = function() {
+      $rootScope.currentMsgPage += 1;
+    }
 
 });
 
