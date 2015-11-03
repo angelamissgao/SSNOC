@@ -225,7 +225,7 @@ exports.searchPublicMessages = function(req,res){
             }
 
             res.json(messages); 
-        }).limit(10).sort( { timestamp: -1 } );
+        }).sort( { timestamp: -1 } );
 };
 
 exports.searchPrivateMessages = function(req,res){
@@ -244,7 +244,7 @@ exports.searchPrivateMessages = function(req,res){
             }
 
             res.json(messages); 
-        }).limit(10).sort( { timestamp: -1 } );	
+        }).sort( { timestamp: -1 } );	
 };
 
 exports.searchAnnouncements = function(req,res){
@@ -259,7 +259,7 @@ exports.searchAnnouncements = function(req,res){
             }
 
             res.json(messages); 
-        }).limit(10).sort( { timestamp: -1 } );
+        }).sort( { timestamp: -1 } );
 };
 
 exports.searchMemberNames = function(req,res){

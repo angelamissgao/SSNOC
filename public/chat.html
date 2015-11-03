@@ -43,7 +43,7 @@
 
 
 
-                  <p ng-repeat="message in messages"  ng-show="!isAnnoucement(message.receiver_id)" class="alert alert-success">
+                  <p ng-repeat="message in messages"  ng-show="!isAnnoucement(message.receiver_id) && isSearchMsgShown(message._id, messages)" class="alert alert-success">
                     <img ng-src="/images/{{statusImgMap[message.status]}}" style="margin-right:5px;"> 
                     <b><span ng-bind="directoryDict[message.member_id].name"></span></b>: &nbsp &nbsp
                      <b><span ng-bind="message.message"></span></b>       
@@ -52,6 +52,8 @@
                      [ <span ng-bind="message.position.lat"></span>
                      <span ng-bind="message.position.lng"></span>]
                   </p>   
+
+                  <button type="button" class="btn btn-default" ng-show="isShowMoreButtonShown(messages)" ng-click="showMore()">Show More</button>
 
           </div>
 			  </div>

@@ -14,11 +14,12 @@
 
 
       <div class="chatArea">
-      <p ng-repeat="announcement in announcements" class="alert alert-danger">
+      <p ng-repeat="announcement in announcements" ng-show="isSearchMsgShown(announcement._id, announcements)" class="alert alert-danger">
         <span ng-bind="announcement.message"></span>
          <span ng-bind="announcement.timestamp" class = "posttime"></span>
          
       <p>     
+      <button type="button" class="btn btn-default" ng-show="isShowMoreButtonShown(announcements)" ng-click="showMore()">Show More</button>
     </div>
     <div class="sendMsg"> 
       <input ng-model="chatMessage" class="col-xs-9" id="ex3" type="text" height="20%"placeholder="Type your message.." required autofocus>

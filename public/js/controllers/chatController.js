@@ -7,6 +7,7 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
     $scope.chatMessage = "";
     $scope.searchMessage = "";
     $scope.searchAlert = false;
+    $rootScope.currentMsgPage = 0;
 
     $scope.statusImgMap = {
       0:"undefined.png",
@@ -138,16 +139,17 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
         });
     } 
       
-//search functions 
-var stopwords = ["a","able","about","across","after","all","almost","also","am","among","an","and","any","are","as","at","be","because","been","but","by","can","cannot","could","dear","did","do","does","either","else","ever","every","for","from","get","got","had","has","have","he","her","hers","him","his","how","however","i","if","in","into","is","it","its","just","least","let","like","likely","may","me","might","most","must","my","neither","no","nor","not","of","off","often","on","only","or","other","our","own","rather","said","say","says","she","should","since","so","some","than","that","the","their","them","then","there","these","they","this","tis","to","too","twas","us","wants","was","we","were","what","when","where","which","while","who","whom","why","will","with","would","yet","you","your"];
+    //search functions 
+    var stopwords = ["a","able","about","across","after","all","almost","also","am","among","an","and","any","are","as","at","be","because","been","but","by","can","cannot","could","dear","did","do","does","either","else","ever","every","for","from","get","got","had","has","have","he","her","hers","him","his","how","however","i","if","in","into","is","it","its","just","least","let","like","likely","may","me","might","most","must","my","neither","no","nor","not","of","off","often","on","only","or","other","our","own","rather","said","say","says","she","should","since","so","some","than","that","the","their","them","then","there","these","they","this","tis","to","too","twas","us","wants","was","we","were","what","when","where","which","while","who","whom","why","will","with","would","yet","you","your"];
 
     $scope.searchMessages = function(){
+      $rootScope.currentMsgPage = 0;
       if (stopwords.indexOf($scope.searchMessage) == -1 ) {
           ssnocService.searchPublicMessages($scope.searchMessage)
           .success(function(response){
             if(response.length == 0){
                 $scope.searchAlert = true;
-                $scope.messages = null;
+                $scope.messages = [];
             }
             else{
               $scope.searchAlert = false;
@@ -157,18 +159,19 @@ var stopwords = ["a","able","about","across","after","all","almost","also","am",
       }
       else {
         $scope.searchAlert = true;
-        $scope.messages = null;
+        $scope.messages = [];
       } 
     }
 
 
    $scope.searchAnnouncements = function(){
+     $rootScope.currentMsgPage = 0;
      if (stopwords.indexOf($scope.searchAnnouncement) == -1 ) {
         ssnocService.searchAnnouncements($scope.searchAnnouncement)
         .success(function(response){
           if(response.length == 0){
                 $scope.searchAlert = true;
-                $scope.announcements = null;
+                $scope.announcements = [];
             }
           else{
                 $scope.announcements = response;
@@ -178,7 +181,7 @@ var stopwords = ["a","able","about","across","after","all","almost","also","am",
       }
       else {
         $scope.searchAlert = true;
-        $scope.announcements = null;
+        $scope.announcements = [];
       } 
   }
 
@@ -187,7 +190,7 @@ var stopwords = ["a","able","about","across","after","all","almost","also","am",
     .success(function(response){
       if(response.length == 0){
             $scope.searchAlert = true;
-            $scope.directory = null;
+            $scope.directory = [];
         }
       else{
           $scope.searchAlert = false;
@@ -200,7 +203,7 @@ var stopwords = ["a","able","about","across","after","all","almost","also","am",
     });
   }
 
-$scope.searchMemberStatus = function(){
+  $scope.searchMemberStatus = function(){
     var search_status = $scope.searchByStatus.toLowerCase();
     if (search_status in $scope.statusMap)
     {
@@ -208,7 +211,7 @@ $scope.searchMemberStatus = function(){
         .success(function(response){
           if(response.length == 0){
             $scope.searchAlert = true;
-            $scope.directory = null;
+            $scope.directory = [];
           }
           else{
               $scope.directory = response;
@@ -219,10 +222,9 @@ $scope.searchMemberStatus = function(){
           }
         });
     }
-
     else {
       console.log("no result!");
     }
- }
+  }
 
 });

@@ -53,6 +53,8 @@ app.run(function($rootScope, ssnocService){
       {name:"Help", id:2},
       {name:"Emergency", id:3}
     ];
+    $rootScope.currentMsgPage = 0;
+    var pageSize = 10;
     
     getLocation();
 
@@ -91,6 +93,34 @@ app.run(function($rootScope, ssnocService){
       ssnocService.updateStatus($rootScope.id, 0);
       $scope.$apply();
     });
+
+    $rootScope.isSearchMsgShown = function(messageId, messages)
+      {
+        for (var i = 0; i < messages.length; i ++) {
+          if (messages[i]._id == messageId) {
+            if (i < ($rootScope.currentMsgPage+1) * pageSize) {
+              return true;
+            }
+            else {
+              return false;
+            }
+          }
+        }
+        return false;
+      }
+
+    $rootScope.isShowMoreButtonShown = function(messages) {
+      if (($rootScope.currentMsgPage+1) * pageSize >= messages.length) {
+        return false;
+      }
+      else {
+        return true;
+      }
+    }
+
+    $rootScope.showMore = function() {
+      $rootScope.currentMsgPage += 1;
+    }
 
 });
 
