@@ -1,5 +1,6 @@
 var Member = require('./models/memberModel');
 var Message = require('./models/messageModel');
+var TestMessage = require('./models/testMessageModel');
 var path = require('path');
 var public_receiver = 0;
 var announcement_receiver = 1;
@@ -110,6 +111,34 @@ exports.addPublicMessage = function(req, res, io) {
 
 }
 
+exports.addTestMessage = function(req, res, io) {
+	var member_id = req.params.member_id;
+	var member_status = 1;
+	var message = req.params.message;
+	var latitude = req.params.latitude;
+	var longitude = req.params.longitude;
+
+	console.log("dataController::testSendMessage");
+
+	Member.findById(member_id, function(err, member) {
+		if (err) {
+			return res.send(err);
+		}
+
+		testmessage = new TestMessage({message: message, member_id: member_id, status: member_status,
+		 position: {lng: longitude, lat: latitude}});
+		
+		testmessage.save(function (err, obj) { 
+			if (err) {
+				return res.send(err);
+			}
+			io.emit('testmessage', mymessage);
+			res.json(testmessage);
+		});
+	});
+
+}
+
 exports.addAnnouncement = function(req, res, io) {
 	var member_id = req.params.member_id;
 	var message = req.params.message;
@@ -150,6 +179,17 @@ exports.getPublicMessages = function(res){
 
             res.json(messages); 
         });
+};
+
+exports.getTestMessage = function(res){
+    TestMessage.find({}, function(err, messages) {
+
+            if (err) {
+                return res.send(err);    
+            }
+
+            res.json(messages); 
+        }).limit(1);
 };
 
 exports.getAnnouncements = function(res){

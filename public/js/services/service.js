@@ -38,7 +38,16 @@ app.factory('ssnocService',function($http) {
 			},
 			getMemberById : function(memberId){
 				return $http.get('api/ssnoc/memberModel/'+ memberId);
+			},
+			testSendMessage : function(message, position, user_id){
+				console.log("service::testSendMessage");
+		  		return $http.post('/api/ssnoc/test/add_message/' + user_id + '/' + position.lat + "/"
+		  			+ position.lng + "/"+ message);
+			},
+			testGetMessage : function(){
+				return $http.get('/api/ssnoc/test/get_message');
 			}
+
 			// delete : function(id) {
 			// 	return $http.delete('/api/ssnoc/' + id);
 			// }

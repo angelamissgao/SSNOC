@@ -36,6 +36,11 @@ app.config(['$routeProvider', function($routeProvider) {
                 controller  : 'privateChatController'
             })
 
+            .when('/performance', {
+                templateUrl : 'performance.html',
+                controller  : 'performanceTestController'
+            })
+
     }]);
 
 app.run(function($rootScope, ssnocService){

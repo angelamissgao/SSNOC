@@ -42,6 +42,15 @@ body {
   float: right;
 }
 
+.performance{
+  height:90%;
+  width: 20%;
+  margin-right: 10px;
+  text-align: center;
+  background-color: #FFE4E1;
+  float: right;
+}
+
 .onlineDirectory{
   margin-top: 70px;
   margin: 10px auto;
