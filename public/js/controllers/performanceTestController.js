@@ -19,6 +19,7 @@ app.controller("performanceTestController",function($scope, ssnocService, $q,$ro
 
       runPerformance(startTime, function(result){
         console.log("Perfomance: " + result + " " + (new Date().getTime() - startTime));  
+        
              console.log("Reset database!!!!!");
           ssnocService.testReset();
        });
