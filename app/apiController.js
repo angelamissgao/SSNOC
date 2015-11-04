@@ -2,7 +2,6 @@ var dataController = require('./dataController.js');
 
 module.exports = function(app, io) {
 
-
 io.on('connection',function(socket){
 	console.log("user connected");
 	socket.on('disconnect', function(){
@@ -131,6 +130,11 @@ io.on('connection',function(socket){
 		dataController.addPublicMessage(req, res, io);
 	});
 
+	app.post('/api/ssnoc/test/add_message/:member_id/:latitude/:longitude/:message', function(req, res) {
+		console.log("apiController::testSendMessage");
+		dataController.addTestMessage(req, res, io);
+	});
+
 /**
  * @api {post} /api/ssnoc/announcement/:member_id/:message Post an announcement
  * @apiGroup Messages
@@ -188,6 +192,14 @@ io.on('connection',function(socket){
  */
 	app.get('/api/ssnoc/messages', function(req,res) {
 		dataController.getPublicMessages(res);
+	});
+
+	app.get('/api/ssnoc/test/get_message', function(req,res) {
+		dataController.getTestMessage(res);
+	});
+
+	app.post('/api/ssnoc/test/reset', function(req,res) {
+		dataController.resetTest(res);
 	});
 
 /**

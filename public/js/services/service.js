@@ -56,8 +56,18 @@ app.factory('ssnocService',function($http) {
 			},
 			searchMemberStatus :function (searchByStatus){
 				return $http.get('/api/ssnoc/search_memberstatus/' + searchByStatus);
+			},
+			testSendMessage : function(message, position, user_id){
+				console.log("service::testSendMessage");
+		  		return $http.post('/api/ssnoc/test/add_message/' + user_id + '/' + position.lat + "/"
+		  			+ position.lng + "/"+ message);
+			},
+			testGetMessage : function(){
+				return $http.get('/api/ssnoc/test/get_message');
+			},
+			testReset : function(){
+				return $http.post('/api/ssnoc/test/reset');
 			}
-		
 			// delete : function(id) {
 			// 	return $http.delete('/api/ssnoc/' + id);
 			// }
