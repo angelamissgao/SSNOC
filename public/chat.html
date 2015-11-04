@@ -32,8 +32,7 @@
          <!-- public Chatarea -->
            <div class="publicChat">
       				  <div class="chatArea">
-        					<p ng-repeat="message   in messages"  ng-show="isAnnoucement(message.receiver_id)" class="alert alert-danger">
-
+        					<p ng-repeat="message in messages"  ng-show="isAnnoucement(message.receiver_id)" class="alert alert-danger">
                     <img ng-src="/images/{{statusImgMap[message.status]}}" style="margin-right:5px;">
                     <b><span ng-bind="directoryDict[message.member_id].name"></span></b>: &nbsp &nbsp
                      <b><span ng-bind="message.message"></span></b>
