@@ -259,6 +259,7 @@ exports.addPrivateMessage = function(req, res, io){
 
 exports.searchPublicMessages = function(req,res){
 	var search_message = req.params.search_message;
+  search_message = search_message.replace(/ +/g, '|');
 	Message.find( { $and: [ {message: new RegExp(search_message)},
                           {receiver_id: public_receiver}]
         
@@ -274,6 +275,7 @@ exports.searchPublicMessages = function(req,res){
 
 exports.searchPrivateMessages = function(req,res){
 	var search_message = req.params.search_message;
+  search_message = search_message.replace(/ +/g, '|');
 	Message.find( { $and: [{message: new RegExp(search_message)},
 		{$or:[
 				{$and: [{member_id: req.params.member_id}, {receiver_id: req.params.receiver_id}]},
@@ -293,6 +295,7 @@ exports.searchPrivateMessages = function(req,res){
 
 exports.searchAnnouncements = function(req,res){
 	var search_message = req.params.search_message;
+  search_message = search_message.replace(/ +/g, '|');
 	Message.find( { $and: [{message: new RegExp(search_message)},
 												 {receiver_id: announcement_receiver}]
 
