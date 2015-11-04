@@ -13,16 +13,33 @@ app.controller("performanceTestController",function($scope, ssnocService, $q,$ro
 
     $scope.performTest = function(){
 
-      var startTime = new Date().getTime();
+     var startTime = new Date().getTime();
 
-      while(new Date().getTime() < startTime + delay){
-        testSendMessage();
-        testGetMessage();
-        countCalls++;
-      }
-
-      console.log("Perfomance: " + countCalls + " " + (new Date().getTime() - startTime));
+    runPerformance(startTime, function(result){
+      console.log("Perfomance: " + result + " " + (new Date().getTime() - startTime));  
+     });
     }
+
+    function runPerformance(startTime, callback)
+    {
+     var interval =  setInterval(function(){
+          testSendMessage();
+          console.log("1");
+
+          testGetMessage();
+          console.log("2");
+          countCalls++;
+          if(new Date().getTime() > startTime + delay){
+             clearInterval(interval);
+             console.log("3");
+           }
+           console.log("4");
+
+          callback(countCalls);
+        },100); 
+
+    }
+
 
     function testSendMessage(){
       // $rootScope.currentPosition.lat
