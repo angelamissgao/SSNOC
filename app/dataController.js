@@ -192,6 +192,10 @@ exports.getTestMessage = function(res){
         }).limit(1);
 };
 
+exports.resetTest = function(res){
+    TestMessage.inventory.remove();
+};
+
 exports.getAnnouncements = function(res){
     Message.find({receiver_id: announcement_receiver}, function(err, messages) {
 

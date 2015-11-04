@@ -316,3 +316,327 @@
 {"k":"0000000082","o":"0000000224","v":"001"}
 {"_id":107,"_uid":107,"_dt":1446600537204,"_s":"cb8bb1be34aa0a06031b5e2dcb3f26a4"}
 {"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":107},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446600537202,"h":"2015-11-04T01:28:57.202Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":108,"_uid":108,"_dt":1446601299025,"_s":"a755720b2f16592800c29d3229d44af4"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":108},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446601298958,"h":"2015-11-04T01:41:38.958Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":109,"_uid":109,"_dt":1446601300048,"_s":"9357a0a56d52a7a179a14ddb0af0bb4f"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":109},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446601300046,"h":"2015-11-04T01:41:40.046Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":110,"_uid":110,"_dt":1446601414335,"_s":"1232805d71fd9c6abadff83bc36d6f00"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":110},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446601414214,"h":"2015-11-04T01:43:34.214Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":111,"_uid":111,"_dt":1446601451680,"_s":"e47ace0ef32f89111ab8aeae414cd1b1"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":111},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446601451634,"h":"2015-11-04T01:44:11.634Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":112,"_uid":112,"_dt":1446601451741,"_s":"4021e22c0fba1aa4e3e626fcf9d0246f"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":112},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446601451737,"h":"2015-11-04T01:44:11.737Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":113,"_uid":113,"_dt":1446601451843,"_s":"d65eeb958069a34e6cdc9d2c5aea8520"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":113},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446601451841,"h":"2015-11-04T01:44:11.841Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":114,"_uid":114,"_dt":1446601451944,"_s":"04d4e3e368cff0f7367e527863eadea2"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":114},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446601451942,"h":"2015-11-04T01:44:11.942Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":115,"_uid":115,"_dt":1446601452049,"_s":"9743118a8605938af91d278f16e4e1e8"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":115},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446601452048,"h":"2015-11-04T01:44:12.048Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":116,"_uid":116,"_dt":1446601452154,"_s":"49b6f0ad691a851250d8b2787c5cbe3e"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":116},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446601452152,"h":"2015-11-04T01:44:12.152Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":117,"_uid":117,"_dt":1446601486365,"_s":"6cddcd41e5df389b38ebbf94425d71f2"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":117},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446601486315,"h":"2015-11-04T01:44:46.315Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":118,"_uid":118,"_dt":1446601486367,"_s":"b43fee2359c38ce0b778859d3962746f"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":118},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446601486324,"h":"2015-11-04T01:44:46.324Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":119,"_uid":119,"_dt":1446601486368,"_s":"54289061663484e9e390c95f45c56962"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":119},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446601486325,"h":"2015-11-04T01:44:46.325Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":120,"_uid":120,"_dt":1446601486369,"_s":"8c5049bd06d5b8595c565f8159a1de6f"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":120},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446601486325,"h":"2015-11-04T01:44:46.325Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":121,"_uid":121,"_dt":1446601486384,"_s":"2d60cc5388e093a666947c64bb925954"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":121},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446601486383,"h":"2015-11-04T01:44:46.383Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":122,"_uid":122,"_dt":1446601486385,"_s":"7aca60cb89f3620c0139afe91ff77a48"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":122},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446601486384,"h":"2015-11-04T01:44:46.384Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":123,"_uid":123,"_dt":1446601553018,"_s":"6f91faaefeeb8f75b474560ffaddced1"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":123},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446601552945,"h":"2015-11-04T01:45:52.945Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":124,"_uid":124,"_dt":1446601553045,"_s":"92e255bb9a69f3967d4a9e712de4e732"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":124},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446601553043,"h":"2015-11-04T01:45:53.043Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":125,"_uid":125,"_dt":1446601553149,"_s":"082d58f2ef381c948020dfb174a38d76"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":125},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446601553147,"h":"2015-11-04T01:45:53.147Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":126,"_uid":126,"_dt":1446601553252,"_s":"d98c8b78d2fb3b0674a7db83f769833a"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":126},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446601553251,"h":"2015-11-04T01:45:53.251Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":127,"_uid":127,"_dt":1446601553358,"_s":"d0eda5434b0ad91a444019447b3f3af9"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":127},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446601553355,"h":"2015-11-04T01:45:53.355Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":128,"_uid":128,"_dt":1446601553461,"_s":"32530b98895af48f32f15c67461d65bb"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":128},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446601553460,"h":"2015-11-04T01:45:53.460Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":129,"_uid":129,"_dt":1446601585947,"_s":"5b464a93fdbea75d5490dda94e62ae21"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":129},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446601585873,"h":"2015-11-04T01:46:25.873Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":130,"_uid":130,"_dt":1446601585981,"_s":"d2722ccd66830996ab29ee06c286645c"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":130},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446601585979,"h":"2015-11-04T01:46:25.979Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":131,"_uid":131,"_dt":1446601586086,"_s":"29678144d11c500afdedfd76cc28c977"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":131},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446601586085,"h":"2015-11-04T01:46:26.085Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":132,"_uid":132,"_dt":1446601586183,"_s":"09a160c0b5fa54b930156fad04c83909"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":132},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446601586181,"h":"2015-11-04T01:46:26.181Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":133,"_uid":133,"_dt":1446601586285,"_s":"635fe13d8c480d0c29bb6f819b3f7cea"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":133},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446601586283,"h":"2015-11-04T01:46:26.283Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":134,"_uid":134,"_dt":1446601586381,"_s":"b3f9f98b2fa8fc4b7646b50c6b89a7b8"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":134},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446601586380,"h":"2015-11-04T01:46:26.380Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":135,"_uid":135,"_dt":1446601660870,"_s":"bc85846a4f9d51ab8d9da01cd9bc1728"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":135},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446601660787,"h":"2015-11-04T01:47:40.787Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":136,"_uid":136,"_dt":1446601660886,"_s":"809b7483c22bac89051c1109b710234f"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":136},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446601660883,"h":"2015-11-04T01:47:40.883Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":137,"_uid":137,"_dt":1446601660991,"_s":"c9ddf9e6be804f5867273b0b8d93b1cf"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":137},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446601660990,"h":"2015-11-04T01:47:40.990Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":138,"_uid":138,"_dt":1446601661093,"_s":"9d38d5b799186185d4f7b6451a6ac96d"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":138},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446601661091,"h":"2015-11-04T01:47:41.091Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":139,"_uid":139,"_dt":1446601661192,"_s":"f9342f916961a27ff60dd3e6646fc41b"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":139},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446601661191,"h":"2015-11-04T01:47:41.191Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":140,"_uid":140,"_dt":1446601661297,"_s":"36dd0e9e5bc744201d505195bad0cc46"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":140},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446601661295,"h":"2015-11-04T01:47:41.295Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":141,"_uid":141,"_dt":1446601844385,"_s":"48584afee3db6dc5f760f95e37a0c0a8"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":141},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446601844315,"h":"2015-11-04T01:50:44.315Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":142,"_uid":142,"_dt":1446601844419,"_s":"9b6a1ab0a3d9d414479459a0dfad5f1a"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":142},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446601844415,"h":"2015-11-04T01:50:44.415Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":143,"_uid":143,"_dt":1446601844522,"_s":"28489950015cb6546285be99fd0d0b33"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":143},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446601844521,"h":"2015-11-04T01:50:44.521Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":144,"_uid":144,"_dt":1446601844626,"_s":"7b721fbb5560d513662400dbf6646715"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":144},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446601844623,"h":"2015-11-04T01:50:44.623Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":145,"_uid":145,"_dt":1446601844727,"_s":"9dfc472ea1d293a410341264936e037f"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":145},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446601844725,"h":"2015-11-04T01:50:44.725Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":146,"_uid":146,"_dt":1446601844831,"_s":"fff155adfac3aa3f19e1593e65bef41f"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":146},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446601844830,"h":"2015-11-04T01:50:44.830Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":147,"_uid":147,"_dt":1446601898426,"_s":"ac6cdd5237f1ddd3abf47ebb9700fe01"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":147},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446601898337,"h":"2015-11-04T01:51:38.337Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":148,"_uid":148,"_dt":1446601898441,"_s":"dd19b7425d504c023f6f82320803972a"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":148},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446601898435,"h":"2015-11-04T01:51:38.435Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":149,"_uid":149,"_dt":1446601898539,"_s":"cc8062709771803795b8fcdf1d1503ef"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":149},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446601898537,"h":"2015-11-04T01:51:38.537Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":150,"_uid":150,"_dt":1446601898639,"_s":"b0a3c758afd154c7ef17c785db60a3f6"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":150},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446601898638,"h":"2015-11-04T01:51:38.638Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":151,"_uid":151,"_dt":1446601898743,"_s":"b4922a1b515ae39100de4cc9d756da61"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":151},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446601898742,"h":"2015-11-04T01:51:38.742Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":152,"_uid":152,"_dt":1446601972094,"_s":"03e83f14833bdca4907af2c68e3ace2b"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":152},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446601972003,"h":"2015-11-04T01:52:52.003Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":153,"_uid":153,"_dt":1446601972107,"_s":"1b040df2a4ccefadc190da16fa86e4e0"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":153},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446601972104,"h":"2015-11-04T01:52:52.104Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":154,"_uid":154,"_dt":1446601972215,"_s":"d4c628de2a3ed154b4e2a835c0bcfdfd"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":154},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446601972214,"h":"2015-11-04T01:52:52.214Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":155,"_uid":155,"_dt":1446601972311,"_s":"ff9fae71840a3f94ecc6f75a42d13804"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":155},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446601972310,"h":"2015-11-04T01:52:52.310Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":156,"_uid":156,"_dt":1446601972414,"_s":"7d028b382570373ff986f12f84cb4d2b"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":156},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446601972411,"h":"2015-11-04T01:52:52.411Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":157,"_uid":157,"_dt":1446601980731,"_s":"180f96c1a893d32574db3e1bc5bf3220"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":157},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446601980730,"h":"2015-11-04T01:53:00.730Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":158,"_uid":158,"_dt":1446602092017,"_s":"23529bf922fe8da2b02ab8b5179b31d9"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":158},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446602092017,"h":"2015-11-04T01:54:52.017Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":159,"_uid":159,"_dt":1446602092114,"_s":"1050270d04e310bd52cc27e59c9b575d"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":159},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446602092114,"h":"2015-11-04T01:54:52.114Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":160,"_uid":160,"_dt":1446602092214,"_s":"b8aa4f9718940f6f35a99e9505606df0"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":160},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446602092212,"h":"2015-11-04T01:54:52.212Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":161,"_uid":161,"_dt":1446602092315,"_s":"9f906ba2e64a38460e5750d03414b044"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":161},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446602092314,"h":"2015-11-04T01:54:52.314Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":162,"_uid":162,"_dt":1446602092435,"_s":"a530bc4e49a57b5bd582d95a265f6df2"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":162},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446602092434,"h":"2015-11-04T01:54:52.434Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":163,"_uid":163,"_dt":1446602100741,"_s":"a7d6c31038c96e171c723499d8786c44"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":163},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446602100740,"h":"2015-11-04T01:55:00.740Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":164,"_uid":164,"_dt":1446602212027,"_s":"28a20501f3d2a4648d614f86e296f737"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":164},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446602212026,"h":"2015-11-04T01:56:52.026Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":165,"_uid":165,"_dt":1446602212125,"_s":"aae61a95fab3d20888ebc19147ea553e"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":165},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446602212124,"h":"2015-11-04T01:56:52.124Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":166,"_uid":166,"_dt":1446602212223,"_s":"b0e86674bd435b547a66349399b5825d"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":166},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446602212222,"h":"2015-11-04T01:56:52.222Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":167,"_uid":167,"_dt":1446602212326,"_s":"9c96ab5d7e642c580afa6805a7fe6aa5"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":167},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446602212323,"h":"2015-11-04T01:56:52.323Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":168,"_uid":168,"_dt":1446602212446,"_s":"c0566f46a0afcb3cd71a071b200ebfe1"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":168},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446602212440,"h":"2015-11-04T01:56:52.440Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":169,"_uid":169,"_dt":1446602220752,"_s":"5ba112bfe598a14d4a0dca1ed6bea344"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":169},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446602220750,"h":"2015-11-04T01:57:00.750Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":170,"_uid":170,"_dt":1446602557963,"_s":"35275686cd2ce578c1ccb6bc2ef2a904"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":170},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446602557886,"h":"2015-11-04T02:02:37.886Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":171,"_uid":171,"_dt":1446602557990,"_s":"1481fb5963b446d512c92b2a651a85a2"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":171},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446602557987,"h":"2015-11-04T02:02:37.987Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":172,"_uid":172,"_dt":1446602558091,"_s":"ad911912fee1693767943cbbefc34fd0"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":172},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446602558090,"h":"2015-11-04T02:02:38.090Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":173,"_uid":173,"_dt":1446602558190,"_s":"9cfc77503cefd6acedb6955ff67cba25"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":173},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446602558189,"h":"2015-11-04T02:02:38.189Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":174,"_uid":174,"_dt":1446602558293,"_s":"c0c2d7968b07187fcb3c03eea43b27a2"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":174},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446602558292,"h":"2015-11-04T02:02:38.292Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":175,"_uid":175,"_dt":1446602677891,"_s":"ccc99e4edff1ba3ae8f8bb34782c3b2f"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":175},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446602677890,"h":"2015-11-04T02:04:37.890Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":176,"_uid":176,"_dt":1446602677998,"_s":"7f05cf2ed80fbe37e8080bdc37d25eaf"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":176},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446602677997,"h":"2015-11-04T02:04:37.997Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":177,"_uid":177,"_dt":1446602678101,"_s":"2545cf01fa9fde49d1ce8c05af1fc594"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":177},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446602678099,"h":"2015-11-04T02:04:38.099Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":178,"_uid":178,"_dt":1446602678197,"_s":"ed5a3e794d1951d6454e3ee918e98871"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":178},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446602678195,"h":"2015-11-04T02:04:38.195Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":179,"_uid":179,"_dt":1446602678302,"_s":"38670f03b8a85d578aaaa01f52f15a6a"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":179},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446602678300,"h":"2015-11-04T02:04:38.300Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":180,"_uid":180,"_dt":1446602761802,"_s":"4dda77caf4a74ec68769996cf24b3407"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":180},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446602761740,"h":"2015-11-04T02:06:01.740Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":181,"_uid":181,"_dt":1446602761848,"_s":"0a7954577f926825be3de608dbb0425b"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":181},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446602761845,"h":"2015-11-04T02:06:01.845Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":182,"_uid":182,"_dt":1446602761953,"_s":"53785406bde8fe2d49d4a621eb4bf2f5"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":182},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446602761948,"h":"2015-11-04T02:06:01.948Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":183,"_uid":183,"_dt":1446602762052,"_s":"40fe9f85b5d826ed9c8f032494151a61"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":183},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446602762050,"h":"2015-11-04T02:06:02.050Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":184,"_uid":184,"_dt":1446602762154,"_s":"938d22109292dd824c780b7a2ac3585f"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":184},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446602762152,"h":"2015-11-04T02:06:02.152Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":185,"_uid":185,"_dt":1446602797821,"_s":"c1f626b3d8e3f08d0575c4d6bf91169b"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":185},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446602797742,"h":"2015-11-04T02:06:37.742Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":186,"_uid":186,"_dt":1446602797844,"_s":"9067ed1e659c0a10d0d034cd6bead11c"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":186},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446602797841,"h":"2015-11-04T02:06:37.841Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":187,"_uid":187,"_dt":1446602797948,"_s":"8cd8df06d516452df063d792d1ade38d"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":187},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446602797947,"h":"2015-11-04T02:06:37.947Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":188,"_uid":188,"_dt":1446602798048,"_s":"05f607c707bd64a7d78ddf2e9ffa8c9b"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":188},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446602798047,"h":"2015-11-04T02:06:38.047Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":189,"_uid":189,"_dt":1446602798152,"_s":"ba97d4f39edfbf525a7023e9bec92cf1"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":189},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446602798149,"h":"2015-11-04T02:06:38.149Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":190,"_uid":190,"_dt":1446602909319,"_s":"07979bff4af14d6c9e30ef0976ae67e7"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":190},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446602909205,"h":"2015-11-04T02:08:29.205Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":191,"_uid":191,"_dt":1446602909325,"_s":"f98028d443e4d34f350a1b0d9f85dade"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":191},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446602909302,"h":"2015-11-04T02:08:29.302Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":192,"_uid":192,"_dt":1446602909407,"_s":"bf503a90e4011229c90b9f8d95f5d891"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":192},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446602909405,"h":"2015-11-04T02:08:29.405Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":193,"_uid":193,"_dt":1446602909512,"_s":"6393c7038c86121832fc055aacb023eb"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":193},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446602909510,"h":"2015-11-04T02:08:29.510Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":194,"_uid":194,"_dt":1446602909618,"_s":"e12499dd2c220a62eb2ebe322a42675e"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":194},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446602909616,"h":"2015-11-04T02:08:29.616Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":195,"_uid":195,"_dt":1446602965103,"_s":"3d2b5d9dbadbec41bc3e60c98a95a22a"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":195},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446602964999,"h":"2015-11-04T02:09:24.999Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":196,"_uid":196,"_dt":1446602965106,"_s":"a0ae6e41ae09cb61b13cc772a9e1e76e"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":196},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446602965098,"h":"2015-11-04T02:09:25.098Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":197,"_uid":197,"_dt":1446602965205,"_s":"d39ef22fa24513915250a563bb5ff762"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":197},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446602965203,"h":"2015-11-04T02:09:25.203Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":198,"_uid":198,"_dt":1446602965305,"_s":"65c1c79a2c84065cc3b2c3403ae867d7"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":198},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446602965304,"h":"2015-11-04T02:09:25.304Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":199,"_uid":199,"_dt":1446602965410,"_s":"f104ac1df12235765b31dfcee3b6ff8b"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":199},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446602965407,"h":"2015-11-04T02:09:25.407Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":200,"_uid":200,"_dt":1446603071066,"_s":"deb985964fd4f5e0caad00cf0a0d97e9"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":200},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446603070980,"h":"2015-11-04T02:11:10.980Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":201,"_uid":201,"_dt":1446603071079,"_s":"e869097bae2933e994b9268286232cca"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":201},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446603071076,"h":"2015-11-04T02:11:11.076Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":202,"_uid":202,"_dt":1446603071182,"_s":"e3ef36a1d6c1e812164ca5b1c9c5d507"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":202},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446603071181,"h":"2015-11-04T02:11:11.181Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":203,"_uid":203,"_dt":1446603071283,"_s":"1afa23c4baac8da2ad7b578c5dad9b08"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":203},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446603071282,"h":"2015-11-04T02:11:11.282Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":204,"_uid":204,"_dt":1446603071390,"_s":"7c9df8789a54dc32c3336f36ff50f3b0"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":204},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446603071388,"h":"2015-11-04T02:11:11.388Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":205,"_uid":205,"_dt":1446603196968,"_s":"ce618cfe181626a33bca73b13945047b"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":205},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446603196870,"h":"2015-11-04T02:13:16.870Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":206,"_uid":206,"_dt":1446603196977,"_s":"bf824baebe7d2b55af0ea055ed9b105c"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":206},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446603196975,"h":"2015-11-04T02:13:16.975Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":207,"_uid":207,"_dt":1446603197082,"_s":"c4483abd2ad24fa93597275c28c57ae0"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":207},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446603197080,"h":"2015-11-04T02:13:17.080Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":208,"_uid":208,"_dt":1446603197186,"_s":"4b2201c969c3fdca6a4a63d5b64b6905"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":208},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446603197185,"h":"2015-11-04T02:13:17.185Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":209,"_uid":209,"_dt":1446603197287,"_s":"bfa43c1c2bed8b7bde890b3a75d15d25"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":209},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446603197285,"h":"2015-11-04T02:13:17.285Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":210,"_uid":210,"_dt":1446603316877,"_s":"20c94f14ee77aac7dd6435ebdafddd69"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":210},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446603316875,"h":"2015-11-04T02:15:16.875Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":211,"_uid":211,"_dt":1446603316986,"_s":"1a0deb5982e86ebe4cad8fdac593ab4d"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":211},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446603316985,"h":"2015-11-04T02:15:16.985Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":212,"_uid":212,"_dt":1446603317086,"_s":"a7b0e08d13aa5972e8e44a39d0963fbf"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":212},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446603317085,"h":"2015-11-04T02:15:17.085Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":213,"_uid":213,"_dt":1446603317197,"_s":"812983ea086896aea69964efbbfc4a41"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":213},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446603317196,"h":"2015-11-04T02:15:17.196Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":214,"_uid":214,"_dt":1446603317298,"_s":"a7d0cbeb2167f832a0a6cd827ea308bd"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":214},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446603317297,"h":"2015-11-04T02:15:17.297Z"},"receiver_id":0,"__v":0}
+{"k":"0000000082","o":"0000000224","v":"001"}
+{"_id":215,"_uid":215,"_dt":1446603436888,"_s":"5da2c716a740d6a318ffa3efce155ec6"}
+{"message":"20characters message","member_id":999,"status":1,"_id":{"$wrap":"$oid","v":215},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1446603436886,"h":"2015-11-04T02:17:16.886Z"},"receiver_id":0,"__v":0}

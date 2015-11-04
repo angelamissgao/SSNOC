@@ -4,10 +4,10 @@ app.controller("performanceTestController",function($scope, ssnocService, $q,$ro
     
     var testMessage = "20characters message";
     var position = {lat:'0', lng:'0'};
-    var delay = 500;
+    $scope.delay = 500;
     var fakeUser = 999;
     var defer = $q.defer();
-    var countCalls = 0;
+    $scope.countCalls = 0;
 
     // window.location = "/#/perfomance";
 
@@ -15,9 +15,15 @@ app.controller("performanceTestController",function($scope, ssnocService, $q,$ro
 
      var startTime = new Date().getTime();
 
-    runPerformance(startTime, function(result){
-      console.log("Perfomance: " + result + " " + (new Date().getTime() - startTime));  
-     });
+     console.log("delay " + $scope.delay);
+
+      runPerformance(startTime, function(result){
+        console.log("Perfomance: " + result + " " + (new Date().getTime() - startTime));  
+             console.log("Reset database!!!!!");
+          ssnocService.testReset();
+       });
+
+ 
     }
 
     function runPerformance(startTime, callback)
@@ -25,19 +31,17 @@ app.controller("performanceTestController",function($scope, ssnocService, $q,$ro
      var interval =  setInterval(function(){
           testSendMessage();
           console.log("1");
-
+          
           testGetMessage();
           console.log("2");
-          countCalls++;
-          if(new Date().getTime() > startTime + delay){
+          $scope.countCalls++;
+          if(new Date().getTime() > startTime + $scope.delay){
              clearInterval(interval);
-             console.log("3");
+             console.log("3  delay" + $scope.delay);
+             callback($scope.countCalls);
            }
            console.log("4");
-
-          callback(countCalls);
         },100); 
-
     }
 
 

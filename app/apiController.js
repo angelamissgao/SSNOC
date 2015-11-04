@@ -198,6 +198,10 @@ io.on('connection',function(socket){
 		dataController.getTestMessage(res);
 	});
 
+	app.post('/api/ssnoc/test/reset', function(req,res) {
+		dataController.resetTest(res);
+	});
+
 /**
  * @api {get} /api/ssnoc/announcements Get all announcements from history
  * @apiGroup Messages

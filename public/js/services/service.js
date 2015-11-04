@@ -46,7 +46,10 @@ app.factory('ssnocService',function($http) {
 			},
 			testGetMessage : function(){
 				return $http.get('/api/ssnoc/test/get_message');
-			}
+			},
+			testReset : function(){
+				return $http.post('/api/ssnoc/test/reset');
+			},
 
 			// delete : function(id) {
 			// 	return $http.delete('/api/ssnoc/' + id);
