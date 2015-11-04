@@ -1,4 +1,4 @@
-<div ng-controller="chatController" class="chat-container" id="chatpublic">
+<div ng-controller="chatController" class="ssnoc-container" id="chatpublic">
         
         <!--Welcome Msg-->
 
@@ -18,13 +18,16 @@
           <strong>No matching results!</strong>
         </div>
 
-        <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          <input ng-model="searchMessage" type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default" ng-click="searchMessages()">Search</button>
-       </form>
-      
+       <div class="row">
+          <form role="search">
+          <div class="form-group col-xs-9 col-sm-9 col-md-10">
+            <input ng-model="searchMessage" type="text" class="form-control" placeholder="Search">
+          </div>
+         <div class="col-xs-3 col-sm-3 col-md-1 pull-right">
+             <button type="submit" class="btn btn-default" ng-click="searchMessages()"><img src='/images/search.png'/></button>
+          </div>
+         </form>
+       <div>
 
          <!-- public Chatarea -->
            <div class="publicChat">
@@ -40,8 +43,6 @@
                      <br> Position Info: [<span ng-bind="message.position.lat"></span>,<span ng-bind="message.position.lng"></span>]
         					</p>	
 
-
-
                   <p ng-repeat="message in messages"  ng-show="!isAnnoucement(message.receiver_id) && isSearchMsgShown(message._id, messages)" class="alert alert-success">
                     <img ng-src="/images/{{statusImgMap[message.status]}}" style="margin-right:5px;"> 
                     <b><span ng-bind="directoryDict[message.member_id].name"></span></b>: &nbsp &nbsp
@@ -55,11 +56,11 @@
           </div>
 			  </div>
 				<div class="row">
-          <div class="col-xs-9 col-md-10">
+          <div class="col-xs-9 col-sm-9 col-md-10">
     				<input ng-model="chatMessage" class="col-xs-11 chatMessage sendMsg" id="ex3" type="text" height="20%"placeholder="Type your message.." required autofocus>
     			</div>
-        	<div class="col-xs-3 col-md-1">
-  				  <button ng-click="sendMessage()" type="submit" class="btn btn-success pull-right">Send</button>
+        	<div class="col-xs-3 col-sm-3 col-md-1 pull-right">
+  				  <button ng-click="sendMessage()" type="submit" class="btn btn-success">Send</button>
           </div>
 				</div>
 

@@ -23,9 +23,6 @@ body {
 .form-signin .form-control {
   position: relative;
   height: auto;
-  /*-webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;*/
   padding: 10px;
   font-size: 16px;
 }
@@ -51,9 +48,8 @@ body {
     padding-top: 12px;
     padding-bottom: 12px;
   }
-  
 
-.chat-container {
+.ssnoc-container {
   margin: 10px auto;
   height:100%;
   width: 90%;
@@ -69,15 +65,6 @@ body {
 
 .navigation{
   margin-bottom: 5px;
-}
-
-.performance{
-  height:90%;
-  width: 20%;
-  margin-right: 10px;
-  text-align: center;
-  background-color: #FFE4E1;
-  float: right;
 }
 
 .onlineDirectory{
@@ -129,6 +116,10 @@ text-align: center;
 
 }
 
+.directory-item
+{
+  margin: 10px 5px;
+}
 
 #logoutbt {
   bottom: 250px;
@@ -153,7 +144,7 @@ text-align: center;
 .btn-default{
   background-color: #f5f5f5;
 }
-
+/*
 .alert-warning {
     padding: 1px;
     padding-bottom: 3px;
@@ -162,7 +153,7 @@ text-align: center;
 .alert-success {
     padding: 1px;
     padding-bottom: 3px;
-}
+}*/
 
 button .mobile{
     min-width:35px;

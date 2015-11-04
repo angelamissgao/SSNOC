@@ -17,6 +17,7 @@ app.controller("mainController",function($scope, ssnocService, $q,$rootScope){
 							// login successfull and send chat.html
 							$scope.member = $scope.validateUser;
 							$scope.member.status = 1;
+							$rootScope.status = $scope.member.status;
 							$rootScope.authenticated = true;
 							updateStatus().then(function(response){
 								window.location = "/#/chatting";
@@ -97,6 +98,7 @@ app.controller("mainController",function($scope, ssnocService, $q,$rootScope){
 						$scope.loading = false;
 						$scope.member = data;
 						$scope.member.status = 1; 
+						$rootScope.status = $scope.member.status;
 						$rootScope.id=$scope.member._id;
 						$rootScope.name=$scope.member.name;
 						updateStatus(); 
@@ -145,8 +147,8 @@ app.controller("mainController",function($scope, ssnocService, $q,$rootScope){
 			ssnocService.updateStatus($scope.member._id, $rootScope.currentPosition, $scope.member.status)
 			// ssnocService.updateStatus($scope.member._id, $scope.member.status)
 			.then(function(response){
-				console.log("update status " + response.status);
 				$scope.member = response;
+				$rootScope.status = response.status;
 				$scope.loading = false;
 				defer.resolve($scope.member);
 			},function(err){

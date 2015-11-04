@@ -49,29 +49,32 @@
 
 <div class="container-fluid" >
    <div ng-if="authenticated">     
-     <div class="row">
+     <div class="row col-md-12">
       <!-- style="background-color:#E5FFFF" -->
       <div class="col-xs-2 col-sm-2 col-md-2" style="margin-top:30px;">
          <a href="" style="margin-left:10px;" id="nav-trigger"><img src="/images/directory.png"></a>
       </div>
       <div class="col-xs-6 col-sm-6 col-md-6"> 
-           <h3 class="bs-docs-featurette-title" style="text-align: center;">Brics SSNOC</h3>
+           <h2 class="bs-docs-featurette-title" style="text-align: center;">Brics SSNOC</h2>
       </div>
-      <div class="col-xs-2 col-sm-2 col-md-2" style="margin-top:30px;">
-          <div class="col-md-1" ng-bind="name">
-          </div>
+      <div class="col-xs-2 col-sm-2 col-md-2" style="margin-top:20px; margin-left: -10px;">
+             <p class="row pull-right"> 
+<!--             col-xs-1 col-sm-1 col-md-1 -->
+              <strong ng-bind="name"></strong>
+             </p>
 
-             <div class="col-md-1 dropdown pull-right">
-                <a class="dropdown-toggle" style="margin-right:10px;" type="button" data-toggle="dropdown">
-                <b class="caret"></b></a>
-
+             <div class="row dropdown pull-right" style="margin-top:14px;">
+              <!-- col-xs-1 col-sm-1 col-md-1 -->
+                <a class="dropdown-toggle" type="button" data-toggle="dropdown" style="margin-top:14px;">
+                  <img ng-src="/images/{{statusImgMap[status]}}"/ ></a>
                 <ul class="dropdown-menu">
                   <li ng-repeat="status in statuses">
                     <a ng-bind="status.name" ng-click="shareStatus(status.id)"></a>
                   </li>
                   <li><a ng-click="logout()" type="submit" ><b>Logout</b></a></li>
                 </ul>
-             </div>
+             </div>  
+            
         </div>
       </div>
     </div>
