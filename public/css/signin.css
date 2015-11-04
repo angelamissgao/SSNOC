@@ -9,7 +9,7 @@ body {
   border-radius: 6px;
 }*/
 .login{
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 .form-signin {
@@ -68,7 +68,7 @@ body {
 }
 
 .navigation{
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .performance{
@@ -98,15 +98,15 @@ body {
 }
 
 .chatArea{
-  margin: 10px auto;
+  margin: 5px auto;
   border: 1px solid #e7e7e7;
   height:45%;
   width: 100%;
   background-color:#fff;
-  overflow: scroll;
+  overflow-y: auto;
   float: left;
   border-radius: 6px;
-  min-height: 300px;
+  max-height: 250px;
 }
 
 .chatMessage{
@@ -155,9 +155,8 @@ text-align: center;
 }
 
 .alert-warning {
-    padding: 0px;
-    margin-bottom: 2px;
-    text-align: center;
+    padding: 1px;
+    padding-bottom: 3px;
 }
 
 .alert-success {

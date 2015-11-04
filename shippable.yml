@@ -5,3 +5,14 @@ language: node_js
 node_js:
     - 0.10.25
 
+before_install:
+  - source ~/.nvm/nvm.sh && nvm install $SHIPPABLE_NODE_VERSION
+  - node --version
+  - npm install -g grunt-cli
+
+install:
+  - npm install
+
+# Running the tests with grunt
+script:
+  - grunt
