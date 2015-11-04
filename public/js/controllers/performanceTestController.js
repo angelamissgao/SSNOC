@@ -8,19 +8,24 @@ app.controller("performanceTestController",function($scope, ssnocService, $q,$ro
     var fakeUser = 999;
     var defer = $q.defer();
     $scope.countCalls = 0;
+    $scope.resultTime;
 
     // window.location = "/#/perfomance";
 
     $scope.performTest = function(){
 
      var startTime = new Date().getTime();
+     $scope.countCalls =0;
+     $scope.resultTime =0;
 
      console.log("delay " + $scope.delay);
 
       runPerformance(startTime, function(result){
-        console.log("Perfomance: " + result + " " + (new Date().getTime() - startTime));  
-        
-             console.log("Reset database!!!!!");
+        $scope.resultTime = new Date().getTime() - startTime;
+            
+        console.log("Perfomance: " + result + " " + $scope.resultTime);  
+    
+          console.log("Reset database!!!!!");
           ssnocService.testReset();
        });
 

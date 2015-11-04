@@ -48,6 +48,7 @@ app.run(function($rootScope, ssnocService){
     $rootScope.id;    
     $rootScope.name;
     $rootScope.receiverId;
+    $rootScope.status;
     $rootScope.socket = io.connect(); 
     $rootScope.currentPosition = {lat: 0, lng: 0};
     $rootScope.currentPosition.lat = 0;    
@@ -58,6 +59,14 @@ app.run(function($rootScope, ssnocService){
       {name:"Help", id:2},
       {name:"Emergency", id:3}
     ];
+
+    $rootScope.statusImgMap = {
+      0:"offline.png",
+      1:"ok-icon.png",
+      2:"help-icon.png",
+      3:"emergency-icon.png",
+    };
+
     $rootScope.currentMsgPage = 0;
     var pageSize = 10;
     
@@ -79,6 +88,7 @@ app.run(function($rootScope, ssnocService){
      //1-ok 2-help 3-emergency 0-logout
 
       console.log("update status in core" + status_id);
+      $rootScope.status = status_id;
       ssnocService.updateStatus($rootScope.id, $rootScope.currentPosition, status_id);
       //ssnocService.updateStatus($rootScope.id, status_id);
     }
@@ -96,7 +106,7 @@ app.run(function($rootScope, ssnocService){
     $rootScope.socket.on('disconnect', function(){
       console.log("disconnecting" + $rootScope.id);
       ssnocService.updateStatus($rootScope.id, 0);
-      $scope.$apply();
+      $rootScope.$apply();
     });
 
     $rootScope.isSearchMsgShown = function(messageId, messages)

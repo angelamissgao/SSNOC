@@ -10,10 +10,10 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
     $rootScope.currentMsgPage = 0;
 
     $scope.statusImgMap = {
-      0:"undefined.png",
-      1:"ok.png",
-      2:"help.png",
-      3:"emergency.png",
+      0:"offline.png",
+      1:"ok-icon.png",
+      2:"help-icon.png",
+      3:"emergency-icon.png",
     };
 
     $scope.statusMap = {
