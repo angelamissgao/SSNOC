@@ -2,6 +2,8 @@ var Member = require('./models/memberModel');
 var Message = require('./models/messageModel');
 var TestMessage = require('./models/testMessageModel');
 var path = require('path');
+var say = require('say');
+
 var public_receiver = 0;
 var announcement_receiver = 1;
 
@@ -118,6 +120,7 @@ exports.addPublicEmergencyMessage = function(req, res, io) {
 	var message = req.params.message;
 	var latitude = req.params.latitude;
 	var longitude = req.params.longitude;
+	var emergency_type = req.params.emergencytype;
 
 	Member.findById(member_id, function(err, member) {
 		if (err) {
@@ -133,7 +136,10 @@ exports.addPublicEmergencyMessage = function(req, res, io) {
 				if (err) {
 					return res.send(err);
 				}
-				io.emit('message', mymessage);
+				io.emit('emergency', mymessage, emergency_type);
+				console.log("-> " + emergency_type);
+				var audiomsg = member.name + " says I am in " + emergency_type;
+				say.speak('Alex', audiomsg);
 				res.json(mymessage);
 				console.log("test location %s", mymessage);
 			});

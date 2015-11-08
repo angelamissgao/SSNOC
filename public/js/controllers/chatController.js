@@ -8,7 +8,7 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
     $scope.searchMessage = "";
     $scope.searchAlert = false;
     $rootScope.currentMsgPage = 0;
-    $scope.sendEmergencyMessage = "";
+    $scope.emergencyMessage = "";
     $scope.emergencyType = "";
 
     $scope.statusImgMap = {
@@ -89,8 +89,9 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
       console.log("Send message location: " + $rootScope.currentPosition.lat
         + " " + $rootScope.currentPosition.lng);
       console.log(emergencytype);
-      $scope.sendEmergencyMessage = "I am in " + emergencytype;
-      ssnocService.addPublicEmergencyMessage($scope.sendEmergencyMessage, $rootScope.currentPosition, $rootScope.id);
+      $scope.emergencyMessage = "I am in " + emergencytype;
+      $scope.emergencyType = emergencytype;
+      ssnocService.addPublicEmergencyMessage($scope.emergencyMessage, $scope.emergencyType, $rootScope.currentPosition, $rootScope.id);
     }
 
 
@@ -106,6 +107,13 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
 
 
     $rootScope.socket.on('message', function(msg){
+        $scope.messages.push(msg);
+        $scope.chatMessage = "";
+        $scope.$apply();
+
+      });
+
+     $rootScope.socket.on('emergency', function(msg, emergencytype){
         $scope.messages.push(msg);
         //@play audio
         $scope.chatMessage = "";
