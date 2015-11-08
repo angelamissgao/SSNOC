@@ -111,6 +111,40 @@ exports.addPublicMessage = function(req, res, io) {
 
 }
 
+//Emergency
+
+exports.addPublicEmergencyMessage = function(req, res, io) {
+	var member_id = req.params.member_id;
+	var message = req.params.message;
+	var latitude = req.params.latitude;
+	var longitude = req.params.longitude;
+
+	Member.findById(member_id, function(err, member) {
+		if (err) {
+			return res.send(err);
+		}
+
+		if (member != null && member !== undefined) {
+		
+			mymessage = new Message({message: message, member_id: member_id, status: member.status,
+			 position: {lng: longitude, lat: latitude}});
+			
+			mymessage.save(function (err, obj) { 
+				if (err) {
+					return res.send(err);
+				}
+				io.emit('message', mymessage);
+				res.json(mymessage);
+				console.log("test location %s", mymessage);
+			});
+		}
+	});
+
+}
+
+//endEmergency
+
+
 exports.addTestMessage = function(req, res, io) {
 	var member_id = req.params.member_id;
 	var member_status = 1;

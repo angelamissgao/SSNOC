@@ -7,16 +7,42 @@
           <strong>Welcome to Brics SsNoc.</strong> You could send messages or share your status with the members in our community. 1-OK, 2-Help, 3-Emergency, 4-Undefined.
         </div>
 
+
+        <!-- Types of emergencies -->
+        <br>
+        <strong>Select the type of emergency you are in</strong><br><br>
+        <div class="row">
+        <div class="col-xs-3 col-sm-3 col-md-1 pull-left">
+             <button type="submit" class="btn btn-default" ng-click="sendEmergencyMessage('fire')"><img src='/images/fire.jpg'/></button>
+          </div>
+         <div class="col-xs-3 col-sm-3 col-md-1 pull-left">
+             <button type="submit" class="btn btn-default" ng-click="sendEmergencyMessage('earthquake')"><img src='/images/earthquake.png'/></button>
+          </div>
+          <div class="col-xs-3 col-sm-3 col-md-1 pull-left">
+             <button type="submit" class="btn btn-default" ng-click="sendEmergencyMessage('thunderstorm')"><img src='/images/thunderstorm.png'/></button>
+          </div>
+          <div class="col-xs-3 col-sm-3 col-md-1 pull-left">
+             <button type="submit" class="btn btn-default" ng-click="sendEmergencyMessage('tsunami')"><img src='/images/tsunami.png'/></button>
+          </div>
+         </div>
+         <br> <br>
+        <!-- end of emergency-->
+
+
         <div ng-show='msgAlert' class="alert alert-info alert-dismissible" role="alert">
           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <strong>You Got a New Message!</strong>
         </div>
+
+
 
         <!-- search function -->
          <div ng-show='searchAlert' class="alert alert alert-success alert-dismissible" role="alert">
           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <strong>No matching results!</strong>
         </div>
+
+
 
        <div class="row">
           <form role="search">
@@ -28,6 +54,8 @@
           </div>
          </form>
        <div>
+
+
 
          <!-- public Chatarea -->
            <div class="publicChat">
