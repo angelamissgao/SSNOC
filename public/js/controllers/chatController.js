@@ -84,13 +84,14 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
       ssnocService.addPublicMessage($scope.chatMessage, $rootScope.currentPosition, $rootScope.id);
     }
 
-      <!-- Emergency-->
+      //Emergency
        $scope.sendEmergencyMessage = function(emergencytype){
       console.log("Send message location: " + $rootScope.currentPosition.lat
         + " " + $rootScope.currentPosition.lng);
       console.log(emergencytype);
       $scope.emergencyMessage = "I am in " + emergencytype;
       $scope.emergencyType = emergencytype;
+      ssnocService.updateStatus($rootScope.id, $rootScope.currentPosition, 3);
       ssnocService.addPublicEmergencyMessage($scope.emergencyMessage, $scope.emergencyType, $rootScope.currentPosition, $rootScope.id);
     }
 
