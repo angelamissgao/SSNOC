@@ -7,6 +7,7 @@ var port  	 = process.env.PORT || 2222; 				// set the port		// load the databas
 var morgan   = require('morgan');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
+var say = require('say');
 
 //test Socketio
 var http = require('http').Server(app);
@@ -33,7 +34,8 @@ app.use(methodOverride('X-HTTP-Method-Override')); // override with the X-HTTP-M
 http.listen(port, function(){
   console.log('listening on' + port);
 });
-
+//say.speak('Alex', 'whats up, dog?');
+ 
 //  io.on('connection', function(socket){
 //      console.log('a user connected');
 
