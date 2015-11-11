@@ -19,10 +19,6 @@ app.factory('ssnocService',function($http) {
 		  		return $http.post('/api/ssnoc/message/' + user_id + '/' + position.lat + "/" +
 		  			position.lng + "/"+ message);
 			},
-			addPublicEmergencyMessage : function(message, position, user_id){
-		  		return $http.post('/api/ssnoc/message/' + user_id + '/' + position.lat + "/"
-		  			+ position.lng + "/"+ message);
-			},
 			getPublicMessages : function(){
 				return $http.get('/api/ssnoc/messages');
 			},

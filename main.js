@@ -7,7 +7,6 @@ var port  	 = process.env.PORT || 2222; 				// set the port		// load the databas
 var morgan   = require('morgan');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
-var say = require('say');
 
 //test Socketio
 var http = require('http').Server(app);
@@ -23,25 +22,8 @@ app.use(bodyParser.json()); // parse application/json
 app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
 app.use(methodOverride('X-HTTP-Method-Override')); // override with the X-HTTP-Method-Override header in the request
 
-// routes ======================================================================
-
-// require('./app/base')(io);
-
-// listen (start app with node server.js) ======================================
-// app.listen(port);
-// console.log("App listening on port " + port);
-
 http.listen(port, function(){
   console.log('listening on' + port);
 });
-//say.speak('Alex', 'whats up, dog?');
- 
-//  io.on('connection', function(socket){
-//      console.log('a user connected');
-
-// //     io.emit('chat message',tweet);
-// //     console.log('a user connected');
-//   });
-
 
 require('./app/apiController.js')(app, io);

@@ -8,15 +8,13 @@ app.controller("performanceTestController",function($scope, ssnocService, $q,$ro
     var fakeUser = 999;
     var defer = $q.defer();
     $scope.countCalls = 0;
-    $scope.resultTime;
-
-    // window.location = "/#/perfomance";
+    $scope.resultTime = 0;
 
     $scope.performTest = function(){
 
      var startTime = new Date().getTime();
-     $scope.countCalls =0;
-     $scope.resultTime =0;
+     $scope.countCalls = 0;
+     $scope.resultTime = 0;
 
      console.log("delay " + $scope.delay);
 
@@ -29,8 +27,7 @@ app.controller("performanceTestController",function($scope, ssnocService, $q,$ro
           ssnocService.testReset();
        });
 
- 
-    }
+    };
 
     function runPerformance(startTime, callback)
     {
@@ -43,7 +40,7 @@ app.controller("performanceTestController",function($scope, ssnocService, $q,$ro
              clearInterval(interval);
              callback($scope.countCalls);
            }
-        },10); 
+        },5); 
     }
 
 

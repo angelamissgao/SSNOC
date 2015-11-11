@@ -29,14 +29,14 @@ app.controller("privateChatController",function($scope, ssnocService, $q,$rootSc
       return $scope.member.name;
     }
     return $scope.receiver.name;
-  }
+  };
 
   $scope.sendMessage = function(){
     console.log("sendMessage");
     console.log($rootScope.id);
     ssnocService.addPrivateMessage($scope.chatMessage, $rootScope.currentPosition, $rootScope.id, $rootScope.receiverId);
     $scope.chatMessage = "";
-  }
+  };
 
   function getPrivateMessages(){
    ssnocService.getPrivateMessage($rootScope.id, $rootScope.receiverId)
@@ -65,7 +65,7 @@ $scope.searchPrivateMessages = function(){
   if (stopwords.indexOf($scope.searchPrivateMessage) == -1 ) {
     ssnocService.searchPrivateMessages($scope.searchPrivateMessage,$rootScope.id, $rootScope.receiverId)
     .success(function(response){
-      if(response.length == 0){
+      if(response.length === 0){
         $scope.searchAlert = true;
         $scope.messages = [];
       }
@@ -79,7 +79,6 @@ $scope.searchPrivateMessages = function(){
     $scope.searchAlert = true;
     $scope.messages = [];
   }
-}
-
+};
 
 });

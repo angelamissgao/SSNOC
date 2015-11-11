@@ -3,9 +3,7 @@ var dataController = require('./dataController.js');
 module.exports = function(app, io) {
 
 io.on('connection',function(socket){
-	console.log("user connected");
 	socket.on('disconnect', function(){
-		console.log("user disconnected");
 	});
 });
 // API Calls
@@ -131,7 +129,6 @@ io.on('connection',function(socket){
 	});
 
 	app.post('/api/ssnoc/test/add_message/:member_id/:latitude/:longitude/:message', function(req, res) {
-		console.log("apiController::testSendMessage");
 		dataController.addTestMessage(req, res, io);
 	});
 
@@ -359,7 +356,6 @@ io.on('connection',function(socket){
 	
 	app.get('*', function(req, res) {
 		appRoot = __dirname + '/../public/index.html';
-		console.log(appRoot);
 		res.sendFile(path.join(appRoot)); // load the single view file (angular will handle the page changes on the front-end)
 	});
 
