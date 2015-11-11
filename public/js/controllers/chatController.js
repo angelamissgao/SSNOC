@@ -23,7 +23,6 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
       "undefined":0
     };
 
-
     var defer = $q.defer();
 
     getDirectory();
@@ -55,7 +54,7 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
     }
 
     function getDirectory()
-    { 
+    {
       $scope.loading = true;
       ssnocService.getDirectory()
         .success(function(data) {

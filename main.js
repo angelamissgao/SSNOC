@@ -12,7 +12,6 @@ var methodOverride = require('method-override');
 var http = require('http').Server(app);
 var io = require('socket.io').listen(http);
 
-
 // configuration ===============================================================
 mongoose.connect('tingodb://'+__dirname+'/ssnocdb/'); 	// connect to mongoDB database on modulus.io
 
@@ -30,7 +29,6 @@ app.use(methodOverride('X-HTTP-Method-Override')); // override with the X-HTTP-M
 // listen (start app with node server.js) ======================================
 // app.listen(port);
 // console.log("App listening on port " + port);
-
 
 http.listen(port, function(){
   console.log('listening on' + port);

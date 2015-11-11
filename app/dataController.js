@@ -16,14 +16,13 @@ exports.getMembers = function(res){
 		});
 };
 
-exports.getMember = function(req, res){
+exports.getMember = function(req, res){	
 	Member.findOne({name: req.params.name}, function(err, members) {
-			if (err) {
+			if (err) {			
 				return res.send(err);	
 			}
-
 			res.json(members); 
-		});
+	});
 };
 
 

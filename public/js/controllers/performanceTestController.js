@@ -35,39 +35,27 @@ app.controller("performanceTestController",function($scope, ssnocService, $q,$ro
     function runPerformance(startTime, callback)
     {
      var interval =  setInterval(function(){
-          testSendMessage();
-          console.log("1");
-          
+          testSendMessage();          
           testGetMessage();
-          console.log("2");
+
           $scope.countCalls++;
           if(new Date().getTime() > startTime + $scope.delay){
              clearInterval(interval);
-             console.log("3  delay" + $scope.delay);
              callback($scope.countCalls);
            }
-           console.log("4");
-        },100); 
+        },10); 
     }
 
 
     function testSendMessage(){
-      // $rootScope.currentPosition.lat
-        // + " " + $rootScope.currentPosition.lng;
-      console.log("Test send message");
       ssnocService.testSendMessage(testMessage, position, fakeUser);
     }
      
     function testGetMessage(){
-        console.log("Test getting message");
         ssnocService.testGetMessage()
         .success(function(response)
         {
           $scope.messages = response;
-
-          // $scope.messages.forEach(function(entry) {
-            //console.log("Position:" + entry.position);
-          // });
         });
     }
 });
