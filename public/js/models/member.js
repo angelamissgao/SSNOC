@@ -9,16 +9,16 @@ app.factory('member', function(){
   }
 
   Member.prototype.isOnline = function()
+  {
+    if(this.status !== 0)
     {
-        if(this.status != 0)
-        {
-          return true;
-        }
-        else
-        {
-          return false;
-        }
+      return true;
     }
+    else
+    {
+      return false;
+    }
+  };
 
 
   return Member;

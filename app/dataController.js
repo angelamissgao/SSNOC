@@ -18,14 +18,13 @@ exports.getMembers = function(res){
 		});
 };
 
-exports.getMember = function(req, res){
+exports.getMember = function(req, res){	
 	Member.findOne({name: req.params.name}, function(err, members) {
-			if (err) {
+			if (err) {			
 				return res.send(err);	
 			}
-
 			res.json(members); 
-		});
+	});
 };
 
 
@@ -49,7 +48,7 @@ exports.addMember = function(req, res) {
 		}
 		res.json(member);
 	});
-}
+};
 
 exports.removeMember = function(id, res) {
 	Member.remove({_id: id}, function(err, obj) {
@@ -59,7 +58,7 @@ exports.removeMember = function(id, res) {
 
         res.json({ message: 'Member '+ id + ' successfully removed' });
     });
-}
+};
 
 exports.updateStatus = function(req, res, io) {
 	var latitude = req.params.latitude;
@@ -77,8 +76,8 @@ exports.updateStatus = function(req, res, io) {
 				return res.send(err);
 			}
 			io.emit('userStatusChange');
-			res.json({ message: 'Status updated: Member ' + req.params.member_id + ' status is ' + req.params.status_id 
-				+ 'and location is ' + latitude + ' ; ' + longitude});
+			res.json({ message: 'Status updated: Member ' + req.params.member_id + ' status is ' + req.params.status_id +
+				'and location is ' + latitude + ' ; ' + longitude});
 
 		});
 	});
@@ -95,7 +94,7 @@ exports.addPublicMessage = function(req, res, io) {
 			return res.send(err);
 		}
 
-		if (member != null && member !== undefined) {
+		if (member !== null && member !== undefined) {
 		
 			mymessage = new Message({message: message, member_id: member_id, status: member.status,
 			 position: {lng: longitude, lat: latitude}});
@@ -106,12 +105,11 @@ exports.addPublicMessage = function(req, res, io) {
 				}
 				io.emit('message', mymessage);
 				res.json(mymessage);
-				console.log("test location %s", mymessage);
 			});
 		}
 	});
 
-}
+};
 
 //Emergency
 
@@ -127,7 +125,7 @@ exports.addPublicEmergencyMessage = function(req, res, io) {
 			return res.send(err);
 		}
 
-		if (member != null && member !== undefined) {
+		if (member !== null && member !== undefined) {
 		
 			mymessage = new Message({message: message, member_id: member_id, status: member.status,
 			 position: {lng: longitude, lat: latitude}});
@@ -146,10 +144,9 @@ exports.addPublicEmergencyMessage = function(req, res, io) {
 		}
 	});
 
-}
+};
 
 //endEmergency
-
 
 exports.addTestMessage = function(req, res, io) {
 	var member_id = req.params.member_id;
@@ -157,8 +154,6 @@ exports.addTestMessage = function(req, res, io) {
 	var message = req.params.message;
 	var latitude = req.params.latitude;
 	var longitude = req.params.longitude;
-
-	console.log("dataController::testSendMessage");
 
 	Member.findById(member_id, function(err, member) {
 		if (err) {
@@ -177,7 +172,7 @@ exports.addTestMessage = function(req, res, io) {
 		});
 	});
 
-}
+};
 
 exports.addAnnouncement = function(req, res, io) {
 	var member_id = req.params.member_id;
@@ -190,7 +185,7 @@ exports.addAnnouncement = function(req, res, io) {
 			return res.send(err);
 		}
 
-		if (member != null && member !== undefined) {
+		if (member !== null && member !== undefined) {
 		
 			mymessage = new Message({message: message, member_id: member_id, receiver_id: announcement_receiver,status: member.status,
 			 position: {lng: longitude, lat: latitude}});
@@ -206,7 +201,7 @@ exports.addAnnouncement = function(req, res, io) {
 		}
 	});
 
-}
+};
 
 exports.getPublicMessages = function(res){
     Message.find({
@@ -253,8 +248,8 @@ exports.getPrivateMessages = function(req,res){
 				$or:[
 				{$and: [{member_id: req.params.member_id}, {receiver_id: req.params.receiver_id}]},
 				{$and: [{receiver_id: req.params.member_id}, {member_id: req.params.receiver_id}]}]
-			}
-		,function(err, messages) {
+			},
+		function(err, messages) {
 			if (err) {
 				return res.send(err);	
 			}
@@ -274,9 +269,9 @@ exports.addPrivateMessage = function(req, res, io){
 		if (err) {
 			return res.send(err);
 		}
-		if (member != null && member !== undefined) {
+		if (member !== null && member !== undefined) {
 			Member.findById(receiver_id, function(err,receiver){
-				if (receiver != null && receiver !== undefined) {
+				if (receiver !== null && receiver !== undefined) {
 				
 					mymessage = new Message({message: message, member_id: member_id, receiver_id: receiver_id,status: member.status,
 			 				position: {lng: longitude, lat: latitude}});
@@ -288,7 +283,6 @@ exports.addPrivateMessage = function(req, res, io){
 
 						io.emit('privatemessage', mymessage);
 						res.json(mymessage);
-						console.log(mymessage);
 					});
 				}
 			});

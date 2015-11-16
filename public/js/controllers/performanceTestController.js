@@ -8,15 +8,13 @@ app.controller("performanceTestController",function($scope, ssnocService, $q,$ro
     var fakeUser = 999;
     var defer = $q.defer();
     $scope.countCalls = 0;
-    $scope.resultTime;
-
-    // window.location = "/#/perfomance";
+    $scope.resultTime = 0;
 
     $scope.performTest = function(){
 
      var startTime = new Date().getTime();
-     $scope.countCalls =0;
-     $scope.resultTime =0;
+     $scope.countCalls = 0;
+     $scope.resultTime = 0;
 
      console.log("delay " + $scope.delay);
 
@@ -29,45 +27,32 @@ app.controller("performanceTestController",function($scope, ssnocService, $q,$ro
           ssnocService.testReset();
        });
 
- 
-    }
+    };
 
     function runPerformance(startTime, callback)
     {
      var interval =  setInterval(function(){
-          testSendMessage();
-          console.log("1");
-          
+          testSendMessage();          
           testGetMessage();
-          console.log("2");
+
           $scope.countCalls++;
           if(new Date().getTime() > startTime + $scope.delay){
              clearInterval(interval);
-             console.log("3  delay" + $scope.delay);
              callback($scope.countCalls);
            }
-           console.log("4");
-        },100); 
+        },5); 
     }
 
 
     function testSendMessage(){
-      // $rootScope.currentPosition.lat
-        // + " " + $rootScope.currentPosition.lng;
-      console.log("Test send message");
       ssnocService.testSendMessage(testMessage, position, fakeUser);
     }
      
     function testGetMessage(){
-        console.log("Test getting message");
         ssnocService.testGetMessage()
         .success(function(response)
         {
           $scope.messages = response;
-
-          // $scope.messages.forEach(function(entry) {
-            //console.log("Position:" + entry.position);
-          // });
         });
     }
 });

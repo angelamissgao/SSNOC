@@ -12,7 +12,6 @@ var methodOverride = require('method-override');
 var http = require('http').Server(app);
 var io = require('socket.io').listen(http);
 
-
 // configuration ===============================================================
 mongoose.connect('tingodb://'+__dirname+'/ssnocdb/'); 	// connect to mongoDB database on modulus.io
 
@@ -23,25 +22,8 @@ app.use(bodyParser.json()); // parse application/json
 app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
 app.use(methodOverride('X-HTTP-Method-Override')); // override with the X-HTTP-Method-Override header in the request
 
-// routes ======================================================================
-
-// require('./app/base')(io);
-
-// listen (start app with node server.js) ======================================
-// app.listen(port);
-// console.log("App listening on port " + port);
-
-
 http.listen(port, function(){
   console.log('listening on' + port);
 });
- 
-//  io.on('connection', function(socket){
-//      console.log('a user connected');
-
-// //     io.emit('chat message',tweet);
-// //     console.log('a user connected');
-//   });
-
 
 require('./app/apiController.js')(app, io);

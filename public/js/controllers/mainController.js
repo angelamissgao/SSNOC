@@ -32,7 +32,7 @@ app.controller("mainController",function($scope, ssnocService, $q,$rootScope){
 					console.log($scope.isExistingMember);
 				}
 			});
-		}
+		};
 
 		$scope.signup = function()
 		{   
@@ -42,14 +42,14 @@ app.controller("mainController",function($scope, ssnocService, $q,$rootScope){
 				window.location = "/#/chatting";
 			}
 
-		}
+		};
 
 		function findExistingMember(){
 			ssnocService.getMember($scope.member.username)
 				.then(
 					function(response){
 			
-						if(response.data !=undefined)
+						if(response.data !== undefined)
 						{ 	
 							$rootScope.id=response.data._id;
 							$rootScope.name = response.data.name;
@@ -85,7 +85,7 @@ app.controller("mainController",function($scope, ssnocService, $q,$rootScope){
 		$scope.logout = function(){
 			$scope.loading = true;
 			//goOffline();
-		}
+		};
 
 		
 		// CREATE ==================================================================
@@ -108,7 +108,7 @@ app.controller("mainController",function($scope, ssnocService, $q,$rootScope){
 		
 		function validateLoginDetails(data){
 			// console.log("validation " + data);
-			if(data != undefined)
+			if(data !== undefined)
 			{
 				if(data.password == $scope.member.password){
 				return true;

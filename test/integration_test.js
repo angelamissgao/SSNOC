@@ -16,28 +16,6 @@ mongoose.connect('tingodb://'+__dirname+'/../ssnocdb/', function (err) {
 
 console.log('Running mongoose version %s', mongoose.version);
 
-/*suite('apiController Test', function(){
-
-	test('getMember test', function(done){
-
-		var req = {};
-		req.params = {};
-		var res = {};
-
-		req.params.name = "bruno";
-
-		// api.getMember(req, res);
-		apiController.getMembers(res);
-
-		console.log('getMemberTest %j', res);
-
-		expect('bruno').to.equal(res.data.name);
-
-		done();
-	});
-
-});*/
-
 suite('REST API', function() {
 	var url = 'http://localhost:2222';
 
