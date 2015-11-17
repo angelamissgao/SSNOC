@@ -132,6 +132,11 @@ io.on('connection',function(socket){
 		dataController.addTestMessage(req, res, io);
 	});
 
+//Emergency
+
+app.post('/api/ssnoc/emergency/:member_id/:latitude/:longitude/:emergencytype/:message', function(req, res) {
+		dataController.addPublicEmergencyMessage(req, res, io);
+	});
 /**
  * @api {post} /api/ssnoc/announcement/:member_id/:message Post an announcement
  * @apiGroup Messages

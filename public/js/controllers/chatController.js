@@ -1,26 +1,36 @@
 app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
-  $scope.directory = {};
-  $scope.directoryDict = {};
-  $scope.loading = true;
-  $scope.messages = [];
-  $scope.announcements = [];
-  $scope.chatMessage = "";
-  $scope.searchMessage = "";
-  $scope.searchAlert = false;
-  $rootScope.currentMsgPage = 0;
+    $scope.directory = {};
+    $scope.directoryDict = {};
+    $scope.loading = true;
+    $scope.messages = [];
+    $scope.announcements = [];
+    $scope.chatMessage = "";
+    $scope.searchMessage = "";
+    $scope.searchAlert = false;
+    $rootScope.currentMsgPage = 0;
+    $scope.emergencyMessage = "";
+    $scope.emergencyType = "";
 
-  $scope.statusMap = {
-    "ok":1,
-    "help":2,
-    "emergency":3,
-    "undefined":0
-  };
+    $scope.statusImgMap = {
+      0:"offline.png",
+      1:"ok-icon.png",
+      2:"help-icon.png",
+      3:"emergency-icon.png",
+    };
 
-  var defer = $q.defer();
+    $scope.statusMap = {
+      "ok":1,
+      "help":2,
+      "emergency":3,
+      "undefined":0
+    };
 
-  getDirectory();
-  getAllMessages();
-  getAnnouncements();
+
+    var defer = $q.defer();
+
+    getDirectory();
+    getAllMessages();
+    getAnnouncements();
 
   $scope.isOnline = function(status)
   {
@@ -58,6 +68,15 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
       }
       $scope.loading = false;
 
+      //Emergency
+       $scope.sendEmergencyMessage = function(emergencytype){
+      console.log("Send message location: " + $rootScope.currentPosition.lat + " " + $rootScope.currentPosition.lng);
+      console.log(emergencytype);
+      $scope.emergencyMessage = "I am in " + emergencytype;
+      $scope.emergencyType = emergencytype;
+      ssnocService.updateStatus($rootScope.id, $rootScope.currentPosition, 3);
+      ssnocService.addPublicEmergencyMessage($scope.emergencyMessage, $scope.emergencyType, $rootScope.currentPosition, $rootScope.id);
+    };
     }); 
   }
 
@@ -83,12 +102,18 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
     $scope.$apply();
   });
 
-  $scope.msgAlert=false;
+     $rootScope.socket.on('emergency', function(msg, emergencytype){
+        $scope.messages.push(msg);
+        //@play audio
+        $scope.chatMessage = "";
+        $scope.$apply();
+        $scope.msgAlert=false;
+  });
 
   $rootScope.socket.on('privatemessage', function(result){
    $scope.msgAlert=true; 
    $scope.$apply();
- });
+  });
 
   $rootScope.socket.on('userStatusChange', function(){
     getDirectory();
