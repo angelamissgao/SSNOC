@@ -23,6 +23,7 @@
     "grunt-contrib-jshint": "^0.11.3",
     "grunt-mocha-test": "^0.12.7",
     "istanbul": "^0.4.0",
+    "say": "^0.6.0",
     "should": "^7.1.1",
     "supertest": "^1.1.0"
   }
