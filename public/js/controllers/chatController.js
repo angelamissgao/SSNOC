@@ -67,18 +67,28 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
         $scope.directoryDict[member._id] = member;
       }
       $scope.loading = false;
-
-      //Emergency
-       $scope.sendEmergencyMessage = function(emergencytype){
-      console.log("Send message location: " + $rootScope.currentPosition.lat + " " + $rootScope.currentPosition.lng);
-      console.log(emergencytype);
-      $scope.emergencyMessage = "I am in " + emergencytype;
-      $scope.emergencyType = emergencytype;
-      ssnocService.updateStatus($rootScope.id, $rootScope.currentPosition, 3);
-      ssnocService.addPublicEmergencyMessage($scope.emergencyMessage, $scope.emergencyType, $rootScope.currentPosition, $rootScope.id);
-    };
     }); 
   }
+
+    $scope.sendCustomEmergencyMessage = function($event){
+    var keyCode = $event.which || $event.keyCode;
+    // key code for enter key
+    if (keyCode === 13 && $scope.emergencyTag != undefined && $scope.emergencyTag != "") {
+      $scope.sendEmergencyMessage($scope.emergencyTag);
+    }
+
+  };
+
+  //Emergency
+  $scope.sendEmergencyMessage = function(emergencytype){
+    console.log("Send message location: " + $rootScope.currentPosition.lat + " " + $rootScope.currentPosition.lng);
+    console.log(emergencytype);
+    $scope.emergencyMessage = "I am in " + emergencytype;
+    $scope.emergencyType = emergencytype;
+    $rootScope.shareStatus(3);
+    ssnocService.updateStatus($rootScope.id, $rootScope.currentPosition, 3);
+    ssnocService.addPublicEmergencyMessage($scope.emergencyMessage, $scope.emergencyType, $rootScope.currentPosition, $rootScope.id);
+  };
 
   $scope.newPrivateChat = function(memberId){
     $rootScope.receiverId = memberId;
@@ -104,7 +114,7 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
 
      $rootScope.socket.on('emergency', function(msg, emergencytype){
         $scope.messages.push(msg);
-        //@play audio
+        getDirectory();
         $scope.chatMessage = "";
         $scope.$apply();
         $scope.msgAlert=false;

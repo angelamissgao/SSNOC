@@ -126,7 +126,8 @@ exports.addPublicEmergencyMessage = function(req, res, io) {
 		}
 
 		if (member !== null && member !== undefined) {
-		
+			// change memmber status to emergency
+			member.status = 3;
 			mymessage = new Message({message: message, member_id: member_id, status: member.status,
 			 position: {lng: longitude, lat: latitude}});
 			
