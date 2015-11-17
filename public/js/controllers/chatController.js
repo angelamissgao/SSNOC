@@ -73,7 +73,7 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
     $scope.sendCustomEmergencyMessage = function($event){
     var keyCode = $event.which || $event.keyCode;
     // key code for enter key
-    if (keyCode === 13 && $scope.emergencyTag != undefined && $scope.emergencyTag !== "") {
+    if (keyCode === 13 && $scope.emergencyTag !== undefined && $scope.emergencyTag !== "") {
       $scope.sendEmergencyMessage($scope.emergencyTag);
     }
 
