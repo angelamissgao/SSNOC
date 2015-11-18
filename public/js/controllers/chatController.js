@@ -1,4 +1,12 @@
 app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
+  $scope.availableTags = ['Chemical','Drought','Earthquake','Home Fire','Flood','Flu','Heat Wave','Highway Safety','Hurricane','Landslide','Poisoning','Power Outage','Terrorism','Thunderstorm','Tornado','Tsunami','Volcano','Water Poisoning','Wildfire','Winter Storm'];
+
+    $("#tags").autocomplete({
+      source:$scope.availableTags,
+      select:function (event, ui) {
+        $scope.emergencyTag = ui.item.label;
+      }
+    });
     $scope.directory = {};
     $scope.directoryDict = {};
     $scope.loading = true;
@@ -73,7 +81,7 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
     $scope.sendCustomEmergencyMessage = function($event){
     var keyCode = $event.which || $event.keyCode;
     // key code for enter key
-    if (keyCode === 13 && $scope.emergencyTag != undefined && $scope.emergencyTag != "") {
+    if (keyCode === 13 && $scope.emergencyTag !== undefined && $scope.emergencyTag !== "") {
       $scope.sendEmergencyMessage($scope.emergencyTag);
     }
 
@@ -83,7 +91,7 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
   $scope.sendEmergencyMessage = function(emergencytype){
     console.log("Send message location: " + $rootScope.currentPosition.lat + " " + $rootScope.currentPosition.lng);
     console.log(emergencytype);
-    $scope.emergencyMessage = "I am in " + emergencytype;
+    $scope.emergencyMessage = "I am in " + emergencytype + " emergency";
     $scope.emergencyType = emergencytype;
     $rootScope.shareStatus(3);
     ssnocService.updateStatus($rootScope.id, $rootScope.currentPosition, 3);
@@ -107,6 +115,7 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
   };
 
   $rootScope.socket.on('message', function(msg){
+    //console.log("message received");
     $scope.messages.push(msg);
     $scope.chatMessage = "";
     $scope.$apply();
@@ -114,6 +123,7 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
 
      $rootScope.socket.on('emergency', function(msg, emergencytype){
         $scope.messages.push(msg);
+        //console.log("emergency received");
         getDirectory();
         $scope.chatMessage = "";
         $scope.$apply();
@@ -152,7 +162,7 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
     ssnocService.getAnnouncements()
     .success(function(response)
     {
-      console.log(response);
+      //console.log(response);
       $scope.announcements = response;
     });
   }

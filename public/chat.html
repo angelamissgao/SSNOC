@@ -1,5 +1,4 @@
 <div ng-controller="chatController" class="ssnoc-container" id="chatpublic">
-        
         <!--Welcome Msg-->
 
         <div class="alert alert-info alert-dismissible" role="alert">
@@ -24,7 +23,9 @@
           <div class="col-xs-3 col-sm-3 col-md-1 pull-left">
              <button type="submit" class="btn btn-default" ng-click="sendEmergencyMessage('tsunami')"><img src='/images/tsunami.png'/></button>
           </div>
-          <input ng-model="emergencyTag" type="text" placeholder="#Emergency" ng-keypress="sendCustomEmergencyMessage($event)">
+          <div>
+          <input ng-model="emergencyTag" id="tags" type="text" placeholder="#Emergency" ng-keypress="sendCustomEmergencyMessage($event)" />
+          </div>
          </div>
          <br><br>
          </div>
@@ -62,7 +63,7 @@
                     <b><span ng-bind="directoryDict[message.member_id].name"></span></b>: &nbsp &nbsp
                      <b><span ng-bind="message.message"></span></b>
                     <span ng-bind="message.timestamp" class = "posttime"></span>
-                     <span ng-bind="message.receiver_id"></span>
+                     <!--<span ng-bind="message.receiver_id"></span>-->
                      <br>
                      <br> Position Info: [<span ng-bind="message.position.lat"></span>,<span ng-bind="message.position.lng"></span>]
         					</p>	
