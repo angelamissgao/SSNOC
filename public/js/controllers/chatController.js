@@ -22,50 +22,17 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
   getAllMessages();
   getAnnouncements();
 
-  $scope.isOnline = function(status)
-  {
-    if(status !== 0)
-
-    $scope.directory = {};
-    $scope.directoryDict = {};
-    $scope.loading = true;
-    $scope.messages = [];
-    $scope.announcements = [];
-    $scope.chatMessage = "";
-    $scope.searchMessage = "";
-    $scope.searchAlert = false;
-    $rootScope.currentMsgPage = 0;
-
-    $scope.statusImgMap = {
-      0:"offline.png",
-      1:"ok-icon.png",
-      2:"help-icon.png",
-      3:"emergency-icon.png",
-    };
-
-    $scope.statusMap = {
-      "ok":1,
-      "help":2,
-      "emergency":3,
-      "undefined":0
-    };
-
-
-    var defer = $q.defer();
-
-    getDirectory();
-    getAllMessages();
-    getAnnouncements();
 
     $scope.isOnline = function(status)
-
     {
-      return true;
-    }
-    else
-    {
-      return false;
-    }
+      if(status !== 0)
+      {
+        return true;
+      }
+      else
+      {
+        return false;
+      }
   };
 
   $scope.isAnnoucement = function(receiverId)
@@ -125,7 +92,7 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
       .success(function(response){
           getAnnouncements();
       });
-    }
+    };
 
   $scope.msgAlert=false;
 

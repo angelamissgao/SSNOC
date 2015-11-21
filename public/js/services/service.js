@@ -16,13 +16,9 @@ app.factory('ssnocService',function($http) {
 					position.lng +"/"+status_id);
 			},			
 			addPublicMessage : function(message, position, user_id){
-		  		return $http.post('/api/ssnoc/message/' + user_id + '/' + position.lat + "/"
-		  			+ position.lng + "/"+ message);
+		  		return $http.post('/api/ssnoc/message/' + user_id + '/' + position.lat + "/" + position.lng + "/"+ message);
 			},
-<<<<<<< HEAD
 
-=======
->>>>>>> parent of 8291d62... basic emergency type work in progress
 			getPublicMessages : function(){
 				return $http.get('/api/ssnoc/messages');
 			},
