@@ -109,6 +109,8 @@ exports.addPublicMessage = function(req, res, io) {
 
 };
 
+
+
 exports.addTestMessage = function(req, res, io) {
 	var member_id = req.params.member_id;
 	var member_status = 1;
