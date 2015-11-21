@@ -57,7 +57,6 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
         $scope.directoryDict[member._id] = member;
       }
       $scope.loading = false;
-
     }); 
   }
 
