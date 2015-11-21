@@ -2,8 +2,6 @@ var Member = require('./models/memberModel');
 var Message = require('./models/messageModel');
 var TestMessage = require('./models/testMessageModel');
 var path = require('path');
-var say = require('say');
-
 var public_receiver = 0;
 var announcement_receiver = 1;
 
@@ -110,44 +108,6 @@ exports.addPublicMessage = function(req, res, io) {
 	});
 
 };
-
-//Emergency
-
-exports.addPublicEmergencyMessage = function(req, res, io) {
-	var member_id = req.params.member_id;
-	var message = req.params.message;
-	var latitude = req.params.latitude;
-	var longitude = req.params.longitude;
-	var emergency_type = req.params.emergencytype;
-
-	Member.findById(member_id, function(err, member) {
-		if (err) {
-			return res.send(err);
-		}
-
-		if (member !== null && member !== undefined) {
-			// change memmber status to emergency
-			member.status = 3;
-			mymessage = new Message({message: message, member_id: member_id, receiver_id: announcement_receiver, status: member.status,
-			 position: {lng: longitude, lat: latitude}});
-			
-			mymessage.save(function (err, obj) { 
-				if (err) {
-					return res.send(err);
-				}
-				io.emit('emergency', mymessage, emergency_type);
-				console.log("-> " + emergency_type);
-				var audiomsg = member.name + " says I am in " + emergency_type;
-				say.speak('Alex', audiomsg);
-				res.json(mymessage);
-				console.log("test location %s", mymessage);
-			});
-		}
-	});
-
-};
-
-//endEmergency
 
 exports.addTestMessage = function(req, res, io) {
 	var member_id = req.params.member_id;

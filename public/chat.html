@@ -1,4 +1,5 @@
 <div ng-controller="chatController" class="ssnoc-container" id="chatpublic">
+        
         <!--Welcome Msg-->
 
         <div class="alert alert-info alert-dismissible" role="alert">
@@ -6,31 +7,6 @@
           <strong>Welcome to Brics SsNoc.</strong> You could send messages or share your status with the members in our community. 1-OK, 2-Help, 3-Emergency, 4-Undefined.
         </div>
 
-        <!-- Types of emergencies -->
-        <div>
-        <br>
-        <strong>Select the type of emergency you are in</strong><br><br>
-        <div class="row">
-        <div class="col-xs-3 col-sm-3 col-md-1 pull-left">
-             <button type="submit" class="btn btn-default" ng-click="sendEmergencyMessage('fire')"><img src='/images/fire.jpg'/></button>
-          </div>
-         <div class="col-xs-3 col-sm-3 col-md-1 pull-left">
-             <button type="submit" class="btn btn-default" ng-click="sendEmergencyMessage('earthquake')"><img src='/images/earthquake.png'/></button>
-          </div>
-          <div class="col-xs-3 col-sm-3 col-md-1 pull-left">
-             <button type="submit" class="btn btn-default" ng-click="sendEmergencyMessage('thunderstorm')"><img src='/images/thunderstorm.png'/></button>
-          </div>
-          <div class="col-xs-3 col-sm-3 col-md-1 pull-left">
-             <button type="submit" class="btn btn-default" ng-click="sendEmergencyMessage('tsunami')"><img src='/images/tsunami.png'/></button>
-          </div>
-          <div>
-          <input ng-model="emergencyTag" id="tags" type="text" placeholder="#Emergency" ng-keypress="sendCustomEmergencyMessage($event)" />
-          </div>
-         </div>
-         <br><br>
-         </div>
-        <!-- end of emergency-->
-        
         <div ng-show='msgAlert' class="alert alert-info alert-dismissible" role="alert">
           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <strong>You Got a New Message!</strong>
@@ -63,7 +39,7 @@
                     <b><span ng-bind="directoryDict[message.member_id].name"></span></b>: &nbsp &nbsp
                      <b><span ng-bind="message.message"></span></b>
                     <span ng-bind="message.timestamp" class = "posttime"></span>
-                     <!--<span ng-bind="message.receiver_id"></span>-->
+                     <span ng-bind="message.receiver_id"></span>
                      <br>
                      <br> Position Info: [<span ng-bind="message.position.lat"></span>,<span ng-bind="message.position.lng"></span>]
         					</p>	
@@ -74,8 +50,7 @@
                      <b><span ng-bind="message.message"></span></b>       
                      <span ng-bind="message.timestamp" class = "posttime"></span>
                      <br> Position Info: [<span ng-bind="message.position.lat"></span>,<span ng-bind="message.position.lng"></span>]
-                  </p>  
-
+                  </p>   
 
                   <button type="button" class="btn btn-default" ng-show="isShowMoreButtonShown(messages)" ng-click="showMore()">Show More</button>
 

@@ -138,19 +138,6 @@ suite('REST API', function() {
       });
 	});
 
-	test('Emergency Alert', function() {
-		request(url)
-		.post('/api/ssnoc/messages')
-		.end(function(err, res) {
-			if (err) {
-				throw err;
-			}
-          // this is should.js syntax, very clear
-          res.should.have.status(400);
-          done();
-      });
-	});
-
 	test('New Private Message', function() {
 		request(url)
 		.post('/api/ssnoc/private_message/2/0/0/3/PrivateMessage')
