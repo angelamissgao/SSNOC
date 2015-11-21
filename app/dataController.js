@@ -107,13 +107,11 @@ exports.addPublicMessage = function(req, res, io) {
 		}
 	});
 
-<<<<<<< HEAD
+
 };
 
 
-=======
-}
->>>>>>> parent of d1134d8... Merge branch 'master' into Nisha_Voice+EmergencyType
+
 
 exports.addTestMessage = function(req, res, io) {
 	var member_id = req.params.member_id;

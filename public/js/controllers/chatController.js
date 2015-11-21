@@ -35,10 +35,7 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
     $scope.searchMessage = "";
     $scope.searchAlert = false;
     $rootScope.currentMsgPage = 0;
-<<<<<<< HEAD
-    
-=======
->>>>>>> parent of d1134d8... Merge branch 'master' into Nisha_Voice+EmergencyType
+
 
     $scope.statusImgMap = {
       0:"offline.png",
