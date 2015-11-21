@@ -107,10 +107,7 @@ exports.addPublicMessage = function(req, res, io) {
 		}
 	});
 
-
 };
-
-
 
 
 exports.addTestMessage = function(req, res, io) {

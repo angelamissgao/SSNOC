@@ -25,6 +25,4 @@ app.use(methodOverride('X-HTTP-Method-Override')); // override with the X-HTTP-M
 http.listen(port, function(){
   console.log('listening on' + port);
 });
-
-
 require('./app/apiController.js')(app, io);
