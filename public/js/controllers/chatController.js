@@ -35,7 +35,10 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
     $scope.searchMessage = "";
     $scope.searchAlert = false;
     $rootScope.currentMsgPage = 0;
+<<<<<<< HEAD
     
+=======
+>>>>>>> parent of d1134d8... Merge branch 'master' into Nisha_Voice+EmergencyType
 
     $scope.statusImgMap = {
       0:"offline.png",
@@ -102,6 +105,7 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
     window.location="/#/privatechat";
   };
 
+<<<<<<< HEAD
   $scope.sendMessage = function(){
     ssnocService.addPublicMessage($scope.chatMessage, $rootScope.currentPosition, $rootScope.id);
   };
@@ -119,6 +123,16 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
     $scope.$apply();
   });
 
+=======
+    $scope.postAnnouncement = function(){
+      console.log("postAnnoucement");
+      console.log($rootScope.id);
+      ssnocService.addAnnouncement($scope.chatMessage, $rootScope.currentPosition, $rootScope.id)
+      .success(function(response){
+          getAnnouncements();
+      });
+    }
+>>>>>>> parent of d1134d8... Merge branch 'master' into Nisha_Voice+EmergencyType
 
   $scope.msgAlert=false;
 
@@ -133,7 +147,10 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
 
     $rootScope.socket.on('message', function(msg){
         $scope.messages.push(msg);
+<<<<<<< HEAD
        
+=======
+>>>>>>> parent of d1134d8... Merge branch 'master' into Nisha_Voice+EmergencyType
         $scope.chatMessage = "";
         $scope.$apply();
 

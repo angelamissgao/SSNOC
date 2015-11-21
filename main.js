@@ -25,6 +25,16 @@ app.use(methodOverride('X-HTTP-Method-Override')); // override with the X-HTTP-M
 http.listen(port, function(){
   console.log('listening on' + port);
 });
+<<<<<<< HEAD
+=======
+
+//  io.on('connection', function(socket){
+//      console.log('a user connected');
+
+// //     io.emit('chat message',tweet);
+// //     console.log('a user connected');
+//   });
+>>>>>>> parent of d1134d8... Merge branch 'master' into Nisha_Voice+EmergencyType
 
 
 require('./app/apiController.js')(app, io);

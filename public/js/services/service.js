@@ -19,7 +19,10 @@ app.factory('ssnocService',function($http) {
 		  		return $http.post('/api/ssnoc/message/' + user_id + '/' + position.lat + "/"
 		  			+ position.lng + "/"+ message);
 			},
+<<<<<<< HEAD
 			
+=======
+>>>>>>> parent of d1134d8... Merge branch 'master' into Nisha_Voice+EmergencyType
 			getPublicMessages : function(){
 				return $http.get('/api/ssnoc/messages');
 			},
