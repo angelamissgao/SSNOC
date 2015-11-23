@@ -21,6 +21,7 @@ exports.getMember = function(req, res){
 			if (err) {			
 				return res.send(err);	
 			}
+			
 			res.json(members); 
 	});
 };

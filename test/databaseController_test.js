@@ -22,13 +22,13 @@ suite('dataController Test', function(){
 		req.params = {};
 		var res = {};
 
-		//req.params.name = "bruno";
+		req.params.name = "bruno";
 	
-		// getMemberFromDataController(function(req, res, result){
+		//Fix
+		// var response = getMemberFromDataController(function(req, res, result){
 		// 		console.log('getMemberTest %j', result);
 		// });
-
-		
+		// var response = dataController.getMember(req, res);
 		// expect(res).to.exist;
 
 		done();
@@ -37,6 +37,5 @@ suite('dataController Test', function(){
 });
 
 function getMemberFromDataController(req, res,callback){
-	dataController.getMember(req, res);
-	return callback(res);
+	return dataController.getMember(req, res);
 }

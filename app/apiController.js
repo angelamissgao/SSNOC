@@ -1,4 +1,5 @@
 var dataController = require('./dataController.js');
+var path = require('path');
 
 module.exports = function(app, io) {
 
@@ -349,11 +350,6 @@ io.on('connection',function(socket){
 
 //Files
 
-	app.get('/chatting', function(req, res) {
-		appRoot = __dirname + '/../public/ChatPublicly.html';
-		res.sendFile(appRoot); // load the single view file (angular will handle the page changes on the front-end)
-	});
-	
 	app.get('*', function(req, res) {
 		appRoot = __dirname + '/../public/index.html';
 		res.sendFile(path.join(appRoot)); // load the single view file (angular will handle the page changes on the front-end)
