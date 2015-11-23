@@ -6,7 +6,7 @@ var apiController = require('../app/apiController.js');
 
 var expect = require('expect.js');
 
-mongoose.connect('tingodb://'+__dirname+'/../ssnocdb/', function (err) {
+mongoose.connect('tingodb://'+__dirname+'/ssnocdb/', function (err) {
   if (err){
   	throw err;
   } else {

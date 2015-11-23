@@ -10,7 +10,7 @@
   var TestMessage = require('../app/models/testMessageModel');
 
 
-  mongoose.connect('tingodb://'+__dirname+'/../ssnocdb/', function (err) {
+  mongoose.connect('tingodb://'+__dirname+'/ssnocdb/', function (err) {
     if (err){
       throw err;
     } else {
