@@ -26,6 +26,7 @@ suite('REST API', function() {
 	test('Members', function(done) {
 		request(url)
 		.get('/api/ssnoc/directory')
+		.expect(200)
 		.end(function(err, res) {
 			if (err) {
 				throw err;
