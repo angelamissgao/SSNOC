@@ -19,17 +19,23 @@ console.log('Running mongoose version %s', mongoose.version);
 suite('REST API', function() {
 	var url = 'http://localhost:2222';
 
-	mongoose.connect('tingodb://'+__dirname+'/../ssnocdb/');
+	mongoose.connect('tingodb://'+__dirname+'/ssnocdb/');
 
 	test('Members', function() {
 		request(url)
 		.get('/api/ssnoc/directory')
 		.end(function(err, res) {
 			if (err) {
-				throw err;
+				// throw err;
+				done(err);
 			}
-          // this is should.js syntax, very clear
-          res.should.have.status(400);
+
+		  // FIX not reaching this section
+          res.should.have.status(200);
+          res.body.status.should.equal('1');
+          parseFloat(res.body.status).should.equal(1);
+          console.log('getMemberTest response');
+          console.log('getMemberTest res', res.body.status);
           done();
       });
 	});
@@ -41,8 +47,12 @@ suite('REST API', function() {
 			if (err) {
 				throw err;
 			}
-          // this is should.js syntax, very clear
-          res.should.have.status(400);
+
+		   // FIX not reaching this section
+
+          res.should.have.status(200);
+          res.body.status.should.equal('0');
+          res.body.member.should.equal('bruno');
           done();
       });
 	});
@@ -54,8 +64,8 @@ suite('REST API', function() {
 			if (err) {
 				throw err;
 			}
-          // this is should.js syntax, very clear
-          res.should.have.status(400);
+
+          res.should.have.status(200);
           done();
       });
 	});
@@ -67,8 +77,8 @@ suite('REST API', function() {
 			if (err) {
 				throw err;
 			}
-          // this is should.js syntax, very clear
-          res.should.have.status(400);
+
+          res.should.have.status(200);
           done();
       });
 	});
@@ -80,8 +90,8 @@ suite('REST API', function() {
 			if (err) {
 				throw err;
 			}
-          // this is should.js syntax, very clear
-          res.should.have.status(400);
+
+          res.should.have.status(200);
           done();
       });
 	});
@@ -93,8 +103,8 @@ suite('REST API', function() {
 			if (err) {
 				throw err;
 			}
-          // this is should.js syntax, very clear
-          res.should.have.status(400);
+
+          res.should.have.status(200);
           done();
       });
 	});
@@ -106,8 +116,8 @@ suite('REST API', function() {
 			if (err) {
 				throw err;
 			}
-          // this is should.js syntax, very clear
-          res.should.have.status(400);
+
+          res.should.have.status(200);
           done();
       });
 	});
@@ -119,8 +129,8 @@ suite('REST API', function() {
 			if (err) {
 				throw err;
 			}
-          // this is should.js syntax, very clear
-          res.should.have.status(400);
+
+          res.should.have.status(200);
           done();
       });
 	});
@@ -132,8 +142,8 @@ suite('REST API', function() {
 			if (err) {
 				throw err;
 			}
-          // this is should.js syntax, very clear
-          res.should.have.status(400);
+
+          res.should.have.status(200);
           done();
       });
 	});
@@ -145,8 +155,8 @@ suite('REST API', function() {
 			if (err) {
 				throw err;
 			}
-          // this is should.js syntax, very clear
-          res.should.have.status(400);
+
+          res.should.have.status(200);
           done();
       });
 	});

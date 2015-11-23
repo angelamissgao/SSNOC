@@ -9,14 +9,14 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
   $scope.searchAlert = false;
   $rootScope.currentMsgPage = 0;
 
+  var defer = $q.defer();
+
   $scope.statusMap = {
     "ok":1,
     "help":2,
     "emergency":3,
     "undefined":0
   };
-
-  var defer = $q.defer();
 
   getDirectory();
   getAllMessages();

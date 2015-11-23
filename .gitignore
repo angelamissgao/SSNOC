@@ -1,6 +1,10 @@
 .DS_Store
 ssnocdb/messages
+ssnocdb/testmessages
 ssnocdb/members
 node_modules/*
 !tungus
 test/results.txt
+test/ssnocdb/messages
+test/ssnocdb/testmessages
+test/ssnocdb/members

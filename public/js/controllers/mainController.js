@@ -49,7 +49,7 @@ app.controller("mainController",function($scope, ssnocService, $q,$rootScope){
 				.then(
 					function(response){
 			
-						if(response.data !== undefined)
+						if(response.data !== null)
 						{ 	
 							$rootScope.id=response.data._id;
 							$rootScope.name = response.data.name;

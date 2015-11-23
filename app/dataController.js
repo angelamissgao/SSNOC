@@ -116,10 +116,6 @@ exports.addTestMessage = function(req, res, io) {
 	var latitude = req.params.latitude;
 	var longitude = req.params.longitude;
 
-	Member.findById(member_id, function(err, member) {
-		if (err) {
-			return res.send(err);
-		}
 
 		testmessage = new TestMessage({message: message, member_id: member_id, status: member_status,
 		 position: {lng: longitude, lat: latitude}});
@@ -128,11 +124,9 @@ exports.addTestMessage = function(req, res, io) {
 			if (err) {
 				return res.send(err);
 			}
-			io.emit('testmessage', mymessage);
+
 			res.json(testmessage);
 		});
-	});
-
 };
 
 exports.addAnnouncement = function(req, res, io) {
