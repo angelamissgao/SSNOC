@@ -68,6 +68,27 @@ suite('REST API', function() {
       });
 	});
 
+	test('Messages', function(done) {
+		request(url)
+		.get('/api/ssnoc/messages')
+		.expect(200)
+		.end(function(err, res) {
+			if (err) {
+				throw err;
+			}
+
+			var result = JSON.parse(res.text);
+
+			result[0].message.should.be.equal('NewAnnouncement');
+			result[0].member_id.should.be.equal(2);
+			result[0].position.lat.should.be.equal(0);
+			result[0].position.lng.should.be.equal(0);
+
+          done();
+      });
+	});	
+
+
 	test('Add Announcement', function(done) {
 		request(url)
 		.post('/api/ssnoc/message/2/0/0/NewAnnouncement')
@@ -187,24 +208,6 @@ suite('REST API', function() {
       });
 	});
 */
-	test('Messages', function(done) {
-		request(url)
-		.get('/api/ssnoc/messages')
-		.expect(200)
-		.end(function(err, res) {
-			if (err) {
-				throw err;
-			}
-
-			var result = JSON.parse(res.text);
-
-			result[0].message.should.be.equal('NewAnnouncement');
-			result[0].member_id.should.be.equal(2);
-			result[0].position.lat.should.be.equal(0);
-			result[0].position.lng.should.be.equal(0);
-
-          done();
-      });
-	});	
 });
+
 
