@@ -111,7 +111,7 @@ suite('REST API', function() {
 
 	test('Add Private Message', function(done) {
 		request(url)
-		.post('/api/ssnoc/private_message/2/0/0/3/PrivateMessage')
+		.post('/api/ssnoc/private_message/2/0/0/2/PrivateMessage')
 		.expect(200)
 		.end(function(err, res) {
 			if (err) {
@@ -122,7 +122,7 @@ suite('REST API', function() {
 
 			result.message.should.be.equal('PrivateMessage');
 			result.member_id.should.be.equal(2);
-			result.receiver_id.should.be.equal(3);
+			result.receiver_id.should.be.equal(2);
 			result.position.lat.should.be.equal(0);
 			result.position.lng.should.be.equal(0);
 
