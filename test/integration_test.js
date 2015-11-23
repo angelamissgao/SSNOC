@@ -79,7 +79,7 @@ suite('REST API', function() {
 
 			var result = JSON.parse(res.text);
 
-			result[0].message.should.be.equal('NewAnnouncement');
+			result[0].message.should.be.equal('NewMessage');
 			result[0].member_id.should.be.equal(2);
 			result[0].position.lat.should.be.equal(0);
 			result[0].position.lng.should.be.equal(0);
