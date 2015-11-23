@@ -4,7 +4,7 @@ var tungus   = require('tungus');
 var mongoose = require('mongoose'); 					// mongoose for tingoDb
 var apiController = require('../app/apiController.js');
 
-var expect = require('expect.js');
+var expect = require('expect.ja');
 
 mongoose.connect('tingodb://'+__dirname+'/ssnocdb/', function (err) {
   if (err){
