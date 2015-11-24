@@ -2,7 +2,7 @@ app.controller("performanceTestController",function($scope, ssnocService, $q,$ro
     $scope.messages = [];
     $scope.announcements = [];
     
-    var testMessage = "20characters message";
+    var testMessage = "20characters_message";
     var position = {lat:'0', lng:'0'};
     $scope.delay = 500;
     var fakeUser = 2;
