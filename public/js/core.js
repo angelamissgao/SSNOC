@@ -43,29 +43,28 @@ app.config(['$routeProvider', function($routeProvider) {
 
           }]);
 
-app.run(function($rootScope, ssnocService){
-
-    // $rootScope.id;    
-    // $rootScope.name;
-    // $rootScope.receiverId;
-    // $rootScope.status;
+app.run(function($rootScope, ssnocService, member){
     $rootScope.socket = io.connect(); 
-    $rootScope.currentPosition = {lat: 0, lng: 0};
-    $rootScope.currentPosition.lat = 0;    
-    $rootScope.currentPosition.lng = 0;    
-    $rootScope.authenticated = false;
-    $rootScope.statuses = [
-    {name:"OK", id:1},
-    {name:"Help", id:2},
-    {name:"Emergency", id:3}
-    ];
+
+    // $rootScope.currentPosition = {lat: 0, lng: 0};
+    // $rootScope.currentPosition.lat = 0;    
+    // $rootScope.currentPosition.lng = 0;    
+    // $rootScope.authenticated = false;
+    $rootScope.member = new member();
+
+    $rootScope.statuses = {
+    'Offline' : {'name':"Offline", 'id': 0},
+    'OK' : {'name':"OK", 'id':1},
+    'Help' :{ 'name' :"Help", 'id':2},
+    'Emergency' :{'name':"Emergency", 'id':3}
+    };
 
     $rootScope.statusImgMap = {
       0:"offline.png",
       1:"ok-icon.png",
       2:"help-icon.png",
       3:"emergency-icon.png",
-    };
+    };$
 
     $rootScope.currentMsgPage = 0;
     var pageSize = 10;
@@ -80,28 +79,28 @@ app.run(function($rootScope, ssnocService){
       console.log("core::showLocation: %s", position);
       if(position!==undefined) {
 
-        $rootScope.currentPosition = {lat: position.coords.latitude, lng: position.coords.longitude};
+        $rootScope.member.position = {lat: position.coords.latitude, lng: position.coords.longitude};
       }
     }
 
     $rootScope.shareStatus= function(status_id){
-     $rootScope.status = status_id;
-     ssnocService.updateStatus($rootScope.id, $rootScope.currentPosition, status_id);
+     $rootScope.memberstatus = status_id;
+     ssnocService.updateStatus($rootScope.member.id, $rootScope.position, status_id);
     };
 
     $rootScope.logout = function()
     {
-      ssnocService.updateStatus($rootScope.id, $rootScope.currentPosition, 0).
+      ssnocService.updateStatus($rootScope.member.id, $rootScope.member.position, $rootScope.statuses.Offline.id).
       success(function(response){
         console.log("logout" + response);
-        $rootScope.authenticated = false;
+        $rootScope.member.setAuthentication(false);
         window.location = "/";
       });
     };
 
     $rootScope.socket.on('disconnect', function(){
-      console.log("disconnecting" + $rootScope.id);
-      ssnocService.updateStatus($rootScope.id, 0);
+      console.log("disconnecting" + $rootScope.member.id);
+      ssnocService.updateStatus($rootScope.member.id, $rootScope.statuses.Offline.id);
       $rootScope.$apply();
     });
 

@@ -37,6 +37,7 @@
 
 			<script src="js/core.js"></script>
 			<script src="js/services/service.js"></script>
+      <script src="js/models/member.js"></script> 
 			<script src="js/controllers/mainController.js"></script> 
 			<script src="js/controllers/chatController.js"></script> 
 			<script src="js/controllers/privateChatController.js"></script> 
@@ -47,7 +48,7 @@
 <body ng-app="ssnoc">
 
 <div class="container-fluid" >
-   <div ng-if="authenticated">     
+   <div ng-if="member.authenticated">     
      <div class="row col-md-12">
       <!-- style="background-color:#E5FFFF" -->
       <div class="col-xs-2 col-sm-2 col-md-2" style="margin-top:30px;">
@@ -59,13 +60,13 @@
       <div class="col-xs-2 col-sm-2 col-md-2" style="margin-top:20px; margin-left: -10px;">
              <p class="row pull-right"> 
 <!--             col-xs-1 col-sm-1 col-md-1 -->
-              <strong ng-bind="name"></strong>
+              <strong ng-bind="member.username"></strong>
              </p>
 
              <div class="row dropdown pull-right" style="margin-top:14px;">
               <!-- col-xs-1 col-sm-1 col-md-1 -->
                 <a class="dropdown-toggle" type="button" data-toggle="dropdown" style="margin-top:14px;">
-                  <img ng-src="/images/{{statusImgMap[status]}}"/ ></a>
+                  <img ng-src="/images/{{statusImgMap[member.status]}}"/ ></a>
                 <ul class="dropdown-menu">
                   <li ng-repeat="status in statuses">
                     <a ng-bind="status.name" ng-click="shareStatus(status.id)"></a>
@@ -79,7 +80,7 @@
     </div>
 
       <div class="row">
-    	     <div ng-if="authenticated">	
+    	     <div ng-if="member.authenticated">	
             <div class="col-xs-3 col-sm-3 col-md-1">
             <!-- style="background-color:#FFE5FF"  -->
             <nav class="navbar sidebar-navbar-collapse" id="menu-nav" >

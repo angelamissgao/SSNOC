@@ -21,13 +21,22 @@ suite('dataController Test', function(){
 		var req = {};
 		req.params = {};
 		var res = {};
-
-		req.params.name = "bruno";
-	
+		req.params.name = "mike";
+		
 		//Fix
-		// var response = getMemberFromDataController(function(req, res, result){
-		// 		console.log('getMemberTest %j', result);
-		// });
+		// var response = dataController.getMember(req, res);
+
+		 //console.log("Get member : " + response);
+		 //expect(response).to.be();
+		 console.log("Req " + req.params.name);
+
+
+		// dataController.getMember(req, res);
+
+		 getMemberFromDataController(req, res, function(err,result){
+		  		console.log('getMemberTest ' +  result);
+		 });
+
 		// var response = dataController.getMember(req, res);
 		// expect(res).to.exist;
 
@@ -36,6 +45,16 @@ suite('dataController Test', function(){
 
 });
 
-function getMemberFromDataController(req, res,callback){
-	return dataController.getMember(req, res);
+// suite('file controller test', function(){
+// 	test('upload file', function(done){
+// 		var file = "test file";
+// 		var filename = "testFile.txt";
+// 		var response = 	fileUploadController.customFileWriter(file, filename);
+// 		expect(response).to.be("uploadImages/" + filename);
+// 		done();
+// 	});
+// });
+
+function getMemberFromDataController(req, res, callback){
+	 return callback(dataController.getMember(req, res));
 }

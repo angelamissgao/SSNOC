@@ -95,7 +95,7 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
   });
 
 
-  $( window ).unload(function() {
+  $(window).unload(function() {
    ssnocService.updateStatus($rootScope.id, $rootScope.currentPosition, 0);
  });
 

@@ -1,5 +1,5 @@
-app.controller("mainController",function($scope, ssnocService, $q,$rootScope){
-		$scope.member = {};
+app.controller("mainController",function($scope, ssnocService, member, $q,$rootScope){
+		$scope.loginDetails = {};
 		$scope.loading = true;
 		$scope.isExistingMember = true;
 		var defer = $q.defer();
@@ -13,12 +13,10 @@ app.controller("mainController",function($scope, ssnocService, $q,$rootScope){
 			findExistingMember().then(function(response){
 				if($scope.isExistingMember)
 				{
-					if (validateLoginDetails($scope.validateUser)) {
+					if (validateLoginDetails($rootScope.member)) {
 							// login successfull and send chat.html
-							$scope.member = $scope.validateUser;
-							$scope.member.status = 1;
-							$rootScope.status = $scope.member.status;
-							$rootScope.authenticated = true;
+							$rootScope.member.setStatus($rootScope.statuses.OK.id);	
+							$rootScope.member.setAuthentication(true);
 							updateStatus().then(function(response){
 								window.location = "/#/chatting";
 							});
@@ -38,24 +36,25 @@ app.controller("mainController",function($scope, ssnocService, $q,$rootScope){
 		{   
 			if(validateSignInDetails()){
 				createMember();
-				$rootScope.authenticated = true;
 				window.location = "/#/chatting";
 			}
 
 		};
 
 		function findExistingMember(){
-			ssnocService.getMember($scope.member.username)
+			ssnocService.getMember($scope.loginDetails.username)
 				.then(
 					function(response){
 			
 						if(response.data !== null)
 						{ 	
-							$rootScope.id=response.data._id;
-							$rootScope.name = response.data.name;
-						
-							$scope.validateUser  = response.data;
-							
+							$rootScope.member  = new member(
+								response.data._id, 
+								response.data.name,
+								response.data.password, 
+								response.data.status,
+								0);
+							$rootScope.member.printMember();
 							$scope.isExistingMember = true;
 							defer.resolve($scope.isExistingMember);
 						}
@@ -66,10 +65,7 @@ app.controller("mainController",function($scope, ssnocService, $q,$rootScope){
 							$scope.message = "no existing member";
 							$scope.isExistingMember = false;
 							defer.resolve($scope.isExistingMember);
-							//change hidden password box
 
-							// create new 
-							// createMember();	
 						}
 					},
 					function(err){
@@ -93,24 +89,34 @@ app.controller("mainController",function($scope, ssnocService, $q,$rootScope){
 		function createMember() {
 				$scope.loading = true;
 				// call the create function from our service (returns a promise object)
-				ssnocService.create($scope.member)
+				$rootScope.member = new member(0,
+					$scope.loginDetails.username, 
+					$scope.loginDetails.password, 
+					$rootScope.statuses.OK.id,
+					0);
+				$rootScope.member.printMember();
+				ssnocService.create($rootScope.member)
 					.success(function(data) {
 						$scope.loading = false;
-						$scope.member = data;
-						$scope.member.status = 1; 
-						$rootScope.status = $scope.member.status;
-						$rootScope.id=$scope.member._id;
-						$rootScope.name=$scope.member.name;
-						updateStatus(); 
+						$rootScope.member = new member(
+							data._id, 
+							data.name, 
+							data.password, 
+							data.status, 
+							0);
+						$rootScope.member.printMember();
+						$rootScope.member.setAuthentication(true);
+						updateStatus();
 					});
 		}
 
 		
 		function validateLoginDetails(data){
-			// console.log("validation " + data);
+
+			console.log("Data " + data.name);
 			if(data !== undefined)
 			{
-				if(data.password == $scope.member.password){
+				if(data.password == $scope.loginDetails.password){
 				return true;
 				}
 			}
@@ -123,16 +129,16 @@ app.controller("mainController",function($scope, ssnocService, $q,$rootScope){
 		function validateSignInDetails(){
 			
 			var reservedlists = ["about", "access", "account", "accounts", "add", "address", "adm", "admin", "administration", "adult", "advertising", "affiliate", "affiliates", "ajax", "analytics", "android", "anon", "anonymous", "api", "app", "apps", "archive", "atom", "auth", "authentication", "avatar", "backup", "banner", "banners", "bin", "billing", "blog", "blogs", "board", "bot", "bots", "business", "chat", "cache", "cadastro", "calendar", "campaign", "careers", "cgi", "client", "cliente", "code", "comercial", "compare", "config", "connect", "contact", "contest", "create", "code", "compras", "css", "dashboard", "data", "db", "design", "delete", "demo", "design", "designer", "dev", "devel", "dir", "directory", "doc", "docs", "domain", "download", "downloads", "edit", "editor", "email", "ecommerce", "forum", "forums", "faq", "favorite", "feed", "feedback", "flog", "follow", "file", "files", "free", "ftp", "gadget", "gadgets", "games", "guest", "group", "groups", "help", "home", "homepage", "host", "hosting", "hostname", "html", "http", "httpd", "https", "hpg", "info", "information", "image", "img", "images", "imap", "index", "invite", "intranet", "indice", "ipad", "iphone", "irc", "java", "javascript", "job", "jobs", "js", "knowledgebase", "log", "login", "logs", "logout", "list", "lists", "mail", "mail1", "mail2", "mail3", "mail4","mail5","mailer", "mailing", "mx", "manager", "marketing", "master", "me", "media", "message", "microblog", "microblogs", "mine", "mp3", "msg", "msn", "mysql", "messenger", "mob", "mobile", "movie", "movies", "music", "musicas", "my", "name", "named", "net", "network", "new", "news", "newsletter", "nick", "nickname", "notes", "noticias", "ns", "ns1", "ns2", "ns3", "ns4", "old", "online", "operator", "order", "orders", "page", "pager", "pages", "panel", "password", "perl", "pic", "pics", "photo", "photos", "photoalbum", "php", "plugin", "plugins", "pop", "pop3", "post", "postmaster", "postfix", "posts", "profile", "project", "projects", "promo", "pub", "public", "python", "random", "register", "registration", "root", "ruby", "rss", "sale", "sales", "sample", "samples", "script", "scripts", "secure", "send", "service", "shop", "sql", "signup", "signin", "search", "security", "settings", "setting", "setup", "site", "sites", "sitemap", "smtp", "soporte", "ssh", "stage", "staging", "start", "subscribe", "subdomain", "suporte", "support", "stat", "static", "stats", "status", "store", "stores", "system", "tablet", "tablets", "tech", "telnet", "test", "test1", "test2", "test3", "teste", "tests", "theme", "themes", "tmp", "todo", "task", "tasks", "tools", "tv", "talk", "update", "upload", "url", "user", "username", "usuario", "usage", "vendas", "video", "videos", "visitor", "win", "ww", "www", "www1", "www2", "www3", "www4", "www5", "www6", "www7", "wwww", "wws", "wwws", "web", "webmail", "website", "websites", "webmaster", "workshop", "xxx", "xpg", "you", "yourname", "yourusername", "yoursite", "yourdomain"];
-			if ($scope.member.username.length < 3 || reservedlists.indexOf($scope.member.username) != -1 ){
+			if ($scope.loginDetails.username.length < 3 || reservedlists.indexOf($scope.loginDetails.username) != -1 ){
 				$scope.message = "Please provide a different username.";
 				return false;
 			}
-			if ($scope.member.password.length < 4){
-				$scope.message = "Please provide a different password, the password should include atleat 4 characters.";
+			if ($scope.loginDetails.password.length < 4){
+				$scope.message = "Please provide a different password, the password should include at least 4 characters.";
 				return false;
 			}
-			if ($scope.member.password != $scope.member.confirmPassword){
-				$scope.message = "the two passwords dosen't match.";
+			if ($scope.loginDetails.password != $scope.loginDetails.confirmPassword){
+				$scope.message = "Passwords do not match.";
 				return false;
 			}
 			else {
@@ -140,17 +146,14 @@ app.controller("mainController",function($scope, ssnocService, $q,$rootScope){
 			}		
 		}
 
-		//update status send no
 		function updateStatus(){
-			
-			// console.log("updateStatus() position: %s", $rootScope.currentPosition);
-			ssnocService.updateStatus($scope.member._id, $rootScope.currentPosition, $scope.member.status)
-			// ssnocService.updateStatus($scope.member._id, $scope.member.status)
+			console.log("Updates status " + $rootScope.member.id + ", " +  $rootScope.member.username);
+			ssnocService.updateStatus($rootScope.member.id, $rootScope.member.position, $rootScope.member.status)
 			.then(function(response){
-				$scope.member = response;
-				$rootScope.status = response.status;
+				console.log(response.data);
+				$rootScope.member.printMember();
 				$scope.loading = false;
-				defer.resolve($scope.member);
+				defer.resolve($rootScope.member);
 			},function(err){
 				defer.reject(err);
 			});

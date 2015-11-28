@@ -15,7 +15,7 @@
 		      	<img  src="images/User.png"></img>
 		      	</div>
 		      	<div class='col-xs-10 col-md-10'>
-						<input ng-model="member.username" type="text" id="name" class="form-control"name="username" placeholder="Username" required autofocus>
+						<input ng-model="loginDetails.username" type="text" id="name" class="form-control"name="username" placeholder="Username" required autofocus>
 						</div>
 		      </div>
 		      
@@ -24,7 +24,7 @@
 		        <img  src="images/pass.png"></img>
 		        </div>
 		        <div class='col-xs-10 col-md-10'>
-		        <input ng-model="member.password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+		        <input ng-model="loginDetails.password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
 						</div>
 		      </div>
 
@@ -33,10 +33,9 @@
 		        <img  src="images/pass.png"></img>
 		        </div>
 		      	<div class='col-xs-10 col-md-10'>
-		        <input  ng-model="member.confirmPassword" id="hiddenPassword" class="form-control" placeholder=" Confirm Password" type="password">
+		        <input  ng-model="loginDetails.confirmPassword" id="hiddenPassword" class="form-control" placeholder=" Confirm Password" type="password">
 		        </div>
 		      </div>
-
 
 				<div class="row login">
 		      	<div class='col-xs-12 col-md-12'>

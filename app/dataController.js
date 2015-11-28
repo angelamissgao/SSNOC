@@ -17,12 +17,16 @@ exports.getMembers = function(res){
 };
 
 exports.getMember = function(req, res){	
-	Member.findOne({name: req.params.name}, function(err, members) {
+
+	var reqName = req.params.name;
+	console.log("Name " + reqName);
+	Member.findOne({name: reqName}, function(err, members) {
 			if (err) {			
 				return res.send(err);	
 			}
+			console.log("Found member " + members);
 			
-			res.json(members); 
+			return res.json(members); 
 	});
 };
 
@@ -32,7 +36,6 @@ exports.getMemberById = function(req, res){
 			if (err) {
 				return res.send(err);	
 			}
-
 			res.json(member); 
 		});
 };
