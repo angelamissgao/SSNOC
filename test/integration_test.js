@@ -69,9 +69,70 @@ suite('REST API', function() {
       });
 	});
 
+	test('addPerformaceTestMessage', function(done) {
+		request(url)
+		.post('/api/ssnoc/test/add_message/2/0/0/20characters_message')
+		.expect(200)
+		.end(function(err, res) {
+			if (err) {
+				throw err;
+			}
+
+		var result = JSON.parse(res.text);
+
+		result.message.should.be.equal('20characters_message');
+		result.member_id.should.be.equal(2);
+		result.position.lat.should.be.equal(0);
+		result.position.lng.should.be.equal(0);
+
+          done();
+      });
+	});
+
+	test('getPerformanceTestMessages', function(done) {
+		request(url)
+		.get('/api/ssnoc/test/get_message')
+		.expect(200)
+		.end(function(err, res) {
+			if (err) {
+				throw err;
+			}
+
+			var result = JSON.parse(res.text);
+
+			result[0].message.should.be.equal('20characters_message');
+			result[0].member_id.should.be.equal(2);
+			result[0].position.lat.should.be.equal(0);
+			result[0].position.lng.should.be.equal(0);
+
+          done();
+      });
+	});	
+
+	test('Messages', function(done) {
+		request(url)
+		.get('/api/ssnoc/messages')
+		.expect(200)
+		.end(function(err, res) {
+			if (err) {
+				throw err;
+			}
+
+			var result = JSON.parse(res.text);
+
+			result[0].message.should.be.equal('NewMessage');
+			result[0].member_id.should.be.equal(2);
+			result[0].position.lat.should.be.equal(0);
+			result[0].position.lng.should.be.equal(0);
+
+          done();
+      });
+	});	
+
+
 	test('Add Announcement', function(done) {
 		request(url)
-		.post('/api/ssnoc/message/2/0/0/NewAnnouncement')
+		.post('/api/ssnoc/announcement/2/0/0/NewAnnouncement')
 		.expect(200)
 		.end(function(err, res) {
 			if (err) {
@@ -91,7 +152,7 @@ suite('REST API', function() {
 
 	test('Add Private Message', function(done) {
 		request(url)
-		.post('/api/ssnoc/private_message/2/0/0/3/PrivateMessage')
+		.post('/api/ssnoc/private_message/2/0/0/2/PrivateMessage')
 		.expect(200)
 		.end(function(err, res) {
 			if (err) {
@@ -102,7 +163,7 @@ suite('REST API', function() {
 
 			result.message.should.be.equal('PrivateMessage');
 			result.member_id.should.be.equal(2);
-			result.receiver_id.should.be.equal(3);
+			result.receiver_id.should.be.equal(2);
 			result.position.lat.should.be.equal(0);
 			result.position.lng.should.be.equal(0);
 
@@ -166,6 +227,84 @@ suite('REST API', function() {
       });
 	});
 
+	test('SearchMessage', function(done) {
+		request(url)
+		.get('/api/ssnoc/search_public_messages/New')
+		.expect(200)
+		.end(function(err, res) {
+			if (err) {
+				throw err;
+			}
+
+   		  var result = JSON.parse(res.text);
+
+			result[0].message.should.be.equal('NewMessage');
+			result[0].member_id.should.be.equal(2);
+			result[0].position.lat.should.be.equal(0);
+			result[0].position.lng.should.be.equal(0);
+
+          done();
+      });
+	});
+
+	test('SearchPrivateMessage', function(done) {
+		request(url)
+		.get('/api/ssnoc/search_private_messages/Private/2/2')
+		.expect(200)
+		.end(function(err, res) {
+			if (err) {
+				throw err;
+			}
+
+   		  var result = JSON.parse(res.text);
+
+			result[0].message.should.be.equal('PrivateMessage');
+			result[0].member_id.should.be.equal(2);
+			result[0].position.lat.should.be.equal(0);
+			result[0].position.lng.should.be.equal(0);
+
+          done();
+      });
+	});
+
+	test('SearchAnnouncements', function(done) {
+		request(url)
+		.get('/api/ssnoc/search_announcements/Announcement')
+		.expect(200)
+		.end(function(err, res) {
+			if (err) {
+				throw err;
+			}
+
+   		  var result = JSON.parse(res.text);
+
+			result[0].message.should.be.equal('NewAnnouncement');
+			result[0].member_id.should.be.equal(2);
+			result[0].position.lat.should.be.equal(0);
+			result[0].position.lng.should.be.equal(0);
+
+          done();
+      });
+	});
+
+	test('SearchMember', function(done) {
+		request(url)
+		.get('/api/ssnoc/search_membername/mi')
+		.expect(200)
+		.end(function(err, res) {
+			if (err) {
+				throw err;
+			}
+
+   		  var result = JSON.parse(res.text);
+
+			result[0].name.should.be.equal('mike');
+			result[0].password.should.be.equal('12345');
+
+          done();
+      });
+	});
+
 /*	test('Announcements', function(done) {
 		request(url)
 		.get('/api/ssnoc/annoucements')
@@ -188,24 +327,6 @@ suite('REST API', function() {
       });
 	});
 */
-	test('Messages', function(done) {
-		request(url)
-		.get('/api/ssnoc/messages')
-		.expect(200)
-		.end(function(err, res) {
-			if (err) {
-				throw err;
-			}
-
-			var result = JSON.parse(res.text);
-
-			result[0].message.should.be.equal('NewAnnouncement');
-			result[0].member_id.should.be.equal(2);
-			result[0].position.lat.should.be.equal(0);
-			result[0].position.lng.should.be.equal(0);
-
-          done();
-      });
-	});	
 });
+
 

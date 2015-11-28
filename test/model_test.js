@@ -59,9 +59,9 @@
       });
     });
 
-    suite('TestMessage', function () {
+    suite('PerformanceTestMessage', function () {
      test('Create a performance test message', function (done) {
-        mymessage = new TestMessage({message: 'Message', member_id: '1', status: 0,
+        mymessage = new TestMessage({message: '20characters_message', member_id: '1', status: 0,
          position: {lng: 0, lat: 0}});
         
         mymessage.save(function (err, obj) { 
@@ -70,7 +70,7 @@
           }
 
           obj.member_id.should.equal(1);
-          obj.message.should.equal('Message');
+          obj.message.should.equal('20characters_message');
           obj.status.should.equal(0);
 
           done();
