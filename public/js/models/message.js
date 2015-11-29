@@ -12,7 +12,7 @@ app.factory('message', function(){
     this.position.lng = positionLng;
   }
 
-  function Message(data)
+  function Message(data) // jshint ignore:line
   {
     this.id = data.id;
     this.memberId = data.memberId;

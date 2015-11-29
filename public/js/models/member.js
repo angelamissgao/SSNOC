@@ -10,7 +10,8 @@ app.factory('member', function(){
     this.position = {lat: 0, lng: 0};
   }
 
-	function Member(id, username, password, status, permissionId) {
+	function Member(id, username, password, status, permissionId) // jshint ignore:line
+  {
     // Public properties, assigned to the instance ('this')
     this.id = id;
     this.username = username;
