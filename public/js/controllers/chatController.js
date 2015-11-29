@@ -241,4 +241,9 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
     }
   };
 
+  $scope.editProfile = function(memberId){
+    $rootScope.profileMemberId = memberId;
+    window.location="/#/editprofile";
+  };
+
 });

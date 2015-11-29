@@ -44,6 +44,11 @@ app.config(['$routeProvider', function($routeProvider) {
             .when('/emergencymode', {
               templateUrl : 'emergencymode.html',
               controller  : 'emergencyModeController'
+            })
+
+            .when('/editprofile', {
+              templateUrl : 'editprofile.html',
+              controller  : 'editProfileController'
             });
 
           }]);
@@ -69,6 +74,13 @@ app.run(function($rootScope, ssnocService, shakeService, locationService, member
       1:"ok-icon.png",
       2:"help-icon.png",
       3:"emergency-icon.png",
+    };
+
+    $rootScope.permissionMap = {
+      'Citizen' : {'name':"Citizen", 'id': 0},
+      'Administrator' : {'name':"Administrator", 'id':1},
+      'Coordinator' :{ 'name' :"Coordinator", 'id':2},
+      'Monitor' :{'name':"Monitor", 'id':3}
     };
 
     $rootScope.currentMsgPage = 0;
@@ -127,7 +139,27 @@ app.run(function($rootScope, ssnocService, shakeService, locationService, member
       $rootScope.currentMsgPage += 1;
     };
 
-
+    // Create default admin user if no admin user exists.
+    ssnocService.getDirectory()
+    .success(function(data) {
+      for (var i = 0; i < data.length; i ++) {
+        var user = data[i];
+        if (data[i].permissionId == $rootScope.permissionMap.Administrator.id) {
+          break;
+        }
+      }
+      if (i >= data.length) {
+        var adminUser = new member(
+          0,
+          "SSNAdmin",
+          "admin",
+          $rootScope.statuses.OK.id,
+          $rootScope.permissionMap.Administrator.id, 0);
+        ssnocService.create(adminUser)
+          .success(function(data) {
+          });
+      }
+    }); 
   });
 
 

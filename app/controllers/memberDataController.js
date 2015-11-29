@@ -38,7 +38,7 @@ exports.getMemberById = function(req, res){
 
 exports.addMember = function(req, res) {
 
-	member = new Member({name: req.params.name, password: req.params.pass, status: 0});
+	member = new Member({name: req.params.name, password: req.params.pass, status: 0, permissionId: req.params.permissionId, accountStatus: 0});
 	
 	member.save(function (err, obj) {	  
 		if (err) {

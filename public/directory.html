@@ -28,16 +28,18 @@
 </div>
 
 <div  id="directory" class="col-xs-12 col-sm-12 col-md-12 chatArea">
-      <div ng-repeat="member in directory|orderBy:['status','name']" class="row list-group-item directory-item" ng-click='newPrivateChat(member._id)' ng-show="isOnline(member.status)">
-          <img ng-src="/images/{{statusImgMap[member.status]}}" />
-         <span ng-bind="member.name"> </span>
-         <span ng-bind="member.lastLogin" class="posttime"> </span>
+      <div ng-repeat="iterMember in directory|orderBy:['status','name']" class="row list-group-item directory-item" ng-click='newPrivateChat(iterMember._id)' ng-show="isOnline(iterMember.status)">
+          <img ng-src="/images/{{statusImgMap[iterMember.status]}}" />
+         <span ng-bind="iterMember.name"> </span>
+         <button ng-click="editProfile(iterMember._id)" ng-show="member.isAdministrator()">Edit Profile</button>
+         <span ng-bind="iterMember.lastLogin" class="posttime"> </span>
      </div>  
 
-     <div class="row list-group-item directory-item" ng-repeat="member in directory|orderBy:['status','name']" ng-click='newPrivateChat(member._id)' ng-show="!isOnline(member.status)">
-          <img ng-src="/images/{{statusImgMap[member.status]}}" />
-         <span ng-bind="member.name"> </span>
-         <span ng-bind="member.lastLogin" class="posttime"> </span>
+     <div class="row list-group-item directory-item" ng-repeat="iterMember in directory|orderBy:['status','name']" ng-click='newPrivateChat(iterMember._id)' ng-show="!isOnline(iterMember.status)">
+          <img ng-src="/images/{{statusImgMap[iterMember.status]}}" />
+         <span ng-bind="iterMember.name"> </span>
+         <button ng-click="editProfile(iterMember._id)" ng-show="member.isAdministrator()">Edit Profile</button>
+         <span ng-bind="iterMember.lastLogin" class="posttime"> </span>
      </div>  
  </div>
 </div>

@@ -87,7 +87,7 @@ io.on('connection',function(socket){
  *     [{ message: 'Status updated: Member 3 status is 2 }]
  */
 
-	app.post('/api/ssnoc/member/:name/:pass', function(req, res) {
+	app.post('/api/ssnoc/member/:name/:pass/:permissionId', function(req, res) {
 		memberDataController.addMember (req, res);
 	});
 

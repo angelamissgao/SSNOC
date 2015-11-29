@@ -53,7 +53,8 @@ app.controller("mainController",function($scope, ssnocService, member, $q,$rootS
 								response.data.name,
 								response.data.password, 
 								response.data.status,
-								0);
+								response.data.permissionId,
+								response.data.accountStatus);
 							$rootScope.member.printMember();
 							$scope.isExistingMember = true;
 							defer.resolve($scope.isExistingMember);
@@ -93,6 +94,7 @@ app.controller("mainController",function($scope, ssnocService, member, $q,$rootS
 					$scope.loginDetails.username, 
 					$scope.loginDetails.password, 
 					$rootScope.statuses.OK.id,
+					0,
 					0);
 				$rootScope.member.printMember();
 				ssnocService.create($rootScope.member)
@@ -103,7 +105,8 @@ app.controller("mainController",function($scope, ssnocService, member, $q,$rootS
 							data.name, 
 							data.password, 
 							data.status, 
-							0);
+							data.permissionId,
+							data.accountStatus);
 						$rootScope.member.printMember();
 						$rootScope.member.setAuthentication(true);
 						updateStatus();
@@ -159,4 +162,5 @@ app.controller("mainController",function($scope, ssnocService, member, $q,$rootS
 			});
 			return defer.promise;
 		}
+
 });
