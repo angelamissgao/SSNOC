@@ -46,7 +46,7 @@ app.config(['$routeProvider', function($routeProvider) {
 app.run(function($rootScope, ssnocService, member){
     $rootScope.socket = io.connect(); 
 
-    // $rootScope.currentPosition = {lat: 0, lng: 0};
+    $rootScope.currentPosition = {lat: 0, lng: 0};
     // $rootScope.currentPosition.lat = 0;    
     // $rootScope.currentPosition.lng = 0;    
     // $rootScope.authenticated = false;

@@ -67,11 +67,11 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
   };
 
   $scope.sendMessage = function(){
-    ssnocService.addPublicMessage($scope.chatMessage, $rootScope.currentPosition, $rootScope.id);
+    ssnocService.addPublicMessage($scope.chatMessage, $rootScope.currentPosition, $rootScope.member.id);
   };
 
   $scope.postAnnouncement = function(){
-    ssnocService.addAnnouncement($scope.chatMessage, $rootScope.currentPosition, $rootScope.id)
+    ssnocService.addAnnouncement($scope.chatMessage, $rootScope.currentPosition, $rootScope.member.id)
     .success(function(response){
       getAnnouncements();
     });
@@ -96,7 +96,7 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
 
 
   $(window).unload(function() {
-   ssnocService.updateStatus($rootScope.id, $rootScope.currentPosition, 0);
+   ssnocService.updateStatus($rootScope.member.id, $rootScope.currentPosition, 0);
  });
 
   function getAllMessages(){
