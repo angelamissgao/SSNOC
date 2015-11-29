@@ -39,14 +39,19 @@ app.config(['$routeProvider', function($routeProvider) {
             .when('/performance', {
               templateUrl : 'performance.html',
               controller  : 'performanceTestController'
+            })
+
+            .when('/alertmode', {
+              templateUrl : 'alertmode.html',
+              controller  : 'alertModeController'
             });
 
           }]);
 
-app.run(function($rootScope, ssnocService, member){
+app.run(function($rootScope, ssnocService, shakeService, locationService, member){
     $rootScope.socket = io.connect(); 
 
-    // $rootScope.currentPosition = {lat: 0, lng: 0};
+    $rootScope.currentPosition = {lat: 0, lng: 0};
     // $rootScope.currentPosition.lat = 0;    
     // $rootScope.currentPosition.lng = 0;    
     // $rootScope.authenticated = false;
@@ -64,24 +69,14 @@ app.run(function($rootScope, ssnocService, member){
       1:"ok-icon.png",
       2:"help-icon.png",
       3:"emergency-icon.png",
-    };$
+    };
 
     $rootScope.currentMsgPage = 0;
     var pageSize = 10;
     
-    getLocation();
+    shakeService.addShakeDetection();
 
-    function getLocation(){
-      navigator.geolocation.getCurrentPosition(showLocation);
-    }
-
-    function showLocation(position) {
-      console.log("core::showLocation: %s", position);
-      if(position!==undefined) {
-
-        $rootScope.member.position = {lat: position.coords.latitude, lng: position.coords.longitude};
-      }
-    }
+    locationService.getLocation();
 
     $rootScope.shareStatus= function(status_id){
      $rootScope.memberstatus = status_id;
@@ -131,6 +126,7 @@ app.run(function($rootScope, ssnocService, member){
     $rootScope.showMore = function() {
       $rootScope.currentMsgPage += 1;
     };
+
 
   });
 

@@ -154,6 +154,57 @@ io.on('connection',function(socket){
 	});
 
 /**
+ * @api {post} /api/ssnoc/emergency/:member_id/:message Post an emergency message
+ * @apiGroup Emergency
+ *
+ * @apiName PostEmergency
+ *
+ * @apiSuccess {String} JSON with message information.
+ *
+ * @apiParam {String} member id
+ *
+ * @apiParam {String} message
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {"message":"Bruno is on Help!","member_id":3,"status":1,"_id":2,"__v":0,"timestamp":"2015-10-09T08:38:00.456Z"}
+ */
+	app.post('/api/ssnoc/emergency/:member_id/:latitude/:longitude/:message', function(req, res) {
+		dataController.addEmergency(req, res, io);
+	});
+
+/**
+ * @api {get} /api/ssnoc/emergencies Get all emergencies from history
+ * @apiGroup Emergency
+ * @apiName GetEmergencies
+ *
+ * @apiSuccess {String} JSON with messages.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *[{"message":"First emergencies","member_id":3,"status":1,"_id":2,"__v":0,"timestamp":"2015-10-09T08:38:00.456Z"},
+ *{"message":"Second emergencies","member_id":3,"status":1,"_id":3,"__v":0,"timestamp":"2015-10-09T08:38:03.237Z"}]
+ */
+	app.get('/api/ssnoc/emergencies', function(req,res) {
+		dataController.getEmergencies(res);
+	});
+
+/**
+ * @api {get} /api/ssnoc/emergencies Stop current emergency alerts.
+ * @apiGroup Emergency
+ * @apiName StopEmergencyes
+ *
+ * @apiSuccess {String} JSON with messages.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ */
+	app.post('/api/ssnoc/stop_emergency', function(req, res) {
+		io.emit('stop_emergency');
+		//dataController.stopEmergency(req, res, io);
+	});
+
+/**
  * @api {post} /api/ssnoc/privateMessage/:member_id/:receiver_id/:message Add private message to chat
  * @apiGroup Messages
  *

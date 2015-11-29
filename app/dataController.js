@@ -4,6 +4,7 @@ var TestMessage = require('./models/testMessageModel');
 var path = require('path');
 var public_receiver = 0;
 var announcement_receiver = 1;
+var emergency_receiver = 999;
 
 exports.getMembers = function(res){
 	Member.find(function(err, members) {
@@ -162,9 +163,38 @@ exports.addAnnouncement = function(req, res, io) {
 
 };
 
+exports.addEmergency = function(req, res, io) {
+	var member_id = req.params.member_id;
+	var message = req.params.message;
+	var latitude = req.params.latitude;
+	var longitude = req.params.longitude;
+
+	Member.findById(member_id, function(err, member) {
+		if (err) {
+			return res.send(err);
+		}
+
+		if (member !== null && member !== undefined) {
+		
+			mymessage = new Message({message: message, member_id: member_id, receiver_id: emergency_receiver,status: member.status,
+			 position: {lng: longitude, lat: latitude}});
+			
+			mymessage.save(function (err, obj) { 
+				if (err) {
+					return res.send(err);
+				}
+
+				io.emit('emergency', mymessage);
+				res.json(mymessage);
+			});
+		}
+	});
+
+};
+
 exports.getPublicMessages = function(res){
     Message.find({
-    	$or: [{receiver_id: public_receiver},{receiver_id: announcement_receiver}]
+    	$or: [{receiver_id: public_receiver},{receiver_id: announcement_receiver},{receiver_id: emergency_receiver}]
     }, function(err, messages) {
 
             if (err) {
@@ -192,6 +222,17 @@ exports.resetTest = function(res){
 
 exports.getAnnouncements = function(res){
     Message.find({receiver_id: announcement_receiver}, function(err, messages) {
+
+            if (err) {
+                return res.send(err);    
+            }
+
+            res.json(messages); 
+        });
+};
+
+exports.getEmergencies = function(res){
+    Message.find({receiver_id: emergency_receiver}, function(err, messages) {
 
             if (err) {
                 return res.send(err);    

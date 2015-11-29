@@ -10,12 +10,12 @@ app.factory('chat', function(){
 
   Chat.prototype.getMessages = function(){
     return this.messages;
-  }
+  };
 
 
   Chat.prototype.getDirectory = function(){
       return this.directory;
-  }
+  };
 
   Chat.prototype.getMember = function(memberId){
     angular.forEach(directory, function(key, value){
@@ -24,7 +24,7 @@ app.factory('chat', function(){
           return value;
         }
     }); 
-  }
+  };
 
   return Chat;
 });

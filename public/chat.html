@@ -34,12 +34,21 @@
          <!-- public Chatarea -->
            <div class="publicChat">
       				  <div class="chatArea">
-        					<p ng-repeat="message in messages"  ng-show="isAnnoucement(message.receiver_id)" class="alert alert-danger">
+                  <p ng-repeat="message in messages"  ng-show="isEmergency(message.receiver_id)" class="alert alert-danger">
+                    <img ng-src="/images/{{statusImgMap[message.status]}}" style="margin-right:5px;">
+                    <button ng-click="stopAlertMode()" type="submit" class="btn btn-danger">Stop!</button>
+                    <b><span ng-bind="directoryDict[message.member_id].name"></span></b>: &nbsp &nbsp
+                     <b><span ng-bind="message.message"></span></b>
+                    <span ng-bind="message.timestamp" class = "posttime"></span>
+                     <br>
+                     <br> Position Info: [<span ng-bind="message.position.lat"></span>,<span ng-bind="message.position.lng"></span>]
+                  </p>  
+
+                  <p ng-repeat="message in messages"  ng-show="isAnnoucement(message.receiver_id)" class="alert alert-warning">
                     <img ng-src="/images/{{statusImgMap[message.status]}}" style="margin-right:5px;">
                     <b><span ng-bind="directoryDict[message.member_id].name"></span></b>: &nbsp &nbsp
                      <b><span ng-bind="message.message"></span></b>
                     <span ng-bind="message.timestamp" class = "posttime"></span>
-                     <span ng-bind="message.receiver_id"></span>
                      <br>
                      <br> Position Info: [<span ng-bind="message.position.lat"></span>,<span ng-bind="message.position.lng"></span>]
         					</p>	

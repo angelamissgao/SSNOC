@@ -4,6 +4,7 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
   $scope.loading = true;
   $scope.messages = [];
   $scope.announcements = [];
+  $scope.emergencies = [];
   $scope.chatMessage = "";
   $scope.searchMessage = "";
   $scope.searchAlert = false;
@@ -21,6 +22,7 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
   getDirectory();
   getAllMessages();
   getAnnouncements();
+  getEmergencies();
 
   $scope.isOnline = function(status)
   {
@@ -37,6 +39,18 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
   $scope.isAnnoucement = function(receiverId)
   {
     if(receiverId == 1)
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
+  };
+
+  $scope.isEmergency = function(receiverId)
+  {
+    if(receiverId == 999)
     {
       return true;
     }
@@ -67,17 +81,28 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
   };
 
   $scope.sendMessage = function(){
-    ssnocService.addPublicMessage($scope.chatMessage, $rootScope.currentPosition, $rootScope.id);
+    ssnocService.addPublicMessage($scope.chatMessage, $rootScope.currentPosition, $rootScope.member.id);
   };
 
   $scope.postAnnouncement = function(){
-    ssnocService.addAnnouncement($scope.chatMessage, $rootScope.currentPosition, $rootScope.id)
+    ssnocService.addAnnouncement($scope.chatMessage, $rootScope.currentPosition, $rootScope.member.id)
     .success(function(response){
       getAnnouncements();
     });
   };
+  
+  $scope.stopAlertMode = function(){
+    console.log("Stop button!");
+    ssnocService.stopEmergency();
+  };
 
   $rootScope.socket.on('message', function(msg){
+    $scope.messages.push(msg);
+    $scope.chatMessage = "";
+    $scope.$apply();
+  });
+
+  $rootScope.socket.on('emergency', function(msg){
     $scope.messages.push(msg);
     $scope.chatMessage = "";
     $scope.$apply();
@@ -96,7 +121,7 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
 
 
   $(window).unload(function() {
-   ssnocService.updateStatus($rootScope.id, $rootScope.currentPosition, 0);
+   ssnocService.updateStatus($rootScope.member.id, $rootScope.currentPosition, 0);
  });
 
   function getAllMessages(){
@@ -119,6 +144,15 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
     {
       console.log(response);
       $scope.announcements = response;
+    });
+  }
+
+  function getEmergencies(){
+    ssnocService.getEmergencies()
+    .success(function(response)
+    {
+      console.log(response);
+      $scope.emergencies = response;
     });
   }
 

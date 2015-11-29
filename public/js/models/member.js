@@ -49,12 +49,12 @@ app.factory('member', function(){
   Member.prototype.setStatus = function(statusId)
   {
     this.status = statusId;
-  }
+  };
 
   Member.prototype.setAuthentication = function(isAuthenticated)
   { 
       this.authenticated = isAuthenticated;
-  }
+  };
 
   Member.prototype.isAdmin = function(){
     if(this.permissionId == 1)
@@ -65,7 +65,7 @@ app.factory('member', function(){
     {
       return false;
     }
-  }
+  };
 
   Member.prototype.printMember = function(){
     console.log("Id :" + this.id +
@@ -76,7 +76,7 @@ app.factory('member', function(){
                   " ,authentication : " + this.authenticated+
                   " ,position lat : " +this.position.lat + 
                   " ,position lng : " +this.position.lng);
-  }
+  };
 
   return Member;
 });

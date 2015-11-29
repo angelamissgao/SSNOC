@@ -141,6 +141,17 @@ text-align: center;
 .btn-default{
   background-color: #f5f5f5;
 }
+
+.btn-xl {
+    height: 200px;
+    width: 300px;
+    padding: 18px 28px;
+    font-size: 22px;
+    line-height: normal;
+    -webkit-border-radius: 8px;
+       -moz-border-radius: 8px;
+            border-radius: 8px;
+}
 /*
 .alert-warning {
     padding: 1px;
@@ -155,4 +166,32 @@ text-align: center;
 button .mobile{
     min-width:35px;
     min-height:35px;
+}
+
+.gl-button {
+  background-color: #004A7F;
+  -webkit-border-radius: 3px;
+  height: 150px;
+  width: 150px;
+  border-radius: 3px;
+  border: none;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+}
+
+@-webkit-keyframes glowing {
+  0% { background-color: #B20000; -webkit-box-shadow: 0 0 3px #B20000; }
+  50% { background-color: #FF0000; -webkit-box-shadow: 0 0 5px #FF0000; }
+  100% { background-color: #B20000; -webkit-box-shadow: 0 0 3px #B20000; }
+}
+
+.gl-button {
+  -webkit-animation: glowing 1000ms infinite;
+  -moz-animation: glowing 1000ms infinite;
+  -o-animation: glowing 1000ms infinite;
+  animation: glowing 1000ms infinite;
 }

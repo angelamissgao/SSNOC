@@ -22,6 +22,16 @@ app.factory('ssnocService',function($http) {
 			getPublicMessages : function(){
 				return $http.get('/api/ssnoc/messages');
 			},
+			addEmergency : function(message, position, user_id){
+		  		return $http.post('/api/ssnoc/emergency/' + user_id + '/' + position.lat + "/" +
+		  			position.lng + '/' + message);
+			},
+			getEmergencies : function(){
+				return $http.get('/api/ssnoc/emergencies');
+			},
+			stopEmergency : function(){
+		  		return $http.post('/api/ssnoc/stop_emergency/');
+			},
 			addAnnouncement : function(message, position, user_id){
 		  		return $http.post('/api/ssnoc/announcement/' + user_id + '/' + position.lat + "/" +
 		  			position.lng + '/' + message);
