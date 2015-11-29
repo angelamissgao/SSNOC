@@ -10,20 +10,14 @@ app.controller("editProfileController",function($scope, ssnocService, member, $r
       });
   }
 
-  $scope.updateAccount = function() {
-    ssnocService.updateAccount($rootScope.member)
+  $scope.updateProfile = function() {
+    ssnocService.updateProfile($scope.profile._id, $scope.profile.name, $scope.profile.password, $scope.profile.permissionId, $scope.profile.accountStatus)
       .success(function(data) {
-        $scope.loading = false;
-        $rootScope.member = new member(
-          data._id, 
-          data.name, 
-          data.password, 
-          data.status, 
-          data.permissionId,
-          data.accountStatus);
-        $rootScope.member.printMember();
-        $rootScope.member.setAuthentication(true);
-        updateStatus();
+        window.location = "/#/directory";
       });
-  }
+  };
+
+  $scope.cancel = function() {
+    window.location = "/#/directory";
+  };
 });

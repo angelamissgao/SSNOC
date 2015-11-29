@@ -15,8 +15,8 @@ app.factory('ssnocService',function($http) {
 				return $http.post('/api/ssnoc/update_status/'+member_id + '/' + position.lat + "/" + 
 					position.lng +"/"+status_id);
 			},			
-			updateAccount : function(member_id, username, password, permissionId, accountStatus){
-				return $http.post('/api/ssnoc/update_account/' + member_id + '/' + username + "/" + 
+			updateProfile : function(member_id, username, password, permissionId, accountStatus){
+				return $http.post('/api/ssnoc/update_profile/' + member_id + '/' + username + "/" + 
 					password + "/" + permissionId + "/" + accountStatus);
 			},			
 			addPublicMessage : function(message, position, user_id){

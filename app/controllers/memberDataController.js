@@ -81,6 +81,28 @@ exports.updateStatus = function(req, res, io) {
 	});
 };
 
+exports.updateProfile = function(req, res, io) {
+  Member.findById(req.params.member_id, function(err, member) {
+      if (err) {
+        return res.send(err);
+      }
+
+    member.name = req.params.name;
+    member.password = req.params.password;
+    member.permissionId = req.params.permissionId;
+    member.accountStatus = req.params.accountStatus;
+
+    member.save(function(err) {
+      if (err) {
+        return res.send(err);
+      }
+      io.emit('userStatusChange');
+      res.json({ message: 'Profile updated'});
+
+    });
+  });
+};
+
 exports.searchMemberNames = function(req,res){
 	var search_membername = req.params.search_message;
 	Member.find({name: new RegExp(search_membername)}, function(err, messages) {

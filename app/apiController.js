@@ -71,6 +71,27 @@ io.on('connection',function(socket){
 	});
 
 /**
+ * @api {post} /api/ssnoc/update_profile/:member_id/:status_id Update member status
+ * @apiGroup Member
+ *
+ * @apiName UpdateStatus
+ *
+ * @apiParam {Number} user id
+ *
+ * @apiParam {Number} status id
+ *
+ * @apiSuccess {String} JSON with member information.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     [{"name":"test","password":"1234","status":0,"_id":2,"__v":0}]
+ */
+
+	app.post('/api/ssnoc/update_profile/:member_id/:name/:password/:permissionId/:accountStatus', function(req, res) {
+		memberDataController.updateProfile(req,res,io);
+	});
+
+/**
  * @api {post} /api/ssnoc/member/:name/:pass Add members to directory
  * @apiGroup Member
  *
