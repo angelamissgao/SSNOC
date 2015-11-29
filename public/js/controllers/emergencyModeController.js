@@ -1,12 +1,12 @@
-app.controller("alertModeController",function($scope, ssnocService, $q,$rootScope){
+app.controller("emergencyModeController",function($scope, ssnocService, $q,$rootScope){
 	$scope.messages = [];
 	$scope.announcements = [];
 	var intervalTime = 60000;
 	var alertInterval = [];
 
-	startAlertMode(intervalTime);
+	startEmergencyMode(intervalTime);
 
-	function startAlertMode(interval){
+	function startEmergencyMode(interval){
       //alert('Shake!');
       ssnocService.addEmergency("Emergency, please help!", $rootScope.currentPosition, $rootScope.member.id);
 
@@ -15,7 +15,7 @@ app.controller("alertModeController",function($scope, ssnocService, $q,$rootScop
       },interval); 
   	}
 
-  $scope.stopAlertMode = function(){
+  $scope.stopEmergencyMode = function(){
   	clearInterval(alertInterval);
   	window.location = "/#/chatting";
   };

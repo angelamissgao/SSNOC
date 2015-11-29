@@ -19,11 +19,9 @@ app.factory('shakeService',function() {
 	              var lastMove = Math.abs(x1-x2+y1-y2+z1-z2);
 
 	              if (lastMove > moveLimit) {
-	                  window.location = "/#/alertmode";
-	                  //alert('Shake!');
+	                  window.location = "/#/emergencymode";
 	              }
 
-	              // Update new position
 	              x2 = x1;
 	              y2 = y1;
 	              z2 = z1;            

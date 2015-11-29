@@ -1,4 +1,6 @@
-var dataController = require('./dataController.js');
+var memberDataController = require('./controllers/memberDataController.js');
+var messageDataController = require('./controllers/messageDataController.js');
+var performanceDataController = require('./controllers/performanceDataController.js');
 var path = require('path');
 
 module.exports = function(app, io) {
@@ -21,7 +23,7 @@ io.on('connection',function(socket){
  *     [{"name":"test","password":"1234","status":0,"_id":2,"__v":0}]
  */
 	app.get('/api/ssnoc/directory', function(req, res) {
-		dataController.getMembers(res);
+		memberDataController.getMembers(res);
 	});
 
 /**
@@ -40,11 +42,11 @@ io.on('connection',function(socket){
  */
 
 	app.get('/api/ssnoc/member/:name', function(req, res) {
-		dataController.getMember(req, res);
+		memberDataController.getMember(req, res);
 	});
 
 	app.get('/api/ssnoc/memberModel/:member_id', function(req, res) {
-		dataController.getMemberById(req, res);
+		memberDataController.getMemberById(req, res);
 	});
 
 /**
@@ -65,7 +67,7 @@ io.on('connection',function(socket){
  */
 
 	app.post('/api/ssnoc/update_status/:member_id/:latitude/:longitude/:status_id', function(req, res) {
-		dataController.updateStatus(req,res,io);
+		memberDataController.updateStatus(req,res,io);
 	});
 
 /**
@@ -86,7 +88,7 @@ io.on('connection',function(socket){
  */
 
 	app.post('/api/ssnoc/member/:name/:pass', function(req, res) {
-		dataController.addMember (req, res);
+		memberDataController.addMember (req, res);
 	});
 
 /**
@@ -105,7 +107,7 @@ io.on('connection',function(socket){
  */
 
 	app.delete('/api/ssnoc/member/:member_id', function(req, res) {
-		dataController.removeMember(req.params.memeber_id, res);
+		memberDataController.removeMember(req.params.memeber_id, res);
 	});
 
 //Chat
@@ -126,11 +128,7 @@ io.on('connection',function(socket){
  *     {"message":"First message","member_id":3,"status":1,"_id":2,"__v":0,"timestamp":"2015-10-09T08:38:00.456Z"}
  */
 	app.post('/api/ssnoc/message/:member_id/:latitude/:longitude/:message', function(req, res) {
-		dataController.addPublicMessage(req, res, io);
-	});
-
-	app.post('/api/ssnoc/test/add_message/:member_id/:latitude/:longitude/:message', function(req, res) {
-		dataController.addTestMessage(req, res, io);
+		messageDataController.addPublicMessage(req, res, io);
 	});
 
 /**
@@ -150,7 +148,7 @@ io.on('connection',function(socket){
  *     {"message":"First message","member_id":3,"status":1,"_id":2,"__v":0,"timestamp":"2015-10-09T08:38:00.456Z"}
  */
 	app.post('/api/ssnoc/announcement/:member_id/:latitude/:longitude/:message', function(req, res) {
-		dataController.addAnnouncement(req, res, io);
+		messageDataController.addAnnouncement(req, res, io);
 	});
 
 /**
@@ -170,7 +168,7 @@ io.on('connection',function(socket){
  *     {"message":"Bruno is on Help!","member_id":3,"status":1,"_id":2,"__v":0,"timestamp":"2015-10-09T08:38:00.456Z"}
  */
 	app.post('/api/ssnoc/emergency/:member_id/:latitude/:longitude/:message', function(req, res) {
-		dataController.addEmergency(req, res, io);
+		messageDataController.addEmergency(req, res, io);
 	});
 
 /**
@@ -186,7 +184,7 @@ io.on('connection',function(socket){
  *{"message":"Second emergencies","member_id":3,"status":1,"_id":3,"__v":0,"timestamp":"2015-10-09T08:38:03.237Z"}]
  */
 	app.get('/api/ssnoc/emergencies', function(req,res) {
-		dataController.getEmergencies(res);
+		messageDataController.getEmergencies(res);
 	});
 
 /**
@@ -223,7 +221,7 @@ io.on('connection',function(socket){
  *     {"message":"First message","member_id":3,"receiver_id":2,"status":1,"_id":2,"__v":0,"timestamp":"2015-10-09T08:38:00.456Z"}
  */
 	app.post('/api/ssnoc/private_message/:member_id/:latitude/:longitude/:receiver_id/:message', function(req, res) {
-		dataController.addPrivateMessage(req, res, io);
+		messageDataController.addPrivateMessage(req, res, io);
 	});
 
 
@@ -240,15 +238,7 @@ io.on('connection',function(socket){
  *{"message":"Second message","member_id":3,"status":1,"_id":3,"__v":0,"timestamp":"2015-10-09T08:38:03.237Z"}]
  */
 	app.get('/api/ssnoc/messages', function(req,res) {
-		dataController.getPublicMessages(res);
-	});
-
-	app.get('/api/ssnoc/test/get_message', function(req,res) {
-		dataController.getTestMessage(res);
-	});
-
-	app.post('/api/ssnoc/test/reset', function(req,res) {
-		dataController.resetTest(res);
+		messageDataController.getPublicMessages(res);
 	});
 
 /**
@@ -264,7 +254,7 @@ io.on('connection',function(socket){
  *{"message":"Second announcement","member_id":3,"status":1,"_id":3,"__v":0,"timestamp":"2015-10-09T08:38:03.237Z"}]
  */
 	app.get('/api/ssnoc/announcements', function(req,res) {
-		dataController.getAnnouncements(res);
+		messageDataController.getAnnouncements(res);
 	});
 
 /**
@@ -285,7 +275,7 @@ io.on('connection',function(socket){
  *{"message":"Second message","member_id":3,"status":1,"_id":3,"__v":0,"timestamp":"2015-10-09T08:38:03.237Z"}]
  */
 	app.get('/api/ssnoc/private_messages/:member_id/:receiver_id', function(req, res) {
-		dataController.getPrivateMessages(req,res);
+		messageDataController.getPrivateMessages(req,res);
 	});
 
 
@@ -309,7 +299,7 @@ io.on('connection',function(socket){
  */
 
 	app.get('/api/ssnoc/search_public_messages/:search_message',function(req,res){
-		dataController.searchPublicMessages(req, res);
+		messageDataController.searchPublicMessages(req, res);
 	});
 
 /**
@@ -331,7 +321,7 @@ io.on('connection',function(socket){
  */
 
 	app.get('/api/ssnoc/search_private_messages/:search_message/:member_id/:receiver_id',function(req,res){
-		dataController.searchPrivateMessages(req, res);
+		messageDataController.searchPrivateMessages(req, res);
 	});
 
 /**
@@ -353,7 +343,7 @@ io.on('connection',function(socket){
  */
 
 	app.get('/api/ssnoc/search_announcements/:search_message',function(req,res){
-		dataController.searchAnnouncements(req, res);
+		messageDataController.searchAnnouncements(req, res);
 	});
 
 /**
@@ -375,7 +365,7 @@ io.on('connection',function(socket){
  */
 
 	app.get('/api/ssnoc/search_membername/:search_message',function(req,res){
-		dataController.searchMemberNames(req, res);
+		memberDataController.searchMemberNames(req, res);
 	});
 
 /**
@@ -396,7 +386,19 @@ io.on('connection',function(socket){
  *{"message":"Second message","member_id":3,"status":1,"_id":3,"__v":0,"timestamp":"2015-10-09T08:38:03.237Z"}]
  */
 	app.get('/api/ssnoc/search_memberstatus/:search_message',function(req,res){
-		dataController.searchMemberStatus(req, res);
+		memberDataController.searchMemberStatus(req, res);
+	});
+
+	app.post('/api/ssnoc/performance/add_message/:member_id/:latitude/:longitude/:message', function(req, res) {
+		performanceDataController.addPerformanceMessage(req, res, io);
+	});
+
+	app.get('/api/ssnoc/performance/get_message', function(req,res) {
+		performanceDataController.getPerformanceMessage(res);
+	});
+
+	app.post('/api/ssnoc/performance/reset', function(req,res) {
+		performanceDataController.resetTest(res);
 	});
 
 //Files

@@ -91,7 +91,7 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
     });
   };
   
-  $scope.stopAlertMode = function(){
+  $scope.stopEmergencyMode = function(){
     console.log("Stop button!");
     ssnocService.stopEmergency();
   };

@@ -2,7 +2,7 @@ var should = require('should');
 var request = require('supertest');
 var tungus = require('tungus');
 var mongoose = require('mongoose');
-var dataController = require('../app/dataController.js');
+var memberDataController = require('../app/controllers/memberDataController.js');
 
 var expect = require('expect.js');
 
@@ -14,7 +14,7 @@ mongoose.connect('tingodb://'+__dirname+'/ssnocdb/', function (err) {
   }
 });
 
-suite('dataController Test', function(){
+suite('memberDataController Test', function(){
 
 	test('getMember test', function(done){
 
@@ -24,7 +24,7 @@ suite('dataController Test', function(){
 		req.params.name = "mike";
 		
 		//Fix
-		// var response = dataController.getMember(req, res);
+		// var response = memberDataController.getMember(req, res);
 
 		 //console.log("Get member : " + response);
 		 //expect(response).to.be();
@@ -37,7 +37,7 @@ suite('dataController Test', function(){
 		  		console.log('getMemberTest ' +  result);
 		 });
 
-		// var response = dataController.getMember(req, res);
+		// var response = memberDataController.getMember(req, res);
 		// expect(res).to.exist;
 
 		done();
@@ -56,5 +56,5 @@ suite('dataController Test', function(){
 // });
 
 function getMemberFromDataController(req, res, callback){
-	 return callback(dataController.getMember(req, res));
+	 return callback(memberDataController.getMember(req, res));
 }

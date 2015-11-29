@@ -7,7 +7,7 @@
 
   var Member = require('../app/models/memberModel');
   var Message = require('../app/models/messageModel');
-  var TestMessage = require('../app/models/testMessageModel');
+  var TestMessage = require('../app/models/performanceMessageModel');
 
 
   mongoose.connect('tingodb://'+__dirname+'/ssnocdb/', function (err) {

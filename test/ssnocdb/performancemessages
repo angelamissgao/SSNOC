@@ -1,0 +1,6 @@
+{"k":"0000000078","o":"0000000220","v":"001"}
+{"_id":2,"_uid":2,"_dt":1448771594476,"_s":"2ec3e544cfc675a6cdf95ad2668b2c73"}
+{"message":"20characters_message","member_id":2,"status":1,"_id":{"$wrap":"$oid","v":2},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1448771594474,"h":"2015-11-29T04:33:14.474Z"},"receiver_id":0,"__v":0}
+{"k":"0000000078","o":"0000000220","v":"001"}
+{"_id":3,"_uid":3,"_dt":1448771594603,"_s":"902ca6f5ea4a9e78989f5eb2c6c76992"}
+{"message":"20characters_message","member_id":1,"status":0,"_id":{"$wrap":"$oid","v":3},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1448771594601,"h":"2015-11-29T04:33:14.601Z"},"receiver_id":0,"__v":0}

@@ -71,7 +71,7 @@ suite('REST API', function() {
 
 	test('addPerformaceTestMessage', function(done) {
 		request(url)
-		.post('/api/ssnoc/test/add_message/2/0/0/20characters_message')
+		.post('/api/ssnoc/performance/add_message/2/0/0/20characters_message')
 		.expect(200)
 		.end(function(err, res) {
 			if (err) {
@@ -91,7 +91,7 @@ suite('REST API', function() {
 
 	test('getPerformanceTestMessages', function(done) {
 		request(url)
-		.get('/api/ssnoc/test/get_message')
+		.get('/api/ssnoc/performance/get_message')
 		.expect(200)
 		.end(function(err, res) {
 			if (err) {

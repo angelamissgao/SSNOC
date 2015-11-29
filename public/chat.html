@@ -36,7 +36,7 @@
       				  <div class="chatArea">
                   <p ng-repeat="message in messages"  ng-show="isEmergency(message.receiver_id)" class="alert alert-danger">
                     <img ng-src="/images/{{statusImgMap[message.status]}}" style="margin-right:5px;">
-                    <button ng-click="stopAlertMode()" type="submit" class="btn btn-danger">Stop!</button>
+                    <button ng-click="stopEmergencyMode()" type="submit" class="btn btn-danger">Stop!</button>
                     <b><span ng-bind="directoryDict[message.member_id].name"></span></b>: &nbsp &nbsp
                      <b><span ng-bind="message.message"></span></b>
                     <span ng-bind="message.timestamp" class = "posttime"></span>

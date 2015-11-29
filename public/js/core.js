@@ -41,9 +41,9 @@ app.config(['$routeProvider', function($routeProvider) {
               controller  : 'performanceTestController'
             })
 
-            .when('/alertmode', {
-              templateUrl : 'alertmode.html',
-              controller  : 'alertModeController'
+            .when('/emergencymode', {
+              templateUrl : 'emergencymode.html',
+              controller  : 'emergencyModeController'
             });
 
           }]);
