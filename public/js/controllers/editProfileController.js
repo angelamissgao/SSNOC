@@ -11,10 +11,17 @@ app.controller("editProfileController",function($scope, ssnocService, member, $r
   }
 
   $scope.updateProfile = function() {
-    ssnocService.updateProfile($scope.profile._id, $scope.profile.name, $scope.profile.password, $scope.profile.permissionId, $scope.profile.accountStatus)
-      .success(function(data) {
-        window.location = "/#/directory";
-      });
+    result = $rootScope.validateSignInDetails($scope.profile.name, $scope.profile.password, $scope.profile.password);
+    if (result.validateResult) {
+      ssnocService.updateProfile($scope.profile._id, $scope.profile.name, $scope.profile.password, $scope.profile.permissionId, $scope.profile.accountStatus)
+        .success(function(data) {
+          window.location = "/#/directory";
+        });
+    }
+    else {
+      $scope.message = result.message;
+    }
+
   };
 
   $scope.cancel = function() {
