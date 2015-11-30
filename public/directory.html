@@ -28,14 +28,14 @@
 </div>
 
 <div  id="directory" class="col-xs-12 col-sm-12 col-md-12 chatArea">
-      <div ng-repeat="iterMember in directory|orderBy:['status','name']" class="row list-group-item directory-item" ng-click='newPrivateChat(iterMember._id)' ng-show="isOnline(iterMember.status)">
+      <div ng-repeat="iterMember in directory|orderBy:['status','name']" class="row list-group-item directory-item" ng-click='newPrivateChat(iterMember._id)' ng-show="isOnline(iterMember.status) && isShowActive(iterMember)">
           <img ng-src="/images/{{statusImgMap[iterMember.status]}}" />
          <span ng-bind="iterMember.name"> </span>
          <button ng-click="editProfile(iterMember._id)" ng-show="member.isAdministrator()">Edit Profile</button>
          <span ng-bind="iterMember.lastLogin" class="posttime"> </span>
      </div>  
 
-     <div class="row list-group-item directory-item" ng-repeat="iterMember in directory|orderBy:['status','name']" ng-click='newPrivateChat(iterMember._id)' ng-show="!isOnline(iterMember.status)">
+     <div class="row list-group-item directory-item" ng-repeat="iterMember in directory|orderBy:['status','name']" ng-click='newPrivateChat(iterMember._id)' ng-show="!isOnline(iterMember.status) && isShowActive(iterMember)">
           <img ng-src="/images/{{statusImgMap[iterMember.status]}}" />
          <span ng-bind="iterMember.name"> </span>
          <button ng-click="editProfile(iterMember._id)" ng-show="member.isAdministrator()">Edit Profile</button>
