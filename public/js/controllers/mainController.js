@@ -21,9 +21,6 @@ app.controller("mainController",function($scope, ssnocService, member, $q,$rootS
 								window.location = "/#/chatting";
 							});
 					}
-					else {
-						$scope.message = "wrong infomation,please type in again";
-					}
 				}
 				else
 				{
@@ -119,8 +116,16 @@ app.controller("mainController",function($scope, ssnocService, member, $q,$rootS
 			console.log("Data " + data.name);
 			if(data !== undefined)
 			{
-				if(data.password == $scope.loginDetails.password){
-				return true;
+				if(data.password != $scope.loginDetails.password){
+					$scope.message = "wrong infomation,please type in again";
+					return false;
+				}
+				else if (data.accountStatus != $rootScope.accountStatusMap.Active.id) {
+					$scope.message = "account not active";
+					return false;
+				}
+				else {
+					return true;
 				}
 			}
 			else {

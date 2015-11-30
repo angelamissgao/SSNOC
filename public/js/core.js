@@ -83,6 +83,11 @@ app.run(function($rootScope, ssnocService, shakeService, locationService, member
       'Monitor' :{'name':"Monitor", 'id':3}
     };
 
+    $rootScope.accountStatusMap = {
+      'Active' : {'name':"Active", 'id': 0},
+      'Inactive' : {'name':"Inactive", 'id':1},
+    };
+
     $rootScope.currentMsgPage = 0;
     var pageSize = 10;
     
