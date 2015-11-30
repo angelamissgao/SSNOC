@@ -119,6 +119,10 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
     getDirectory();
   });
 
+  $rootScope.socket.on('userProfileChange', function(member){
+    getDirectory();
+  });
+
 
   $(window).unload(function() {
    ssnocService.updateStatus($rootScope.member.id, $rootScope.currentPosition, 0);

@@ -96,7 +96,7 @@ exports.updateProfile = function(req, res, io) {
       if (err) {
         return res.send(err);
       }
-      io.emit('userStatusChange');
+      io.emit('userProfileChange', member);
       res.json({ message: 'Profile updated'});
 
     });

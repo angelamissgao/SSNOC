@@ -110,6 +110,14 @@ app.run(function($rootScope, ssnocService, shakeService, locationService, member
       });
     };
 
+    $rootScope.socket.on('userProfileChange', function(changedMember){
+      if ($rootScope.member.id == changedMember._id &&
+          changedMember.accountStatus == $rootScope.accountStatusMap.Inactive.id) {
+        $rootScope.logout();
+        window.alert("Your account has been deactivated.");
+      }
+    });
+
     $rootScope.socket.on('disconnect', function(){
       console.log("disconnecting" + $rootScope.member.id);
       ssnocService.updateStatus($rootScope.member.id, $rootScope.statuses.Offline.id);
