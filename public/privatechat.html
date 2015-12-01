@@ -30,7 +30,7 @@
       <p ng-repeat="message in messages" ng-show="isSearchMsgShown(message._id, messages)" >
        <b><span ng-bind="getName(message.member_id)"></span></b>
         <span ng-bind="message.message"></span>
-        <span ng-bind="message.timestamp" class = "posttime"></span>
+        <span ng-bind="message.timestamp | date:'MM/dd/yyyy HH:m:s'" class = "posttime"></span>
         (<span ng-bind="message.status"></span>)
       <p>     
       <button type="button" class="btn btn-default" ng-show="isShowMoreButtonShown(messages)" ng-click="showMore()">Show More</button>

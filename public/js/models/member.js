@@ -62,7 +62,7 @@ app.factory('member', function(){
   Member.prototype.setPermission = function(permissionId)
   { 
       this.permissionId = permissionId;
-  }
+  };
 
   Member.prototype.isAdministrator = function(){
     if(this.permissionId == 1)
@@ -84,7 +84,7 @@ app.factory('member', function(){
     {
       return false;
     }
-  }
+  };
 
   Member.prototype.isMonitor = function(){
     if(this.permissionId == 3)
@@ -95,10 +95,10 @@ app.factory('member', function(){
     {
       return false;
     }
-  }
+  };
 
   Member.prototype.isCitizen = function(){
-    if(this.permissionId == 0)
+    if(this.permissionId === 0)
     {
       return true;
     }
@@ -106,10 +106,10 @@ app.factory('member', function(){
     {
       return false;
     }
-  }
+  };
 
   Member.prototype.isActive = function(){
-    if(this.accountStatus == 0)
+    if(this.accountStatus === 0)
     {
       return true;
     }
@@ -117,7 +117,7 @@ app.factory('member', function(){
     {
       return false;
     }
-  }
+  };
 
   Member.prototype.printMember = function(){
     console.log("Id :" + this.id +

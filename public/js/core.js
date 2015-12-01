@@ -94,6 +94,19 @@ app.run(function($rootScope, ssnocService, shakeService, locationService, member
     shakeService.addShakeDetection();
 
     locationService.getLocation();
+    
+    function getLocation(){
+      navigator.geolocation.getCurrentPosition(showLocation);
+    }
+
+    function showLocation(position) {
+      console.log("core::showLocation: %s", position);
+      if(position!==undefined) {
+        var vlat = Number((position.coords.latitude).toFixed(3));
+        var vlong = Number((position.coords.longitude).toFixed(3));
+        $rootScope.currentPosition = {lat: vlat, lng: vlong};
+      }
+    }
 
     $rootScope.shareStatus= function(status_id){
      $rootScope.memberstatus = status_id;
@@ -178,7 +191,7 @@ app.run(function($rootScope, ssnocService, shakeService, locationService, member
           message: ""
         };
       }   
-    }
+    };
 
     // Create default admin user if no admin user exists.
     ssnocService.getDirectory()
