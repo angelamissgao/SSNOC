@@ -8,9 +8,10 @@ app.factory('member', function(){
     this.permissionId = 0;
     this.authenticated  = false;
     this.position = {lat: 0, lng: 0};
+    this.accountStatus = 0;
   }
 
-	function Member(id, username, password, status, permissionId) // jshint ignore:line
+	function Member(id, username, password, status, permissionId, accountStatus) // jshint ignore:line
   {
     // Public properties, assigned to the instance ('this')
     this.id = id;
@@ -18,6 +19,7 @@ app.factory('member', function(){
     this.password = password;
     this.status = status;
     this.permissionId = permissionId;
+    this.accountStatus = accountStatus;
     this.authenticated  = false;
     this.position = {lat: 0, lng: 0};
 
@@ -57,7 +59,12 @@ app.factory('member', function(){
       this.authenticated = isAuthenticated;
   };
 
-  Member.prototype.isAdmin = function(){
+  Member.prototype.setPermission = function(permissionId)
+  { 
+      this.permissionId = permissionId;
+  }
+
+  Member.prototype.isAdministrator = function(){
     if(this.permissionId == 1)
     {
       return true;
@@ -67,6 +74,50 @@ app.factory('member', function(){
       return false;
     }
   };
+
+  Member.prototype.isCoordinator = function(){
+    if(this.permissionId == 2)
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
+  }
+
+  Member.prototype.isMonitor = function(){
+    if(this.permissionId == 3)
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
+  }
+
+  Member.prototype.isCitizen = function(){
+    if(this.permissionId == 0)
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
+  }
+
+  Member.prototype.isActive = function(){
+    if(this.accountStatus == 0)
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
+  }
 
   Member.prototype.printMember = function(){
     console.log("Id :" + this.id +

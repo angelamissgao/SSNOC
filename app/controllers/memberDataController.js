@@ -35,7 +35,7 @@ exports.getMemberById = function(req, res){
 
 exports.addMember = function(req, res) {
 
-	member = new Member({name: req.params.name, password: req.params.pass, status: 0});
+	member = new Member({name: req.params.name, password: req.params.pass, status: 0, permissionId: req.params.permissionId, accountStatus: 0});
 	
 	member.save(function (err, obj) {	  
 		if (err) {
@@ -76,6 +76,28 @@ exports.updateStatus = function(req, res, io) {
 
 		});
 	});
+};
+
+exports.updateProfile = function(req, res, io) {
+  Member.findById(req.params.member_id, function(err, member) {
+      if (err) {
+        return res.send(err);
+      }
+
+    member.name = req.params.name;
+    member.password = req.params.password;
+    member.permissionId = req.params.permissionId;
+    member.accountStatus = req.params.accountStatus;
+
+    member.save(function(err) {
+      if (err) {
+        return res.send(err);
+      }
+      io.emit('userProfileChange', member);
+      res.json({ message: 'Profile updated'});
+
+    });
+  });
 };
 
 exports.searchMemberNames = function(req,res){

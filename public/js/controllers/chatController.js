@@ -128,6 +128,10 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
     getDirectory();
   });
 
+  $rootScope.socket.on('userProfileChange', function(member){
+    getDirectory();
+  });
+
 
   $(window).unload(function() {
    ssnocService.updateStatus($rootScope.member.id, $rootScope.currentPosition, 0);
@@ -247,6 +251,23 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
           }
         }
       });
+    }
+  };
+
+  $scope.editProfile = function(memberId){
+    $rootScope.profileMemberId = memberId;
+    window.location="/#/editprofile";
+  };
+
+  $scope.isShowActive = function(user) {
+    if (user.accountStatus == $rootScope.accountStatusMap.Active.id) {
+      return true;
+    }
+    else if ($rootScope.member.isAdministrator()) {
+      return true;
+    }
+    else {
+      return false;
     }
   };
 

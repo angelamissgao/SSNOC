@@ -9,11 +9,15 @@ app.factory('ssnocService',function($http) {
 				return $http.get('/api/ssnoc/member/'+ username);
 			},
 			create : function(member) {
-				return $http.post('/api/ssnoc/member/'+ member.username +"/"+member.password);
+				return $http.post('/api/ssnoc/member/'+ member.username +"/"+member.password+"/"+member.permissionId);
 			},
 			updateStatus : function(member_id, position, status_id){
 				return $http.post('/api/ssnoc/update_status/'+member_id + '/' + position.lat + "/" + 
 					position.lng +"/"+status_id);
+			},			
+			updateProfile : function(member_id, username, password, permissionId, accountStatus){
+				return $http.post('/api/ssnoc/update_profile/' + member_id + '/' + username + "/" + 
+					password + "/" + permissionId + "/" + accountStatus);
 			},			
 			addPublicMessage : function(message, position, user_id){
 		  		return $http.post('/api/ssnoc/message/' + user_id + '/' + position.lat + "/" +

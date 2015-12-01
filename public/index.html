@@ -47,6 +47,7 @@
 			<script src="js/controllers/privateChatController.js"></script> 
       <script src="js/controllers/performanceTestController.js"></script> 
       <script src="js/controllers/emergencyModeController.js"></script> 
+      <script src="js/controllers/editProfileController.js"></script> 
 
 	</head>
 
@@ -95,9 +96,9 @@
             <!-- <li>
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
             </li> -->
-            <li  style="width:90px;  word-wrap: break-word;"><a href="#/announcements">Announcement</a> </li>
+            <li  style="width:90px;  word-wrap: break-word;" ng-show="member.isCoordinator() || member.isAdministrator()"><a href="#/announcements">Announcement</a> </li>
 
-            <li  style="width:90px;  word-wrap: break-word;"> <a href="#performance">Performance</a>  </li> 
+            <li  style="width:90px;  word-wrap: break-word;" ng-show="member.isMonitor() || member.isAdministrator()"> <a href="#performance">Performance</a>  </li> 
 
             <li  style="width:90px;  word-wrap: break-word;"> <a href="#/emergencymode">Shake</a>  </li> 
 
