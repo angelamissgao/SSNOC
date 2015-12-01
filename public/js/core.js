@@ -178,7 +178,7 @@ app.run(function($rootScope, ssnocService, shakeService, locationService, member
           message: ""
         };
       }   
-    }
+    };
 
     // Create default admin user if no admin user exists.
     ssnocService.getDirectory()

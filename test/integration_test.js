@@ -33,7 +33,7 @@ suite('REST API', function() {
 
 	test('addMember', function(done) {
 		request(url)
-		.post('/api/ssnoc/member/mike/12345')
+		.post('/api/ssnoc/member/mike/12345/0')
 		.expect(200)
 		.end(function(err, res) {
 			if (err) {
@@ -43,6 +43,7 @@ suite('REST API', function() {
 
 		result.name.should.be.equal('mike');
 		result.password.should.be.equal('12345');
+		result.permissionId.should.be.equal(0);
 		result.status.should.be.equal(0);
 
         done();
@@ -109,25 +110,25 @@ suite('REST API', function() {
       });
 	});	
 
-	test('Messages', function(done) {
-		request(url)
-		.get('/api/ssnoc/messages')
-		.expect(200)
-		.end(function(err, res) {
-			if (err) {
-				throw err;
-			}
+	// test('Messages', function(done) {
+	// 	request(url)
+	// 	.get('/api/ssnoc/messages')
+	// 	.expect(200)
+	// 	.end(function(err, res) {
+	// 		if (err) {
+	// 			throw err;
+	// 		}
 
-			var result = JSON.parse(res.text);
+	// 		var result = JSON.parse(res.text);
 
-			result[0].message.should.be.equal('NewMessage');
-			result[0].member_id.should.be.equal(2);
-			result[0].position.lat.should.be.equal(0);
-			result[0].position.lng.should.be.equal(0);
+	// 		result[0].message.should.be.equal('NewMessage');
+	// 		result[0].member_id.should.be.equal(2);
+	// 		result[0].position.lat.should.be.equal(0);
+	// 		result[0].position.lng.should.be.equal(0);
 
-          done();
-      });
-	});	
+ //          done();
+ //      });
+	// });	
 
 
 	test('Add Announcement', function(done) {
