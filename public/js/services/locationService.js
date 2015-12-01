@@ -7,8 +7,10 @@ app.factory('locationService',function($rootScope) {
 	    },
 	    setLocation : function(position) {
 	      if(position!==undefined) {
-	        $rootScope.member.position = {lat: position.coords.latitude, lng: position.coords.longitude};
-	      }
+	    var vlat = Number((position.coords.latitude).toFixed(3));
+        var vlong = Number((position.coords.longitude).toFixed(3));
+        $rootScope.currentPosition = {lat: vlat, lng: vlong};
+		}
 	    }
 	};
 
