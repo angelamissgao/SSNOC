@@ -23,6 +23,13 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
   getAllMessages();
   getAnnouncements();
   getEmergencies();
+   
+  function speak(text) {
+      var utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'en-US';
+      
+      speechSynthesis.speak(utterance);
+  }
 
   $scope.isOnline = function(status)
   {
@@ -103,6 +110,8 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
   });
 
   $rootScope.socket.on('emergency', function(msg){
+    $rootScope.socket.removeListener('emergency', test);
+    speak(msg.message);
     $scope.messages.push(msg);
     $scope.chatMessage = "";
     $scope.$apply();

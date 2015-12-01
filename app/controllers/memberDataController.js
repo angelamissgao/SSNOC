@@ -15,14 +15,11 @@ exports.getMembers = function(res){
 exports.getMember = function(req, res){	
 
 	var reqName = req.params.name;
-	console.log("Name " + reqName);
 	Member.findOne({name: reqName}, function(err, members) {
 			if (err) {			
-				return res.send(err);	
+				return res.send(err);
 			}
-			console.log("Found member " + members);
-			
-			return res.json(members); 
+			res.json(members); 
 	});
 };
 

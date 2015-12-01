@@ -281,15 +281,13 @@ io.on('connection',function(socket){
 
 //Search Function
 /**
- * @api {get} /api/ssnoc/messages Get all messages from history
+ * @api {get} /api/ssnoc/search_public_messages/:search_message Search messages from history
  * @apiGroup Search
  * @apiName SearchPublicMessages
  *
  * @apiSuccess {String} JSON with messages.
  * 
- * @apiParam {String} member id
- *
- * @apiParam {String} receiver id
+ * @apiParam {String} message
  *
  *
  * @apiSuccessExample Success-Response:
@@ -303,11 +301,13 @@ io.on('connection',function(socket){
 	});
 
 /**
- * @api {get} /api/ssnoc/messages Get all messages from history
+ * @api {get} /api/ssnoc/search_private_messages/:search_message/:member_id/:receiver_id Search private messages
  * @apiGroup Search
  * @apiName SearchPrivateMessages
  *
  * @apiSuccess {String} JSON with messages.
+ *
+ * @apiParam {String} message
  * 
  * @apiParam {String} member id
  *
@@ -325,16 +325,13 @@ io.on('connection',function(socket){
 	});
 
 /**
- * @api {get} /api/ssnoc/messages Get all messages from history
+ * @api {get} /api/ssnoc/search_announcements/:search_message Search announcements
  * @apiGroup Search
  * @apiName SearhAnnouncements
  *
  * @apiSuccess {String} JSON with messages.
  * 
- * @apiParam {String} member id
- *
- * @apiParam {String} receiver id
- *
+ * @apiParam {String} message
  *
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
@@ -347,16 +344,13 @@ io.on('connection',function(socket){
 	});
 
 /**
- * @api {get} /api/ssnoc/messages Get all messages from history
+ * @api {get} /api/ssnoc/search_membername/:search_message Search messages from member
  * @apiGroup Search
  * @apiName SearchMemberNames
  *
  * @apiSuccess {String} JSON with messages.
  * 
- * @apiParam {String} member id
- *
- * @apiParam {String} receiver id
- *
+ * @apiParam {String} member name
  *
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
@@ -369,15 +363,13 @@ io.on('connection',function(socket){
 	});
 
 /**
- * @api {get} /api/ssnoc/messages Get all messages from history
+ * @api {get} api/ssnoc/search_memberstatus/:search_message Search member by staus
  * @apiGroup Search
  * @apiName SearchMemberStatus
  *
  * @apiSuccess {String} JSON with messages.
  * 
- * @apiParam {String} member id
- *
- * @apiParam {String} receiver id
+ * @apiParam {String} member status
  *
  *
  * @apiSuccessExample Success-Response:
@@ -389,13 +381,54 @@ io.on('connection',function(socket){
 		memberDataController.searchMemberStatus(req, res);
 	});
 
+/**
+ * @api {post} /api/ssnoc/performance/add_message/:member_id/:latitude/:longitude/:message Add performance message
+ * @apiGroup Performance
+ *
+ * @apiName AddPerformanceMessage
+ *
+ * @apiSuccess {String} JSON with message information.
+ *
+ * @apiParam {String} member id
+ *
+ * @apiParam {String} receiver id
+ *
+ * @apiParam {String} message
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *{"message":"20characters_message","member_id":2,"status":1,"_id":2,"__v":0,"timestamp":"2015-10-09T08:38:00.456Z"}
+ */
 	app.post('/api/ssnoc/performance/add_message/:member_id/:latitude/:longitude/:message', function(req, res) {
 		performanceDataController.addPerformanceMessage(req, res, io);
 	});
 
+/**
+ * @api {get} /api/ssnoc/performance/get_message Get last performance message
+ * @apiGroup Performance
+ * @apiName GetPerformanceMessage
+ *
+ * @apiSuccess {String} JSON with messages.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *{"message":"20characters_message","member_id":2,"status":1,"_id":2,"__v":0,"timestamp":"2015-10-09T08:38:00.456Z"}
+ */
+
 	app.get('/api/ssnoc/performance/get_message', function(req,res) {
 		performanceDataController.getPerformanceMessage(res);
 	});
+
+/**
+ * @api {post} /api/ssnoc/performance/reset Reset performance test
+ * @apiGroup Performance
+ * @apiName ResetPerformanceTest
+ *
+ * @apiSuccess {String} JSON with messages.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ */
 
 	app.post('/api/ssnoc/performance/reset', function(req,res) {
 		performanceDataController.resetTest(res);

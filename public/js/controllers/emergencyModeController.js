@@ -9,11 +9,12 @@ app.controller("emergencyModeController",function($scope, ssnocService, $q,$root
 	function startEmergencyMode(interval){
       //alert('Shake!');
       ssnocService.addEmergency("Emergency, please help!", $rootScope.currentPosition, $rootScope.member.id);
+      ssnocService.updateStatus($rootScope.member.id, $rootScope.currentPosition, 3);
 
       alertInterval = setInterval(function(){
-      	ssnocService.addEmergency("Emergency, please help!", $rootScope.currentPosition, $rootScope.member.id);
-      },interval); 
-  	}
+            	ssnocService.addEmergency("Emergency, please help!", $rootScope.currentPosition, $rootScope.member.id);
+            },interval); 
+  }
 
   $scope.stopEmergencyMode = function(){
   	clearInterval(alertInterval);

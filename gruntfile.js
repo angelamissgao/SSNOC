@@ -5,6 +5,14 @@ module.exports = function(grunt) {
  
   grunt.initConfig({
     // Configure a mochaTest task 
+
+    apidoc: {
+      myapp: {
+        src: "app/",
+        dest: "apidoc/"
+      }
+    },
+
     jshint: {
       myFiles: ['app/**/*.js', 'public/js/**/*.js']
     },
@@ -19,13 +27,14 @@ module.exports = function(grunt) {
           clearRequireCache: false // Optionally clear the require cache before running tests (defaults to false) 
         },
         src: ['test/**/*.js']
+        // src: ['test/memberDataController_test.js']
       }
     }
   });
 
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-apidoc');
  
-  //grunt.registerTask('default', ['jshint', 'mochaTest']);
-grunt.registerTask('default', ['mochaTest', 'jshint']);
+  grunt.registerTask('default', ['mochaTest', 'jshint', 'apidoc']);
  
 };

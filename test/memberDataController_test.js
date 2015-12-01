@@ -1,10 +1,7 @@
 var should = require('should'); 
-var request = require('supertest');
 var tungus = require('tungus');
 var mongoose = require('mongoose');
-var memberDataController = require('../app/controllers/memberDataController.js');
-
-var expect = require('expect.js');
+var dataController = require('../app/controllers/memberDataController.js');
 
 mongoose.connect('tingodb://'+__dirname+'/ssnocdb/', function (err) {
   if (err){
@@ -14,47 +11,20 @@ mongoose.connect('tingodb://'+__dirname+'/ssnocdb/', function (err) {
   }
 });
 
-suite('memberDataController Test', function(){
+suite('dataController Test', function(){
 
 	test('getMember test', function(done){
 
 		var req = {};
-		req.params = {};
+		req.params = {name:'mike'};
+
 		var res = {};
-		req.params.name = "mike";
-		
-		//Fix
-		// var response = memberDataController.getMember(req, res);
+		res.json = function(data){
+			data.name.should.equal('mike');
+			done();
+		}
 
-		 //console.log("Get member : " + response);
-		 //expect(response).to.be();
-		 console.log("Req " + req.params.name);
-
-
-		// dataController.getMember(req, res);
-
-		 getMemberFromDataController(req, res, function(err,result){
-		  		console.log('getMemberTest ' +  result);
-		 });
-
-		// var response = memberDataController.getMember(req, res);
-		// expect(res).to.exist;
-
-		done();
+		dataController.getMember(req, res);
 	});	
 
 });
-
-// suite('file controller test', function(){
-// 	test('upload file', function(done){
-// 		var file = "test file";
-// 		var filename = "testFile.txt";
-// 		var response = 	fileUploadController.customFileWriter(file, filename);
-// 		expect(response).to.be("uploadImages/" + filename);
-// 		done();
-// 	});
-// });
-
-function getMemberFromDataController(req, res, callback){
-	 return callback(memberDataController.getMember(req, res));
-}
