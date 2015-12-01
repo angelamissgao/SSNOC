@@ -11,9 +11,23 @@ mongoose.connect('tingodb://'+__dirname+'/ssnocdb/', function (err) {
   }
 });
 
-suite('dataController Test', function(){
+suite('memberDataController Test', function(){
 
 	test('getMember test', function(done){
+
+		var req = {};
+		req.params = {memeber_id:2};
+
+		var res = {};
+		res.json = function(data){
+			data.name.should.equal('mike');
+			done();
+		}
+
+		dataController.getMember(req, res);
+	});	
+
+	test('getMemberById test', function(done){
 
 		var req = {};
 		req.params = {name:'mike'};
@@ -24,7 +38,7 @@ suite('dataController Test', function(){
 			done();
 		}
 
-		dataController.getMember(req, res);
+		dataController.getMemberById(req, res);
 	});	
 
 });

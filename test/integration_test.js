@@ -10,13 +10,13 @@ var expect = require('expect.js');
 
 // var dbPath = './ssnocdb/messages';
 
-mongoose.connect('tingodb://'+__dirname+'/ssnocdb/', function (err) {
-  if (err){
-  	throw err;
-  } else {
-  	console.log("connected to tingodb");
-  }
-});
+// mongoose.connect('tingodb://'+__dirname+'/ssnocdb/', function (err) {
+//   if (err){
+//   	throw err;
+//   } else {
+//   	console.log("connected to tingodb");
+//   }
+// });
 
 console.log('Running mongoose version %s', mongoose.version);
 
@@ -25,15 +25,11 @@ suite('REST API', function() {
 
 	var url = 'http://localhost:2222';
 
-	// after(function(){
-	// 	fs.unlinkSync(dbPath);
-	// });
-
 	mongoose.connect('tingodb://'+__dirname+'/ssnocdb/');
 
 	test('addMember', function(done) {
 		request(url)
-		.post('/api/ssnoc/member/mike/12345')
+		.post('/api/ssnoc/member/mike/12345/0')
 		.expect(200)
 		.end(function(err, res) {
 			if (err) {
@@ -44,6 +40,7 @@ suite('REST API', function() {
 		result.name.should.be.equal('mike');
 		result.password.should.be.equal('12345');
 		result.status.should.be.equal(0);
+		result.permissionId.should.be.equal(0);
 
         done();
       });
