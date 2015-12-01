@@ -1,7 +1,7 @@
 var should = require('should'); 
 var tungus = require('tungus');
 var mongoose = require('mongoose');
-var dataController = require('../app/controllers/memberDataController.js');
+var memberDataController = require('../app/controllers/memberDataController.js');
 
 mongoose.connect('tingodb://'+__dirname+'/ssnocdb/', function (err) {
   if (err){
@@ -16,20 +16,6 @@ suite('memberDataController Test', function(){
 	test('getMember test', function(done){
 
 		var req = {};
-		req.params = {memeber_id:2};
-
-		var res = {};
-		res.json = function(data){
-			data.name.should.equal('mike');
-			done();
-		}
-
-		dataController.getMember(req, res);
-	});	
-
-	test('getMemberById test', function(done){
-
-		var req = {};
 		req.params = {name:'mike'};
 
 		var res = {};
@@ -38,7 +24,21 @@ suite('memberDataController Test', function(){
 			done();
 		}
 
-		dataController.getMemberById(req, res);
+		memberDataController.getMember(req, res);
+	});	
+
+	test('getMemberById test', function(done){
+
+		var req = {};
+		req.params = {member_id:2};
+
+		var res = {};
+		res.json = function(data){
+			data.name.should.equal('mike');
+			done();
+		}
+
+		memberDataController.getMemberById(req, res);
 	});	
 
 });
