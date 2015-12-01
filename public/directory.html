@@ -32,7 +32,7 @@
         <div class="row list-group-item directory-item" ng-click='newPrivateChat(iterMember._id)'>
           <img ng-src="/images/{{statusImgMap[iterMember.status]}}" />
           <span ng-bind="iterMember.name"> </span>
-          <span ng-bind="iterMember.lastLogin" class="posttime"> </span>
+          <span ng-bind="iterMember.lastLogin  | date:'MM/dd/yyyy HH:m:s'" class="posttime"> </span>
         </div>  
         <button ng-click="editProfile(iterMember._id)" ng-show="member.isAdministrator()">Edit Profile</button>
       </div>
@@ -41,7 +41,7 @@
         <div class="row list-group-item directory-item" ng-click='newPrivateChat(iterMember._id)'>
           <img ng-src="/images/{{statusImgMap[iterMember.status]}}" />
           <span ng-bind="iterMember.name"> </span>
-          <span ng-bind="iterMember.lastLogin" class="posttime"> </span>
+          <span ng-bind="iterMember.lastLogin  | date:'MM/dd/yyyy HH:m:s'" class="posttime"> </span>
         </div>  
         <button ng-click="editProfile(iterMember._id)" ng-show="member.isAdministrator()">Edit Profile</button>
       </div>
