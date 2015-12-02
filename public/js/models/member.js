@@ -25,18 +25,7 @@ app.factory('member', function(){
 
   }
 
-  // function Member(username, password, status, permissionId) {
-  //   // Public properties, assigned to the instance ('this')
-  //   this.id = 0;
-  //   this.username = username;
-  //   this.password = password;
-  //   this.status = status;
-  //   this.permissionId = permissionId;
-  //   this.authenticated  = false;
-  //   this.position = {lat: 0, lng: 0};
-
-  // }
-
+  
   Member.prototype.isOnline = function()
   {
     if(this.status !== 0)

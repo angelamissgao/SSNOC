@@ -6,17 +6,6 @@ var apiController = require('../app/apiController.js');
 
 var expect = require('expect.js');
 
-// var fs = require('fs');
-
-// var dbPath = './ssnocdb/messages';
-
-// mongoose.connect('tingodb://'+__dirname+'/ssnocdb/', function (err) {
-//   if (err){
-//   	throw err;
-//   } else {
-//   	console.log("connected to tingodb");
-//   }
-// });
 
 console.log('Running mongoose version %s', mongoose.version);
 
@@ -106,26 +95,6 @@ suite('REST API', function() {
           done();
       });
 	});	
-
-	// test('Messages', function(done) {
-	// 	request(url)
-	// 	.get('/api/ssnoc/messages')
-	// 	.expect(200)
-	// 	.end(function(err, res) {
-	// 		if (err) {
-	// 			throw err;
-	// 		}
-
-	// 		var result = JSON.parse(res.text);
-
-	// 		result[0].message.should.be.equal('NewMessage');
-	// 		result[0].member_id.should.be.equal(2);
-	// 		result[0].position.lat.should.be.equal(0);
-	// 		result[0].position.lng.should.be.equal(0);
-
- //          done();
- //      });
-	// });	
 
 
 	test('Add Announcement', function(done) {
@@ -294,7 +263,7 @@ suite('REST API', function() {
 				throw err;
 			}
 
-   		  var result = JSON.parse(res.text);
+   		 	var result = JSON.parse(res.text);
 
 			result[0].name.should.be.equal('mike');
 			result[0].password.should.be.equal('12345');
@@ -303,28 +272,7 @@ suite('REST API', function() {
       });
 	});
 
-/*	test('Announcements', function(done) {
-		request(url)
-		.get('/api/ssnoc/annoucements')
-		.expect(200)
-		.end(function(err, res) {
-			if (err) {
-				throw err;
-			}
 
-			// var result = JSON.parse(res.text);
-
-			console.log("test %j", res);
-
-			// result[0].message.should.be.equal('NewMessage');
-			// result[0].member_id.should.be.equal(2);
-			// result[0].position.lat.should.be.equal(0);
-			// result[0].position.lng.should.be.equal(0);
-
-          done();
-      });
-	});
-*/
 });
 
 
