@@ -107,7 +107,7 @@ app.run(function($rootScope, ssnocService, shakeService, locationService, member
     }
 
     $rootScope.shareStatus= function(status_id){
-     $rootScope.memberstatus = status_id;
+     $rootScope.member.status = status_id;
      ssnocService.updateStatus($rootScope.member.id, $rootScope.currentPosition, status_id);
     };
 
@@ -115,7 +115,7 @@ app.run(function($rootScope, ssnocService, shakeService, locationService, member
     {
       ssnocService.updateStatus($rootScope.member.id, $rootScope.member.position, $rootScope.statuses.Offline.id).
       success(function(response){
-        console.log("logout" + response);
+        $rootScope.member.status = $rootScope.statuses.Offline.id;
         $rootScope.member.setAuthentication(false);
         window.location = "/";
       });
