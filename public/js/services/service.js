@@ -13,7 +13,7 @@ app.factory('ssnocService',function($http) {
 			},
 			updateStatus : function(member_id, position, status_id){
 				return $http.post('/api/ssnoc/update_status/'+member_id + '/' + position.lat + "/" + 
-					position.lng +"/"+status_id);
+					position.lng + "/" +status_id);
 			},			
 			updateProfile : function(member_id, username, password, permissionId, accountStatus){
 				return $http.post('/api/ssnoc/update_profile/' + member_id + '/' + username + "/" + 

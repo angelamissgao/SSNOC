@@ -110,7 +110,7 @@ app.run(function($rootScope, ssnocService, shakeService, locationService, member
 
     $rootScope.shareStatus= function(status_id){
      $rootScope.memberstatus = status_id;
-     ssnocService.updateStatus($rootScope.member.id, $rootScope.position, status_id);
+     ssnocService.updateStatus($rootScope.member.id, $rootScope.currentPosition, status_id);
     };
 
     $rootScope.logout = function()
