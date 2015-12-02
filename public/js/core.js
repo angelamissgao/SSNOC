@@ -57,16 +57,14 @@ app.run(function($rootScope, ssnocService, shakeService, locationService, member
     $rootScope.socket = io.connect(); 
 
     $rootScope.currentPosition = {lat: 0, lng: 0};
-    // $rootScope.currentPosition.lat = 0;    
-    // $rootScope.currentPosition.lng = 0;    
-    // $rootScope.authenticated = false;
+
     $rootScope.member = new member();
 
     $rootScope.statuses = {
-    'Offline' : {'name':"Offline", 'id': 0},
-    'OK' : {'name':"OK", 'id':1},
-    'Help' :{ 'name' :"Help", 'id':2},
-    'Emergency' :{'name':"Emergency", 'id':3}
+    'Offline' : {'name':"Offline", 'id': 0, "display" : false},
+    'OK' : {'name':"OK", 'id':1 ,"display" : true},
+    'Help' :{ 'name' :"Help", 'id':2, "display" : true},
+    'Emergency' :{'name':"Emergency", 'id':3, "display" : true}
     };
 
     $rootScope.statusImgMap = {

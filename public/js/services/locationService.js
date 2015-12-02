@@ -9,7 +9,7 @@ app.factory('locationService',function($rootScope) {
 	      if(position!==undefined) {
 	    var lat = Number((position.coords.latitude).toFixed(3));
         var lng = Number((position.coords.longitude).toFixed(3));
-        $rootScope.currentPosition = {lat: lat, lng: vlng};
+        $rootScope.currentPosition = {lat: lat, lng: lng};
 		}
 	    }
 	};

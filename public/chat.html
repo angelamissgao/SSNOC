@@ -29,8 +29,6 @@
          </form>
        <div>
 
-
-
          <!-- public Chatarea -->
            <div class="publicChat">
       				  <div class="chatArea">
@@ -57,7 +55,7 @@
                     <img ng-src="/images/{{statusImgMap[message.status]}}" style="margin-right:5px;"> 
                     <b><span ng-bind="directoryDict[message.member_id].name"></span></b>: &nbsp &nbsp
                      <b><span ng-bind="message.message"></span></b>       
-                     <span ng-bind="message.timestamp |  date:'MM/dd/yyyy HH:m:s'" class = "posttime"></span>
+                     <span ng-bind="message.timestamp |  date:'MMM dd/ yyyy HH:m:s'" class = "posttime"></span>
                      <br> Position Info: [<span ng-bind="message.position.lat"></span>,<span ng-bind="message.position.lng"></span>]
                   </p>   
 

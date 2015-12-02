@@ -104,7 +104,7 @@ app.controller("mainController",function($scope, ssnocService, member, $q,$rootS
 							data._id, 
 							data.name, 
 							data.password, 
-							data.status, 
+							$rootScope.statuses.OK.id, 
 							data.permissionId,
 							data.accountStatus);
 						$rootScope.member.printMember();
