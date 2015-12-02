@@ -272,6 +272,58 @@ suite('REST API', function() {
       });
 	});
 
+	test('AddEmergency', function(done) {
+		request(url)
+		.post('/api/ssnoc/emergency/2/0/0/HELP')
+		.expect(200)
+		.end(function(err, res) {
+			if (err) {
+				throw err;
+			}
+			console.log("Res" + res.member_id);
+   		var result = JSON.parse(res.text);
+
+			result.member_id.should.be.equal(2);
+			result.message.should.be.equal('HELP');
+
+          done();
+      });
+	});
+
+
+	test('getEmergency', function(done) {
+		request(url)
+		.get('/api/ssnoc/emergencies')
+		.expect(200)
+		.end(function(err, res) {
+			if (err) {
+				throw err;
+			}
+			console.log("Res" + res.member_id);
+   		var result = JSON.parse(res.text);
+
+			result[0].member_id.should.be.equal(2);
+          done();
+      });
+	});
+
+
+
+	test('UpdateProfile', function(done) {
+		request(url)
+		.post('/api/ssnoc/update_profile/2/mike/12345/1/0')
+		.expect(200)
+		.end(function(err, res) {
+			if (err) {
+				throw err;
+			}
+   		var result = JSON.parse(res.text);
+
+			result.message.should.be.equal('Profile updated');
+
+          done();
+      });
+	});
 
 });
 
