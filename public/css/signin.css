@@ -116,6 +116,8 @@ text-align: center;
 .directory-item
 {
   margin: 10px 5px;
+  background-color:lightgrey;
+  padding:15px;
 }
 
 #logoutbt {

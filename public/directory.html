@@ -28,22 +28,26 @@
 </div>
 
 <div  id="directory" class="col-xs-12 col-sm-12 col-md-12 chatArea">
-      <div ng-repeat="iterMember in directory|orderBy:['status','name']" ng-show="isOnline(iterMember.status) && isShowActive(iterMember)">
-        <div class="row list-group-item directory-item" ng-click='newPrivateChat(iterMember._id)'>
+      <div class="row" ng-repeat="iterMember in directory|orderBy:['status','name']" ng-show="isOnline(iterMember.status) && isShowActive(iterMember)">
+        <div class="col-md-10 directory-item" ng-click='newPrivateChat(iterMember._id)'>
           <img ng-src="/images/{{statusImgMap[iterMember.status]}}" />
           <span ng-bind="iterMember.name"> </span>
-          <span ng-bind="iterMember.lastLogin  | date:'MM/dd/yyyy HH:m:s'" class="posttime"> </span>
+          <span ng-bind="iterMember.lastLogin  | date:'MMM dd yyyy HH:m:s'" class="posttime"> </span>
         </div>  
-        <button ng-click="editProfile(iterMember._id)" ng-show="member.isAdministrator()">Edit Profile</button>
+        <div class="col-md-1">
+           <img src="/images/settings.png" ng-click="editProfile(iterMember._id)" ng-show="member.isAdministrator()" style="padding:20px;">
+        </div>
       </div>
 
-      <div ng-repeat="iterMember in directory|orderBy:['status','name']" ng-show="!isOnline(iterMember.status) && isShowActive(iterMember)">
-        <div class="row list-group-item directory-item" ng-click='newPrivateChat(iterMember._id)'>
+      <div class="row" ng-repeat="iterMember in directory|orderBy:['status','name']" ng-show="!isOnline(iterMember.status) && isShowActive(iterMember)">
+        <div class="col-md-10  directory-item" ng-click='newPrivateChat(iterMember._id)'>
           <img ng-src="/images/{{statusImgMap[iterMember.status]}}" />
           <span ng-bind="iterMember.name"> </span>
-          <span ng-bind="iterMember.lastLogin  | date:'MM/dd/yyyy HH:m:s'" class="posttime"> </span>
+          <span ng-bind="iterMember.lastLogin  | date:'MMM dd yyyy HH:m:s'" class="posttime"> </span>
         </div>  
-        <button ng-click="editProfile(iterMember._id)" ng-show="member.isAdministrator()">Edit Profile</button>
+        <div class="col-md-1">
+          <img src="/images/settings.png" ng-click="editProfile(iterMember._id)" ng-show="member.isAdministrator()" style="padding:20px;">
+        </div>
       </div>
  </div>
 </div>
