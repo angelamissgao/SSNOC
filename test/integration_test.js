@@ -148,7 +148,6 @@ suite('REST API', function() {
 
 			var result = JSON.parse(res.text);
 
-			// console.log('response: %j', result);
 			result.message.should.be.equal("Status updated: Member 2 status is 1and location is 0 ; 0");
 
           	done();

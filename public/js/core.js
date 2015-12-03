@@ -65,7 +65,7 @@ app.run(function($rootScope, ssnocService, shakeService, locationService, member
     'OK' : {'name':"OK", 'id':1, 'display': true},
     'Help' :{ 'name' :"Help", 'id':2, 'display': true},
     'Emergency' :{'name':"Emergency", 'id':3, 'display': true}
-    } 
+    };
 
     $rootScope.statusImgMap = {
       0:"offline.png",
