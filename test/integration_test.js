@@ -273,7 +273,7 @@ suite('REST API', function() {
 
 	test('AddEmergency', function(done) {
 		request(url)
-		.post('/api/ssnoc/emergency/2/0/0/HELP')
+		.post('/api/ssnoc/emergency/2/0/0/EmergencyTest')
 		.expect(200)
 		.end(function(err, res) {
 			if (err) {
@@ -282,7 +282,7 @@ suite('REST API', function() {
    		var result = JSON.parse(res.text);
 
 			result.member_id.should.be.equal(2);
-			result.message.should.be.equal('HELP');
+			result.message.should.be.equal('EmergencyTest');
 
           done();
       });
