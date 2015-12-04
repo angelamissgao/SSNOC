@@ -10,6 +10,7 @@ app.controller("chatController",function($scope, ssnocService, message, $q,$root
   $scope.searchAlert = false;
   $rootScope.currentMsgPage = 0;
   $rootScope.issearch = false; 
+  $scope.newMessgeSender = "";
 
 
   var defer = $q.defer();
@@ -128,6 +129,7 @@ app.controller("chatController",function($scope, ssnocService, message, $q,$root
 
   $rootScope.socket.on('privatemessage', function(result){
    $scope.msgAlert=true; 
+   $scope.newMessgeSender = $scope.directoryDict[result.member_id].name;
    $scope.$apply();
  });
 

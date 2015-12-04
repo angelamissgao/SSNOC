@@ -2,13 +2,14 @@
 app.controller("privateChatController",function($scope, ssnocService, $q,$rootScope){
 	$scope.messages ={};
   $scope.msgAlert=false;
-  $scope.member = {};
   $scope.receiver = {};
   $scope.searchPrivateMessage = "";
   $scope.searchAlert = false;
   $rootScope.currentMsgPage = 0;
   $rootScope.issearch = false; 
+  $scope.newMessgeSender = "";
 
+  console.log("Starting chat with " + $rootScope.receiverId);
   getUsers();
   getPrivateMessages();
 
@@ -26,10 +27,11 @@ app.controller("privateChatController",function($scope, ssnocService, $q,$rootSc
 
   });
 
-  $scope.getName = function(memberId){
-    if(memberId == $scope.member._id)
+  $scope.getName = function(id){
+    console.log('getname ' + id);
+    if(id == $rootScope.member.id)
     {
-      return $scope.member.name;
+      return $rootScope.member.username;
     }
     return $scope.receiver.name;
   };
@@ -50,18 +52,12 @@ app.controller("privateChatController",function($scope, ssnocService, $q,$rootSc
  }
 
  function getUsers(){
-  ssnocService.getMemberById($rootScope.member.id).success(function(response){
-    console.log("pc mem  " + response.name);
-    $scope.member = response;
-  });
   ssnocService.getMemberById($rootScope.receiverId).success(function(response){
    console.log("pc rec  " + response.name);
    $scope.receiver = response;
  });
 
 }
-
-
 $scope.searchPrivateMessages = function(){
   $rootScope.currentMsgPage = 0;
   $rootScope.issearch = true; 
