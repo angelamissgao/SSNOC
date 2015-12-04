@@ -9,6 +9,8 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
   $scope.searchMessage = "";
   $scope.searchAlert = false;
   $rootScope.currentMsgPage = 0;
+  $rootScope.issearch = false; 
+
 
   var defer = $q.defer();
 
@@ -172,6 +174,7 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
 
     $scope.searchMessages = function(){
       $rootScope.currentMsgPage = 0;
+      $rootScope.issearch = true; 
       if (stopwords.indexOf($scope.searchMessage) == -1 ) {
         ssnocService.searchPublicMessages($scope.searchMessage)
         .success(function(response){
@@ -194,6 +197,7 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
 
     $scope.searchAnnouncements = function(){
      $rootScope.currentMsgPage = 0;
+     $rootScope.issearch = true; 
      if (stopwords.indexOf($scope.searchAnnouncement) == -1 ) {
       ssnocService.searchAnnouncements($scope.searchAnnouncement)
       .success(function(response){

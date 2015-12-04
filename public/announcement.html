@@ -24,7 +24,7 @@
        <span ng-bind="announcement.timestamp | date:'MM/dd/yyyy HH:m:s'" class = "posttime"></span>
        
     <p>     
-    <button type="button" class="btn btn-default" ng-show="isShowMoreButtonShown(announcements)" ng-click="showMore()">Show More</button>
+    <button type="button" class="btn btn-default" ng-show="isShowMoreButtonShown(announcements)&& issearch" ng-click="showMore()">Show More</button>
   </div>
 
   <div class="row"> 

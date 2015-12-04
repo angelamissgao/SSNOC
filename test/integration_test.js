@@ -279,7 +279,6 @@ suite('REST API', function() {
 			if (err) {
 				throw err;
 			}
-			console.log("Res" + res.member_id);
    		var result = JSON.parse(res.text);
 
 			result.member_id.should.be.equal(2);
@@ -298,7 +297,6 @@ suite('REST API', function() {
 			if (err) {
 				throw err;
 			}
-			console.log("Res" + res.member_id);
    		var result = JSON.parse(res.text);
 
 			result[0].member_id.should.be.equal(2);
