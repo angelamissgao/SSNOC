@@ -49,12 +49,19 @@ app.config(['$routeProvider', function($routeProvider) {
             .when('/editprofile', {
               templateUrl : 'editprofile.html',
               controller  : 'editProfileController'
+            })
+
+            .when('/systemlocked', {
+              templateUrl : 'systemlocked.html',
+              controller  : ''
             });
 
           }]);
 
 app.run(function($rootScope, ssnocService, shakeService, locationService, member){
     $rootScope.socket = io.connect(); 
+
+    $rootScope.uiEnabled = true;
 
     $rootScope.currentPosition = {lat: 0, lng: 0};
 
@@ -133,6 +140,20 @@ app.run(function($rootScope, ssnocService, shakeService, locationService, member
       console.log("disconnecting" + $rootScope.member.id);
       ssnocService.updateStatus($rootScope.member.id, $rootScope.statuses.Offline.id);
       $rootScope.$apply();
+    });
+
+    $rootScope.socket.on('lock_system', function(){
+      if(!$rootScope.member.isAdministrator()) {
+        window.location = "/#/systemlocked";
+        $rootScope.uiEnabled = false;
+      }
+    });
+
+    $rootScope.socket.on('unlock_system', function(){
+      if(!$rootScope.member.isAdministrator()) {
+        window.location = "/#/chatting";
+        $rootScope.uiEnabled = true;
+      }
     });
 
     $rootScope.isSearchMsgShown = function(messageId, messages)

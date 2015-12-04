@@ -32,8 +32,15 @@ exports.getPerformanceMessage = function(res){
         }).limit(1);
 };
 
-exports.resetPerformanceTest = function(res){
-    PerformanceMessage.inventory.remove();
+exports.lockApplication = function(res,io){
+	io.emit('lock_system');
+	return res.json('ok');
+};
+
+exports.resetPerformanceTest = function(res,io){
+	io.emit('unlock_system');
+    // PerformanceMessage.inventory.remove();
+	return res.json('ok');
 };
 
 

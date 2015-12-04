@@ -110,7 +110,6 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
   });
 
   $rootScope.socket.on('emergency', function(msg){
-    $rootScope.socket.removeListener('emergency', test);
     speak(msg.message);
     $scope.messages.push(msg);
     $scope.chatMessage = "";

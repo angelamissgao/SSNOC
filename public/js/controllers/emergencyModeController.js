@@ -8,8 +8,8 @@ app.controller("emergencyModeController",function($scope, ssnocService, $q,$root
 
 	function startEmergencyMode(interval){
       //alert('Shake!');
-      ssnocService.addEmergency("Emergency, please help!", $rootScope.currentPosition, $rootScope.member.id);
       ssnocService.updateStatus($rootScope.member.id, $rootScope.currentPosition, 3);
+      ssnocService.addEmergency("Emergency, please help!", $rootScope.currentPosition, $rootScope.member.id);
       $rootScope.member.status = 3;
       console.log("test"+$rootScope.member.id);
 

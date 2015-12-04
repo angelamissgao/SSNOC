@@ -78,6 +78,9 @@ app.factory('ssnocService',function($http) {
 			testGetMessage : function(){
 				return $http.get('/api/ssnoc/performance/get_message');
 			},
+			lockApplication : function(){
+				return $http.post('/api/ssnoc/performance/lock');
+			},
 			testReset : function(){
 				return $http.post('/api/ssnoc/performance/reset');
 			}

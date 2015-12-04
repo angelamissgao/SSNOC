@@ -21,15 +21,22 @@ app.controller("performanceTestController",function($scope, ssnocService, $q,$ro
      $scope.countPuts = 0;
      $scope.countGets = 0;
      $scope.resultTime = 0;
+     $scope.throughputs = 0;
 
      console.log("delay " + $scope.delay);
 
+     ssnocService.lockApplication();
+
       runPerformance(startTime, function(result){
         $scope.resultTime = new Date().getTime() - startTime;
+        
+        $scope.throughputs = (($scope.countGets + $scope.countPuts) / $scope.resultTime)*1000;
+        $scope.throughputs = ($scope.throughputs.toFixed(1)); 
             
         console.log("Perfomance: " + result + " " + $scope.resultTime);  
 
-        console.log("count performance: " + $scope.countCalls + " get " + $scope.countGets + " put " + $scope.countPuts);
+        console.log("count performance: " + $scope.countCalls + " get " + $scope.countGets + 
+          " put " + $scope.countPuts + " tp " + $scope.throughputs);
     
           console.log("Reset database!!!!!");
           ssnocService.testReset();
@@ -56,7 +63,7 @@ app.controller("performanceTestController",function($scope, ssnocService, $q,$ro
              stopCount = true;
              callback($scope.countCalls);
            }
-        },5); 
+        },10); 
     }
 
 

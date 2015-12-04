@@ -452,8 +452,12 @@ io.on('connection',function(socket){
  *     HTTP/1.1 200 OK
  */
 
+	app.post('/api/ssnoc/performance/lock', function(req,res) {
+		performanceDataController.lockApplication(res, io);
+	});
+
 	app.post('/api/ssnoc/performance/reset', function(req,res) {
-		performanceDataController.resetTest(res);
+		performanceDataController.resetPerformanceTest(res,io);
 	});
 
 //Files
