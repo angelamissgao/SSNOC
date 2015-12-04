@@ -29,7 +29,7 @@ app.factory('message', function(){
 
   Message.prototype.isPublicMessage = function()
   {
-    if(this.receiverId == 0)
+    if(this.receiverId === 0)
     {
       return true;
     }
@@ -42,7 +42,7 @@ app.factory('message', function(){
 
   Message.prototype.isAnnouncement = function()
   {
-    if(this.receiverId == 1)
+    if(this.receiverId === 1)
     {
       return true;
     }
@@ -54,7 +54,7 @@ app.factory('message', function(){
 
   Message.prototype.isEmergency = function()
   {
-    if(this.receiverId == 999)
+    if(this.receiverId === 999)
     {
       return true;
     }
