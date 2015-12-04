@@ -75,7 +75,7 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
       return true;
     else
       return false;
-  }
+  };
 
   function getDirectory()
   {
