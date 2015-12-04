@@ -196,6 +196,7 @@ app.controller("chatController",function($scope, ssnocService, message, $q,$root
           }
           else{
             $scope.searchAlert = false;
+            $scope.messages = [];
             populateMessages(response);
           }
         });
