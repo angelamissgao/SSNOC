@@ -456,6 +456,10 @@ io.on('connection',function(socket){
 		performanceDataController.lockApplication(res, io);
 	});
 
+	app.get('/api/ssnoc/performance/lockstatus', function(req,res) {
+		performanceDataController.lockStatus(res);
+	});
+
 	app.post('/api/ssnoc/performance/reset', function(req,res) {
 		performanceDataController.resetPerformanceTest(res,io);
 	});

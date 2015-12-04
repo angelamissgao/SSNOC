@@ -98,6 +98,13 @@ app.run(function($rootScope, ssnocService, shakeService, locationService, member
 
     $rootScope.issearch = false; 
     
+    
+    ssnocService.lockStatus().success(function(response)
+    {
+      console.log('lockstatus %p', response.mode);
+      $rootScope.uiEnabled = !response.mode;
+    });
+
     shakeService.addShakeDetection();
 
     locationService.getLocation();

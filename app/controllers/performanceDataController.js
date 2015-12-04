@@ -1,5 +1,6 @@
 var PerformanceMessage = require('../models/performanceMessageModel');
 var path = require('path');
+var systemLocked = false;
 
 exports.addPerformanceMessage = function(req, res, io) {
 	var member_id = req.params.member_id;
@@ -34,11 +35,19 @@ exports.getPerformanceMessage = function(res){
 
 exports.lockApplication = function(res,io){
 	io.emit('lock_system');
+	systemLocked = true;
 	return res.json('ok');
+};
+
+exports.lockStatus = function(res,io){
+	var lockStatus = {};
+	lockStatus.mode = systemLocked;
+	return res.json(lockStatus);
 };
 
 exports.resetPerformanceTest = function(res,io){
 	io.emit('unlock_system');
+	systemLocked = false;
     // PerformanceMessage.inventory.remove();
 	return res.json('ok');
 };
