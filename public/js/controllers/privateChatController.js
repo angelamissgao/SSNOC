@@ -17,7 +17,9 @@ app.controller("privateChatController",function($scope, ssnocService, $q,$rootSc
       (result.receiver_id == $rootScope.member.id && result.member_id == $rootScope.receiverId))
     {
       $scope.messages.push(result);
-      $scope.msgAlert=true;
+      if(result.receiver_id == $rootScope.member.id && result.member_id == $rootScope.receiverId){
+        $scope.msgAlert=true;
+      }
       $scope.$apply();
     }
 
