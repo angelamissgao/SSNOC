@@ -121,8 +121,7 @@ app.controller("chatController",function($scope, ssnocService, message, $q,$root
 
   $rootScope.socket.on('emergency', function(msg){
     speak(msg.message);
-    $scope.messages.push(new message(data));
-    $scope.chatMessage = "";
+    $scope.messages.push(new message(msg));
     $scope.$apply();
   });
 

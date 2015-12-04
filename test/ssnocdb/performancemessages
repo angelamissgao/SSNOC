@@ -4,3 +4,9 @@
 {"k":"0000000078","o":"0000000220","v":"001"}
 {"_id":3,"_uid":3,"_dt":1449263526617,"_s":"a6eec3ca40ac74665e54b7e6ceb965b7"}
 {"message":"20characters_message","member_id":1,"status":0,"_id":{"$wrap":"$oid","v":3},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1449263526616,"h":"2015-12-04T21:12:06.616Z"},"receiver_id":0,"__v":0}
+{"k":"0000000078","o":"0000000220","v":"001"}
+{"_id":4,"_uid":4,"_dt":1449266705683,"_s":"d2685326c14c67458983e137ef7fae64"}
+{"message":"20characters_message","member_id":2,"status":1,"_id":{"$wrap":"$oid","v":4},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1449266705679,"h":"2015-12-04T22:05:05.679Z"},"receiver_id":0,"__v":0}
+{"k":"0000000078","o":"0000000220","v":"001"}
+{"_id":5,"_uid":5,"_dt":1449266705877,"_s":"5ce2f8ddeec4b2d72dc146faf61042c3"}
+{"message":"20characters_message","member_id":1,"status":0,"_id":{"$wrap":"$oid","v":5},"position":{"lng":0,"lat":0},"timestamp":{"$wrap":"$date","v":1449266705876,"h":"2015-12-04T22:05:05.876Z"},"receiver_id":0,"__v":0}
