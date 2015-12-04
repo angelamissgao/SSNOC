@@ -88,6 +88,8 @@ app.run(function($rootScope, ssnocService, shakeService, locationService, member
 
     $rootScope.currentMsgPage = 0;
     var pageSize = 10;
+
+    $rootScope.issearch = false; 
     
     shakeService.addShakeDetection();
 
@@ -137,6 +139,9 @@ app.run(function($rootScope, ssnocService, shakeService, locationService, member
 
     $rootScope.isSearchMsgShown = function(messageId, messages)
     {
+      if (!$rootScope.issearch)
+        return true;
+
       for (var i = 0; i < messages.length; i ++) {
         if (messages[i].id == messageId) {
           if (i < ($rootScope.currentMsgPage+1) * pageSize) {

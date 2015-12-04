@@ -33,21 +33,14 @@
            <div class="publicChat">
       				  <div class="chatArea">
                    <p  class="alert" ng-repeat="message in messages"  ng-if="isSearchMsgShown(message.id, messages)" ng-class="{'alert-success':message.isPublicMessage(), 'alert-warning': message.isAnnouncement(), 'alert-danger': message.isEmergency()}" >
-
-
-                    <img ng-src="/images/{{statusImgMap[message.status]}}" style="margin-right:5px;"> 
-                    <button ng-if="message.isEmergency()" ng-click="stopEmergencyMode()" type="submit" class="btn btn-danger">Stop!</button>
+                    <img ng-src="/images/{{statusImgMap[message.status]}}" style="margin-right:5px;">
+                    <button ng-if="message.isEmergency()" ng-show="canStopEmergency(message.member_id)" ng-click="stopEmergencyMode()" type="submit" class="btn btn-danger">Stop!</button>
                     <b><span ng-bind="directoryDict[message.memberId].name"></span></b>: &nbsp &nbsp
-                     <b><span ng-bind="message.message"></span></b>       
-                     
-                     <span ng-bind="message.timestamp |  date:'MMM dd yyyy HH:m:s'" class = "posttime"></span>
-
+                     <b><span ng-bind="message.message"></span></b>
+                    <span ng-bind="message.timestamp | date:'MMM dd yyyy HH:m:s'" class = "posttime"></span>
+                     <br>
                      <br> Position Info: [<span ng-bind="message.position.lat"></span>,<span ng-bind="message.position.lng"></span>]
-
-                  </p>   
-
-                  <button type="button" class="btn btn-default" ng-show="isShowMoreButtonShown(messages)" ng-click="showMore()">Show More</button>
-
+                  </p>  
           </div>
 			  </div>
 				<div class="row">
