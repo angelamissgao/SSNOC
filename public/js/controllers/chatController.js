@@ -69,6 +69,14 @@ app.controller("chatController",function($scope, ssnocService, $q,$rootScope){
     }
   };
 
+  $scope.canStopEmergency = function(memberId)
+  {
+    if($rootScope.member.id == memberId || $rootScope.member.permissionId == $rootScope.permissionMap.Administrator.id)
+      return true;
+    else
+      return false;
+  }
+
   function getDirectory()
   {
     $scope.loading = true;
