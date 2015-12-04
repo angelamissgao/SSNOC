@@ -35,7 +35,7 @@ suite('messageDataController Test', function(){
 		var res = {};
 		res.json = function(data){
 			console.log(data);
-			data[0].message.should.equal('EmergencyTest');
+			data[0].message.should.equal('HELP');
 			done();
 		}
 

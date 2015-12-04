@@ -64,14 +64,14 @@ app.run(function($rootScope, ssnocService, shakeService, locationService, member
     $rootScope.uiEnabled = true;
 
     $rootScope.currentPosition = {lat: 0, lng: 0};
-
+   
     $rootScope.member = new member();
 
     $rootScope.statuses = {
-    'Offline' : {'name':"Offline", 'id': 0, "display" : false},
-    'OK' : {'name':"OK", 'id':1 ,"display" : true},
-    'Help' :{ 'name' :"Help", 'id':2, "display" : true},
-    'Emergency' :{'name':"Emergency", 'id':3, "display" : true}
+    'Offline' : {'name':"Offline", 'id': 0, 'display': false},
+    'OK' : {'name':"OK", 'id':1, 'display': true},
+    'Help' :{ 'name' :"Help", 'id':2, 'display': true},
+    'Emergency' :{'name':"Emergency", 'id':3, 'display': true}
     };
 
     $rootScope.statusImgMap = {
@@ -95,6 +95,8 @@ app.run(function($rootScope, ssnocService, shakeService, locationService, member
 
     $rootScope.currentMsgPage = 0;
     var pageSize = 10;
+
+    $rootScope.issearch = false; 
     
     shakeService.addShakeDetection();
 
@@ -158,8 +160,11 @@ app.run(function($rootScope, ssnocService, shakeService, locationService, member
 
     $rootScope.isSearchMsgShown = function(messageId, messages)
     {
+      if (!$rootScope.issearch)
+        return true;
+
       for (var i = 0; i < messages.length; i ++) {
-        if (messages[i]._id == messageId) {
+        if (messages[i].id == messageId) {
           if (i < ($rootScope.currentMsgPage+1) * pageSize) {
             return true;
           }

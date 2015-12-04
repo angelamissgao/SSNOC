@@ -24,8 +24,7 @@
 
      	<link rel="stylesheet" href="libs/bootstrap.min.css">
 			<link rel="stylesheet" href="libs/font-awesome.min.css">
-
-		  	<link href="css/signin.css" rel="stylesheet">
+    	<link href="css/signin.css" rel="stylesheet">
 
 			<!-- Angular Settings-->
 
@@ -34,11 +33,12 @@
       <script src="js/services/shakeService.js"></script>
       <script src="js/services/locationService.js"></script>
       <script src="js/models/member.js"></script> 
+      <script src="js/models/message.js"></script> 
 			<script src="js/controllers/mainController.js"></script> 
 			<script src="js/controllers/chatController.js"></script> 
 			<script src="js/controllers/privateChatController.js"></script> 
       <script src="js/controllers/performanceTestController.js"></script> 
-      <script src="js/controllers/emergencyModeController.js"></script> 
+      <script src="js/controllers/emergencyModeController.js"></script>
       <script src="js/controllers/editProfileController.js"></script> 
 
 	</head>
@@ -60,12 +60,13 @@
              </p>
 
              <div class="row dropdown pull-right" style="margin-top:14px;">
-        
+
                 <a class="dropdown-toggle" type="button" data-toggle="dropdown" style="margin-top:14px;">
                   <img ng-src="/images/{{statusImgMap[member.status]}}"/ ></a>
                 <ul class="dropdown-menu">
                   <li ng-repeat="status in statuses">
-                    <a ng-bind="status.name" ng-click="shareStatus(status.id)" ng-if"status.display"></a>
+                    <a ng-bind="status.name" ng-click="shareStatus(status.id)" ng-if="status.display"></a>
+
                   </li>
                   <li><a ng-click="logout()" type="submit" ><b>Logout</b></a></li>
                 </ul>
@@ -82,7 +83,6 @@
             <ul class="nav navbar-nav" >
             <li style="width:90px;  word-wrap: break-word;"><a href="#/chatting">Chatting</a></li>
             <li  style="width:90px;  word-wrap: break-word;"><a href="#/directory">Directory</a></li>
-  
             <li  style="width:90px;  word-wrap: break-word;" ng-show="member.isCoordinator() || member.isAdministrator()"><a href="#/announcements">Announcement</a> </li>
 
             <li  style="width:90px;  word-wrap: break-word;" ng-show="member.isMonitor() || member.isAdministrator()"> <a href="#performance">Performance</a>  </li> 
@@ -90,11 +90,11 @@
             <li  style="width:90px;  word-wrap: break-word;"> <a href="#/emergencymode">Shake</a>  </li> 
 
           </ul>
-          </nav><!--/.nav-collapse -->
+          </nav>
           </div>
         </div>
 
-      <div id='main' class="col-xs-9 col-sm-10 col-md-11">
+      <div id='main' class="col-xs-9 col-sm-10 col-md-11">     
       	<div ng-view>	
       	</div>
       </div>
@@ -114,9 +114,7 @@
       console.log($("#nav-trigger"));
     
       $(document).on('click',"#nav-trigger", function(){
-        console.log("show nav");
-      //     var leftMargin = ($("#menu-nav").css('margin-left') === '0px') ? '-150px' : '0px';
-           
+      
            $("#menu-nav").css('margin-left');
            if($("#menu-nav").attr('class') == 'navbar sidebar-navbar-collapse hide')
            {

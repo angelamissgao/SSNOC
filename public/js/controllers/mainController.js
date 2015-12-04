@@ -14,7 +14,6 @@ app.controller("mainController",function($scope, ssnocService, member, $q,$rootS
 				if($scope.isExistingMember)
 				{
 					if (validateLoginDetails($rootScope.member)) {
-							// login successfull and send chat.html
 							$rootScope.member.setStatus($rootScope.statuses.OK.id);	
 							$rootScope.member.setAuthentication(true);
 							updateStatus().then(function(response){

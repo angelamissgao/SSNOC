@@ -9,7 +9,7 @@
 
         <div ng-show='msgAlert' class="alert alert-info alert-dismissible" role="alert">
           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <strong>You Got a New Message!</strong>
+          <strong>You Got a New Message from <span ng-bind="newMessgeSender"></span></strong>
         </div>
 
         <!-- search function -->
@@ -32,35 +32,15 @@
          <!-- public Chatarea -->
            <div class="publicChat">
       				  <div class="chatArea">
-                  <p ng-repeat="message in messages"  ng-show="isEmergency(message.receiver_id)" class="alert alert-danger">
+                   <p  class="alert" ng-repeat="message in messages"  ng-if="isSearchMsgShown(message.id, messages)" ng-class="{'alert-success':message.isPublicMessage(), 'alert-warning': message.isAnnouncement(), 'alert-danger': message.isEmergency()}" >
                     <img ng-src="/images/{{statusImgMap[message.status]}}" style="margin-right:5px;">
-                    <button ng-click="stopEmergencyMode()" type="submit" class="btn btn-danger">Stop!</button>
-                    <b><span ng-bind="directoryDict[message.member_id].name"></span></b>: &nbsp &nbsp
+                    <button ng-if="message.isEmergency()" ng-show="canStopEmergency(message.member_id)" ng-click="stopEmergencyMode()" type="submit" class="btn btn-danger">Stop!</button>
+                    <b><span ng-bind="directoryDict[message.memberId].name"></span></b>: &nbsp &nbsp
                      <b><span ng-bind="message.message"></span></b>
-                    <span ng-bind="message.timestamp | date:'MM/dd/yyyy HH:m:s'" class = "posttime"></span>
+                    <span ng-bind="message.timestamp | date:'MMM dd yyyy HH:m:s'" class = "posttime"></span>
                      <br>
                      <br> Position Info: [<span ng-bind="message.position.lat"></span>,<span ng-bind="message.position.lng"></span>]
                   </p>  
-
-                  <p ng-repeat="message in messages"  ng-show="isAnnoucement(message.receiver_id)" class="alert alert-warning">
-                    <img ng-src="/images/{{statusImgMap[message.status]}}" style="margin-right:5px;">
-                    <b><span ng-bind="directoryDict[message.member_id].name"></span></b>: &nbsp &nbsp
-                     <b><span ng-bind="message.message"></span></b>
-                    <span ng-bind="message.timestamp | date:'MM/dd/yyyy HH:m:s'" class = "posttime"></span>
-                     <br>
-                     <br> Position Info: [<span ng-bind="message.position.lat"></span>,<span ng-bind="message.position.lng"></span>]
-        					</p>	
-
-                  <p ng-repeat="message in messages"  ng-show="!isAnnoucement(message.receiver_id) && isSearchMsgShown(message._id, messages)" class="alert alert-success">
-                    <img ng-src="/images/{{statusImgMap[message.status]}}" style="margin-right:5px;"> 
-                    <b><span ng-bind="directoryDict[message.member_id].name"></span></b>: &nbsp &nbsp
-                     <b><span ng-bind="message.message"></span></b>       
-                     <span ng-bind="message.timestamp |  date:'MMM dd/ yyyy HH:m:s'" class = "posttime"></span>
-                     <br> Position Info: [<span ng-bind="message.position.lat"></span>,<span ng-bind="message.position.lng"></span>]
-                  </p>   
-
-                  <button type="button" class="btn btn-default" ng-show="isShowMoreButtonShown(messages)" ng-click="showMore()">Show More</button>
-
           </div>
 			  </div>
 				<div class="row">

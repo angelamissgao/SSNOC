@@ -19,12 +19,12 @@
     </div>
 
   <div class="row chatArea">
-    <p ng-repeat="announcement in announcements" ng-show="isSearchMsgShown(announcement._id, announcements)" class="alert alert-warning">
+    <p ng-repeat="announcement in announcements" class="alert alert-warning">
       <span ng-bind="announcement.message"></span>
        <span ng-bind="announcement.timestamp | date:'MM/dd/yyyy HH:m:s'" class = "posttime"></span>
        
     <p>     
-    <button type="button" class="btn btn-default" ng-show="isShowMoreButtonShown(announcements)" ng-click="showMore()">Show More</button>
+    <button type="button" class="btn btn-default" ng-show="isShowMoreButtonShown(announcements)&& issearch" ng-click="showMore()">Show More</button>
   </div>
 
   <div class="row"> 
