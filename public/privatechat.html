@@ -27,7 +27,7 @@
   </div>
 </div>
     <div class="chatArea">
-      <p ng-repeat="message in messages" ng-show="isSearchMsgShown(message._id, messages)" >
+      <p ng-repeat="message in messages">
        <b><span ng-bind="getName(message.member_id)"></span></b>
         <span ng-bind="message.message"></span>
         <span ng-bind="message.timestamp | date:'MM/dd/yyyy HH:m:s'" class = "posttime"></span>

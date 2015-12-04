@@ -138,7 +138,7 @@ app.run(function($rootScope, ssnocService, shakeService, locationService, member
     $rootScope.isSearchMsgShown = function(messageId, messages)
     {
       for (var i = 0; i < messages.length; i ++) {
-        if (messages[i]._id == messageId) {
+        if (messages[i].id == messageId) {
           if (i < ($rootScope.currentMsgPage+1) * pageSize) {
             return true;
           }
