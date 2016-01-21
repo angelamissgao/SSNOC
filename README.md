@@ -5,7 +5,8 @@ Back-end: Node.Js, Express, socket.io and MongoDB(TingoDB), with server deployed
 Feature: 
 - Public broadcast message;
 - Pricate message; 
-- admin privilege;
+- Message Search;
+- System Admin privilege;
 - P2P Video Conferencing;
 - Human Interaction (Shake ) message braodcasting; 
 
